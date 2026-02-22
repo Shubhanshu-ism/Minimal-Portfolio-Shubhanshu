@@ -56,7 +56,7 @@ export const Footer = ({ showWorkTogether = true }) => {
             </section>
 
             <footer className="text-center text-[10px] sm:text-[11px] text-dim/80 uppercase tracking-[0.3em] font-bold font-mono">
-                &copy; 2026 {userData.name} \u2014 IIT ISM Dhanbad
+                &copy; 2026 {userData.name} 
             </footer>
         </div>
     );

@@ -22,8 +22,7 @@ const AboutPage = () => {
                             It's Me {userData.firstName}
                         </h1>
                         <p className="text-lg text-dim leading-relaxed">
-                            I'm {userData.name}, a {userData.role.toLowerCase()} with over 3 years of
-                            experience, currently residing in {userData.location}. I have a
+                            I'm {userData.name}, a {userData.role.toLowerCase()}, currently residing in {userData.location}. I have a
                             deep passion for crafting purposeful products and scalable architectures.
                             My main goal is to bridge the divide between complex technical requirements and
                             meaningful, seamless experiences.
