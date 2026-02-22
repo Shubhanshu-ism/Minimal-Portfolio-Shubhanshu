@@ -49,7 +49,6 @@ export const Footer = ({ showWorkTogether = true }) => {
             <section className="flex flex-col md:flex-row items-center justify-between gap-6 py-10 border-b border-subtle">
                 <div className="space-y-1 text-center md:text-left">
                     <h3 className="text-2xl font-bold text-accent">{userData.components.footer.followMeTitle}</h3>
-                    {/* <p className="text-[14px] text-dim/80 italic font-medium">{userData.components.footer.followMeSubtitle}</p> */}
                 </div>
                 <div className="flex gap-4 justify-center">
                     <SocialIcon href={userData.socials.twitter} icon={<Twitter size={20} strokeWidth={1.5} />} />
