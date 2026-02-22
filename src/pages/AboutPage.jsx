@@ -1,6 +1,7 @@
 import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
-import { Copy, ArrowUpRight, PlusCircle, X, Instagram, Linkedin, GitMerge, BookOpen, Award } from 'lucide-react';
+import { Footer } from '../components/Footer';
+import { Copy, ArrowUpRight, PlusCircle } from 'lucide-react';
 
 const AboutPage = () => {
     return (
@@ -125,52 +126,8 @@ const AboutPage = () => {
                     </div>
                 </section>
 
-                {/* Let's Work Together Footer Block */}
-                <section className="mt-20 pt-16 flex flex-col items-center text-center space-y-6 pb-8">
-                    <div className="space-y-3">
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-accent">Let's work together.</h2>
-                        <p className="text-dim">Creating excellent user experiences and high performance web apps</p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                        <button className="bg-[#18181B] text-white dark:bg-white/10 dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all">
-                            <PlusCircle size={16} /> Hire Me
-                        </button>
-                        <button className="bg-transparent border border-subtle text-accent px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <Copy size={16} /> Copy Email
-                        </button>
-                    </div>
-                </section>
-
-                {/* Follow Me Strip */}
-                <section className="bg-bgCard border border-subtle rounded-[24px] p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-                    <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
-                        <span className="text-sm font-medium text-accent">Follow Me</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <a href={userData.socials.twitter} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <X size={16} />
-                        </a>
-                        <a href={userData.socials.instagram} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <Instagram size={16} />
-                        </a>
-                        <a href={userData.socials.github} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <GitMerge size={16} />
-                        </a>
-                        <a href={userData.socials.linkedin} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <Linkedin size={16} />
-                        </a>
-                    </div>
-                </section>
-
-                {/* Final Footer Text */}
-                <footer className="pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between text-xs text-dim text-center sm:text-left border-t border-subtle gap-4">
-                    <div className="space-y-1">
-                        <p>&copy; 2026 {userData.name} &mdash; Portfolio Template</p>
-                        <p>by <span className="underline underline-offset-2">Shubhanshu</span> // <span className="underline underline-offset-2">React Vite</span> // <span className="underline underline-offset-2">Tailwind</span></p>
-                    </div>
-                </footer>
+                {/* Follow Me Strip & Footer */}
+                <Footer />
 
             </div>
         </PageWrapper>

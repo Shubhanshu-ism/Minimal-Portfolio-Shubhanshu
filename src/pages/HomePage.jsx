@@ -1,8 +1,19 @@
+import { useState } from 'react';
 import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
-import { ExternalLink, Copy, FileText, ChevronRight, ArrowUpRight, PlusCircle, X, Instagram, Linkedin, GitMerge } from 'lucide-react';
+import { Footer } from '../components/Footer';
+import { Link } from 'react-router-dom';
+import { ExternalLink, Copy, FileText, ChevronRight, ArrowUpRight, PlusCircle, CheckCircle2 } from 'lucide-react';
 
 const HomePage = () => {
+    const [emailCopied, setEmailCopied] = useState(false);
+
+    const handleCopyEmail = () => {
+        navigator.clipboard.writeText('shubhanshujain2233@gmail.com');
+        setEmailCopied(true);
+        setTimeout(() => setEmailCopied(false), 2000);
+    };
+
     return (
         <PageWrapper>
             <div className="space-y-16">
@@ -36,11 +47,15 @@ const HomePage = () => {
                             </p>
 
                             <div className="flex flex-wrap gap-3 pt-2">
-                                <button className="bg-[#18181B] text-white dark:bg-white/10 dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all">
-                                    <PlusCircle size={16} /> Hire Me
-                                </button>
-                                <button className="bg-transparent border border-subtle text-accent px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                                    <Copy size={16} /> Copy Email
+                                <Link to="/contact" className="bg-[#18181B] text-white dark:bg-[#1C1C1E] dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm">
+                                    <PlusCircle size={16} strokeWidth={2} /> Hire Me
+                                </Link>
+                                <button
+                                    onClick={handleCopyEmail}
+                                    className="bg-transparent border border-subtle text-accent px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/5 transition-all"
+                                >
+                                    {emailCopied ? <CheckCircle2 size={16} strokeWidth={2} className="text-green-500" /> : <Copy size={16} strokeWidth={2} />}
+                                    {emailCopied ? 'Copied!' : 'Copy Email'}
                                 </button>
                             </div>
                         </div>
@@ -72,12 +87,13 @@ const HomePage = () => {
 
                     <div className="grid gap-3">
                         {userData.work.map((job, i) => (
-                            <div
+                            <Link
                                 key={i}
+                                to={`/project/${job.id}`}
                                 className="group bg-bgCard border border-subtle p-4 md:p-5 rounded-[20px] flex items-center justify-between hover:border-accent/20 transition-all cursor-pointer"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-black dark:bg-white/10 rounded-full flex items-center justify-center font-bold text-xl text-white dark:text-white shrink-0 shadow-md border border-subtle">
+                                    <div className="w-12 h-12 bg-white dark:bg-white/10 rounded-full flex items-center justify-center font-bold text-xl text-accent shrink-0 shadow-sm border border-subtle">
                                         {job.company[0]}
                                     </div>
                                     <div>
@@ -90,7 +106,7 @@ const HomePage = () => {
                                 <div className="text-dim group-hover:text-accent transition-colors pr-2">
                                     <ChevronRight size={18} />
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </section>
@@ -106,15 +122,13 @@ const HomePage = () => {
 
                     <div className="grid gap-3">
                         {userData.projects.map((project, i) => (
-                            <a
+                            <Link
                                 key={i}
-                                href={project.link}
-                                target="_blank"
-                                rel="noreferrer"
+                                to={`/project/${project.id}`}
                                 className="group bg-bgCard border border-subtle p-4 md:p-5 rounded-[20px] flex items-center justify-between hover:border-accent/20 transition-all"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-white dark:bg-white/10 rounded-full flex items-center justify-center font-bold text-xl text-black dark:text-white shrink-0 shadow-md border border-subtle">
+                                    <div className="w-12 h-12 bg-white dark:bg-white/10 rounded-full flex items-center justify-center font-bold text-xl text-accent shrink-0 shadow-sm border border-subtle">
                                         {project.title[0]}
                                     </div>
                                     <div>
@@ -131,57 +145,13 @@ const HomePage = () => {
                                         <ArrowUpRight size={18} />
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </section>
 
-                {/* Let's Work Together Footer Block */}
-                <section className="mt-20 pt-16 flex flex-col items-center text-center space-y-6 pb-8">
-                    <div className="space-y-3">
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-accent">Let's work together.</h2>
-                        <p className="text-dim">Creating excellent user experiences and high performance web apps</p>
-                    </div>
-
-                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                        <button className="bg-[#18181B] text-white dark:bg-white/10 dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all">
-                            <PlusCircle size={16} /> Hire Me
-                        </button>
-                        <button className="bg-transparent border border-subtle text-accent px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <Copy size={16} /> Copy Email
-                        </button>
-                    </div>
-                </section>
-
-                {/* Follow Me Strip */}
-                <section className="bg-bgCard border border-subtle rounded-[24px] p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-                    <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
-                        <span className="text-sm font-medium text-accent">Follow Me</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <a href={userData.socials.twitter} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <X size={16} />
-                        </a>
-                        <a href={userData.socials.instagram} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <Instagram size={16} />
-                        </a>
-                        <a href={userData.socials.github} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <GitMerge size={16} />
-                        </a>
-                        <a href={userData.socials.linkedin} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
-                            <Linkedin size={16} />
-                        </a>
-                    </div>
-                </section>
-
-                {/* Final Footer Text */}
-                <footer className="pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between text-xs text-dim text-center sm:text-left border-t border-subtle gap-4">
-                    <div className="space-y-1">
-                        <p>&copy; 2026 {userData.name} &mdash; Portfolio Template</p>
-                        <p>by <span className="underline underline-offset-2">Shubhanshu</span> // <span className="underline underline-offset-2">React Vite</span> // <span className="underline underline-offset-2">Tailwind</span></p>
-                    </div>
-                </footer>
+                {/* Follow Me Strip & Footer */}
+                <Footer />
 
             </div>
         </PageWrapper>
