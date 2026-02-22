@@ -3,8 +3,39 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Vite HMR Cache Buster */
+    --bg-main: #F4F4F5;
+    /* Light mode background */
+    --bg-card: #FFFFFF;
+    /* Light mode card */
+    --bg-input: #F4F4F5;
+    /* Light mode input */
+    --text-dim: #71717A;
+    /* Light mode dim text */
+    --text-accent: #18181B;
+    /* Light mode main text */
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    /* Light mode border */
+  }
+
+  :root.dark {
+    --bg-main: #161616;
+    /* Dark mode background */
+    --bg-card: #212121;
+    /* Dark mode card */
+    --bg-input: #1a1a1a;
+    /* Dark mode input */
+    --text-dim: #A0A0A0;
+    /* Dark mode dim text */
+    --text-accent: #FFFFFF;
+    /* Dark mode main text */
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    /* Dark mode border */
+  }
+
   body {
-    @apply bg-bgMain text-accent font-sans antialiased overflow-x-hidden;
+    @apply bg-bgMain text-accent font-sans antialiased overflow-x-hidden transition-colors duration-300;
   }
 }
 
@@ -12,10 +43,12 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background-color: #333;
+  background-color: var(--text-dim);
   border-radius: 20px;
 }

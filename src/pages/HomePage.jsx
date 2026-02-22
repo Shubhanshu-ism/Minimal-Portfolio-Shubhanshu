@@ -1,6 +1,6 @@
 import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
-import { ExternalLink, Copy, FileText } from 'lucide-react';
+import { ExternalLink, Copy, FileText, ChevronRight, ArrowUpRight, PlusCircle, X, Instagram, Linkedin, GitMerge } from 'lucide-react';
 
 const HomePage = () => {
     return (
@@ -8,72 +8,180 @@ const HomePage = () => {
             <div className="space-y-16">
 
                 {/* Hero Section */}
-                <section className="space-y-8">
-                    <div className="flex items-center gap-2 bg-white/5 border border-subtle w-fit px-3 py-1 rounded-full">
-                        <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse-slow"></div>
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-dim font-bold font-mono">
-                            {userData.role}
-                        </span>
+                <section className="space-y-8 flex flex-col pt-8">
+
+                    {/* Top Badges Row */}
+                    <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
+                            <span className="text-sm text-dim font-medium">{userData.role}</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-3 py-1 rounded-full">
+                            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse-slow"></div>
+                            <span className="text-[10px] uppercase tracking-widest text-green-500 font-bold">
+                                Available for Work
+                            </span>
+                        </div>
                     </div>
 
-                    <div className="space-y-6">
-                        <h1 className="text-5xl font-semibold tracking-tight leading-[1.1]">
-                            It's Me {userData.firstName}
-                        </h1>
-                        <p className="text-lg text-dim leading-relaxed max-w-[480px]">
-                            Full Stack Engineer specializing in high-performance API portals and LLM agents.
-                            Currently building the future of commerce tools at <span className="text-white">GoPaisa</span>.
-                        </p>
+                    <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+                        {/* Text & Buttons */}
+                        <div className="space-y-6 flex-1">
+                            <h1 className="text-[2.75rem] md:text-5xl font-semibold tracking-tight leading-[1.1]">
+                                I'm {userData.firstName}
+                            </h1>
+                            <p className="text-lg text-dim leading-relaxed max-w-[400px]">
+                                Full Stack Engineer from {userData.location}.
+                                Currently building at <span>GoPaisa</span>.
+                            </p>
 
-                        <div className="flex flex-wrap gap-3 pt-2">
-                            <button className="bg-accent text-bgMain px-6 py-3 rounded-xl text-sm font-bold hover:opacity-90 transition-all flex items-center gap-2">
-                                <FileText size={18} /> Resume
-                            </button>
-                            <button className="bg-white/5 border border-subtle text-white px-6 py-3 rounded-xl text-sm font-medium flex items-center gap-2 hover:bg-white/10 transition-all">
-                                <Copy size={18} /> Copy Email
-                            </button>
+                            <div className="flex flex-wrap gap-3 pt-2">
+                                <button className="bg-[#18181B] text-white dark:bg-white/10 dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all">
+                                    <PlusCircle size={16} /> Hire Me
+                                </button>
+                                <button className="bg-transparent border border-subtle text-accent px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                                    <Copy size={16} /> Copy Email
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Avatar Placeholder */}
+                        <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border border-subtle overflow-hidden shrink-0 shadow-xl p-2 bg-bgCard">
+                            <img
+                                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000"
+                                alt="Avatar"
+                                className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
+                            />
                         </div>
                     </div>
                 </section>
 
-                {/* Featured Projects Section */}
+                {/* Work Experience Section (Mirroring Projects in Screenshot) */}
                 <section className="space-y-6">
                     <div className="flex justify-between items-center px-1">
-                        <h2 className="text-[11px] font-bold text-gray-600 uppercase tracking-[0.2em] font-mono">
-                            Featured Projects
-                        </h2>
-                        <button className="text-xs text-gray-500 hover:text-white transition-colors">
-                            View All
+                        <div className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
+                            <h2 className="text-sm font-medium text-dim">
+                                Experience
+                            </h2>
+                        </div>
+                        <button className="text-xs text-dim hover:text-accent font-medium transition-colors flex items-center gap-1 bg-black/5 dark:bg-white/5 px-3 py-1.5 rounded-full border border-subtle">
+                            View All <ChevronRight size={14} />
                         </button>
                     </div>
 
                     <div className="grid gap-3">
-                        {userData.projects.slice(0, 2).map((project, i) => (
+                        {userData.work.map((job, i) => (
+                            <div
+                                key={i}
+                                className="group bg-bgCard border border-subtle p-4 md:p-5 rounded-[20px] flex items-center justify-between hover:border-accent/20 transition-all cursor-pointer"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 bg-black dark:bg-white/10 rounded-full flex items-center justify-center font-bold text-xl text-white dark:text-white shrink-0 shadow-md border border-subtle">
+                                        {job.company[0]}
+                                    </div>
+                                    <div>
+                                        <h3 className="font-semibold text-accent text-lg">
+                                            {job.company}
+                                        </h3>
+                                        <p className="text-sm text-dim mt-0.5">{job.role}</p>
+                                    </div>
+                                </div>
+                                <div className="text-dim group-hover:text-accent transition-colors pr-2">
+                                    <ChevronRight size={18} />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Featured Projects Section (Mirroring Products in Screenshot) */}
+                <section className="space-y-6">
+                    <div className="flex items-center gap-2 px-1">
+                        <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
+                        <h2 className="text-sm font-medium text-dim">
+                            Products
+                        </h2>
+                    </div>
+
+                    <div className="grid gap-3">
+                        {userData.projects.map((project, i) => (
                             <a
                                 key={i}
                                 href={project.link}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="group bg-bgCard border border-subtle p-5 rounded-2xl flex items-center justify-between hover:border-white/10 transition-all"
+                                className="group bg-bgCard border border-subtle p-4 md:p-5 rounded-[20px] flex items-center justify-between hover:border-accent/20 transition-all"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-white/5 rounded-xl border border-subtle flex items-center justify-center font-bold text-xl text-white group-hover:scale-110 transition-transform">
+                                    <div className="w-12 h-12 bg-white dark:bg-white/10 rounded-full flex items-center justify-center font-bold text-xl text-black dark:text-white shrink-0 shadow-md border border-subtle">
                                         {project.title[0]}
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
+                                        <h3 className="font-semibold text-accent text-lg">
                                             {project.title}
                                         </h3>
-                                        <p className="text-xs text-gray-500 mt-0.5">{project.tech}</p>
                                     </div>
                                 </div>
-                                <div className="text-gray-700 group-hover:text-white transition-colors pr-1">
-                                    <ExternalLink size={18} />
+                                <div className="flex items-center gap-3">
+                                    <span className="hidden sm:inline-block text-[10px] font-bold tracking-widest uppercase border border-subtle px-3 py-1 rounded-full text-dim">
+                                        React App
+                                    </span>
+                                    <div className="text-dim group-hover:text-accent transition-colors pr-2">
+                                        <ArrowUpRight size={18} />
+                                    </div>
                                 </div>
                             </a>
                         ))}
                     </div>
                 </section>
+
+                {/* Let's Work Together Footer Block */}
+                <section className="mt-20 pt-16 flex flex-col items-center text-center space-y-6 pb-8">
+                    <div className="space-y-3">
+                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-accent">Let's work together.</h2>
+                        <p className="text-dim">Creating excellent user experiences and high performance web apps</p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                        <button className="bg-[#18181B] text-white dark:bg-white/10 dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all">
+                            <PlusCircle size={16} /> Hire Me
+                        </button>
+                        <button className="bg-transparent border border-subtle text-accent px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                            <Copy size={16} /> Copy Email
+                        </button>
+                    </div>
+                </section>
+
+                {/* Follow Me Strip */}
+                <section className="bg-bgCard border border-subtle rounded-[24px] p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
+                        <span className="text-sm font-medium text-accent">Follow Me</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                        <a href={userData.socials.twitter} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                            <X size={16} />
+                        </a>
+                        <a href={userData.socials.instagram} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                            <Instagram size={16} />
+                        </a>
+                        <a href={userData.socials.github} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                            <GitMerge size={16} />
+                        </a>
+                        <a href={userData.socials.linkedin} target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full border border-subtle flex items-center justify-center text-dim hover:text-accent hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                            <Linkedin size={16} />
+                        </a>
+                    </div>
+                </section>
+
+                {/* Final Footer Text */}
+                <footer className="pt-8 pb-12 flex flex-col sm:flex-row items-center justify-between text-xs text-dim text-center sm:text-left border-t border-subtle gap-4">
+                    <div className="space-y-1">
+                        <p>&copy; 2026 {userData.name} &mdash; Portfolio Template</p>
+                        <p>by <span className="underline underline-offset-2">Shubhanshu</span> // <span className="underline underline-offset-2">React Vite</span> // <span className="underline underline-offset-2">Tailwind</span></p>
+                    </div>
+                </footer>
 
             </div>
         </PageWrapper>

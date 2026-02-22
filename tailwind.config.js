@@ -4,14 +4,15 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
       colors: {
-        bgMain: '#161616',
-        bgCard: '#212121',
-        bgInput: '#1a1a1a',
-        dim: '#A0A0A0',
-        accent: '#FFFFFF',
+        bgMain: 'var(--bg-main)',
+        bgCard: 'var(--bg-card)',
+        bgInput: 'var(--bg-input)',
+        dim: 'var(--text-dim)',
+        accent: 'var(--text-accent)',
       },
       maxWidth: {
         'folio': '560px',
@@ -24,7 +25,7 @@ export default {
         'DEFAULT': '1px',
       },
       borderColor: {
-        'subtle': 'rgba(255, 255, 255, 0.05)',
+        'subtle': 'var(--border-subtle)',
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
