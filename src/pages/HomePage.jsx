@@ -30,7 +30,7 @@ const HomePage = () => {
                         <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-3 py-1 rounded-full">
                             <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse-slow"></div>
                             <span className="text-[10px] uppercase tracking-widest text-green-500 font-bold">
-                                Available for Work
+                                {userData.config.availability.badgeMain}
                             </span>
                         </div>
                     </div>
@@ -39,12 +39,12 @@ const HomePage = () => {
                         {/* Text & Buttons */}
                         <div className="space-y-6 flex-1">
                             <h1 className="text-[2.75rem] md:text-5xl font-semibold tracking-tight leading-[1.1]">
-                                I'm {userData.firstName}
+                                {userData.pages.home.title.replace('{firstName}', userData.firstName)}
                             </h1>
-                            <p className="text-lg text-dim leading-relaxed max-w-[400px]">
-                                Full Stack Engineer from {userData.location}.
-                                Currently building at <span>GoPaisa</span>.
-                            </p>
+                            <p
+                                className="text-lg text-dim leading-relaxed max-w-[400px]"
+                                dangerouslySetInnerHTML={{ __html: userData.pages.home.description.replace('{location}', userData.location) }}
+                            />
 
                             <div className="flex flex-wrap gap-3 pt-2">
                                 <Link to="/contact" className="bg-[#18181B] text-white dark:bg-[#1C1C1E] dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm">
@@ -63,7 +63,7 @@ const HomePage = () => {
                         {/* Avatar Placeholder */}
                         <div className="w-40 h-40 md:w-48 md:h-48 rounded-full border border-subtle overflow-hidden shrink-0 shadow-xl p-2 bg-bgCard">
                             <img
-                                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000"
+                                src={userData.config.profileImage}
                                 alt="Avatar"
                                 className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
                             />
@@ -77,12 +77,12 @@ const HomePage = () => {
                         <div className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
                             <h2 className="text-sm font-medium text-dim">
-                                Experience
+                                {userData.pages.home.badges.experience}
                             </h2>
                         </div>
-                        <button className="text-xs text-dim hover:text-accent font-medium transition-colors flex items-center gap-1 bg-black/5 dark:bg-white/5 px-3 py-1.5 rounded-full border border-subtle">
+                        <Link to="/work" className="text-xs text-dim hover:text-accent font-medium transition-colors flex items-center gap-1 bg-black/5 dark:bg-white/5 px-3 py-1.5 rounded-full border border-subtle">
                             View All <ChevronRight size={14} />
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="grid gap-3">
@@ -116,7 +116,7 @@ const HomePage = () => {
                     <div className="flex items-center gap-2 px-1">
                         <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
                         <h2 className="text-sm font-medium text-dim">
-                            Products
+                            {userData.pages.home.badges.projects}
                         </h2>
                     </div>
 

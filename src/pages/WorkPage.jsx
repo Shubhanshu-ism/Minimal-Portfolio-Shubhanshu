@@ -11,9 +11,9 @@ const WorkPage = () => {
 
                 {/* Page Title */}
                 <header className="space-y-4">
-                    <h1 className="text-5xl font-semibold tracking-tight">Selected Works</h1>
+                    <h1 className="text-5xl font-semibold tracking-tight">{userData.pages.work.title}</h1>
                     <p className="text-lg text-dim leading-relaxed max-w-[480px]">
-                        A deep dive into my professional journey and the digital products I've engineered.
+                        {userData.pages.work.description}
                     </p>
                 </header>
 
@@ -21,7 +21,7 @@ const WorkPage = () => {
                 <section className="space-y-8">
                     <div className="flex items-center gap-4 px-1">
                         <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
-                        <h2 className="text-[11px] font-bold text-dim uppercase tracking-[0.2em] font-mono">Professional Experience</h2>
+                        <h2 className="text-[11px] font-bold text-dim uppercase tracking-[0.2em] font-mono">{userData.pages.work.badges.experience}</h2>
                     </div>
 
                     <div className="space-y-4">
@@ -57,7 +57,7 @@ const WorkPage = () => {
                 <section className="space-y-8 pb-10">
                     <div className="flex items-center gap-4 px-1">
                         <div className="w-1.5 h-1.5 bg-[#3b82f6] rounded-full"></div>
-                        <h2 className="text-[11px] font-bold text-dim uppercase tracking-[0.2em] font-mono">Personal Products</h2>
+                        <h2 className="text-[11px] font-bold text-dim uppercase tracking-[0.2em] font-mono">{userData.pages.work.badges.projects}</h2>
                     </div>
 
                     <div className="grid gap-6">

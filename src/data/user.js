@@ -15,6 +15,61 @@ export const userData = {
         codeforces: "https://codeforces.com/profile/Tanjiro_cp"
     },
 
+    config: {
+        profileImage: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000",
+        availability: {
+            status: true,
+            badgeMain: "Available for Work",
+            badgeSecondary: "Currently Available",
+        },
+    },
+
+    pages: {
+        home: {
+            title: "I'm {firstName}",
+            description: "Full Stack Engineer from {location}.\nCurrently building at <span>GoPaisa</span>.",
+            badges: {
+                experience: "Experience",
+                projects: "Products"
+            }
+        },
+        work: {
+            title: "Selected Works",
+            description: "A deep dive into my professional journey and the digital products I've engineered.",
+            badges: {
+                experience: "Professional Experience",
+                projects: "Personal Products"
+            }
+        },
+        about: {
+            title: "It's Me {firstName}",
+            description: "I'm {name}, a {role}, currently residing in {location}. I have a deep passion for crafting purposeful products and scalable architectures. My main goal is to bridge the divide between complex technical requirements and meaningful, seamless experiences.",
+            badges: {
+                education: "Education",
+                coding: "Coding Prowess",
+                projects: "My Side Projects"
+            },
+            projectsDescription: "I did passion side projects in the weekend, please take a look you will love it (i hope)."
+        },
+        contact: {
+            title: "Engineering Inquiry",
+            description: "Have a complex logic problem or an AI agent you need to build?\nReach out and let's build the future together.",
+            badges: {
+                main: "Hire Me"
+            }
+        }
+    },
+
+    components: {
+        footer: {
+            ctaTitle: "Let's work together.",
+            ctaSubtitle: "Creating user experience and visual appealing design",
+            followMeTitle: "Follow Me",
+            followMeSubtitle: "@Shubhanshu-ism everywhere",
+            copyrightInstitution: "IIT ISM Dhanbad"
+        }
+    },
+
     education: {
         institution: "Indian Institute of Technology (ISM), Dhanbad",
         degree: "B.Tech - Electrical Engineering",

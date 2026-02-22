@@ -88,10 +88,12 @@ const ProjectDetailsPage = () => {
                         </div>
                     )}
 
-                    {/* Optional extra intro context from points if needed, or repeat overview? The screenshot shows text before Problem */}
-                    <p className="text-[17px] text-dim leading-relaxed">
-                        A business owner enlisted my expertise as a product designer to develop a website that would boost their brand awareness and conversions. Crafting a modern, professional website, my priority was to set them apart from competitors and attract new customers.
-                    </p>
+                    {/* Optional extra intro context */}
+                    {project.overviewParagraph && (
+                        <p className="text-[17px] text-dim leading-relaxed">
+                            {project.overviewParagraph}
+                        </p>
+                    )}
 
                     {/* Second Image */}
                     {project.images && project.images[1] && (

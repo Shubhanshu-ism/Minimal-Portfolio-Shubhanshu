@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
 import { Footer } from '../components/Footer';
 import { Send, CheckCircle2 } from 'lucide-react';
@@ -17,7 +18,7 @@ const ContactPage = () => {
         const subject = encodeURIComponent(`Engineering Inquiry from ${name}`);
         const body = encodeURIComponent(`Project Description :\n${message}\n\nRegards:\n${name}\nEmail: ${email}`);
 
-        window.location.href = `mailto:shubhanshujain2233@gmail.com?subject=${subject}&body=${body}`;
+        window.location.href = `mailto:${userData.email}?subject=${subject}&body=${body}`;
 
         setStatus('success');
         setTimeout(() => {
@@ -35,18 +36,19 @@ const ContactPage = () => {
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                         <div className="flex items-center gap-2 bg-transparent border border-subtle px-3 py-1 rounded-full shadow-sm">
                             <div className="w-1.5 h-1.5 bg-[#22c55e] rounded-full animate-pulse-slow"></div>
-                            <span className="text-[10px] uppercase tracking-[0.2em] text-dim font-bold font-mono">Hire Me</span>
+                            <span className="text-[10px] uppercase tracking-[0.2em] text-dim font-bold font-mono">{userData.pages.contact.badges.main}</span>
                         </div>
                         <div className="text-[10px] uppercase text-[#22c55e] font-bold tracking-widest bg-[#22c55e]/10 px-3 py-1 rounded-full border border-[#22c55e]/20">
-                            Currently Available
+                            {userData.config.availability.badgeSecondary}
                         </div>
                     </div>
 
                     <div className="space-y-4">
-                        <h1 className="text-5xl md:text-[3.5rem] font-bold tracking-tight leading-[1.1] text-accent">Engineering Inquiry</h1>
-                        <p className="text-lg text-dim leading-relaxed max-w-2xl">
-                            Have a complex logic problem or an AI agent you need to build?<br className="hidden sm:block" /> Reach out and let's build the future together.
-                        </p>
+                        <h1 className="text-5xl md:text-[3.5rem] font-bold tracking-tight leading-[1.1] text-accent">{userData.pages.contact.title}</h1>
+                        <p
+                            className="text-lg text-dim leading-relaxed max-w-2xl"
+                            dangerouslySetInnerHTML={{ __html: userData.pages.contact.description.replace('\n', '<br className="hidden sm:block" /> ') }}
+                        />
                     </div>
                 </section>
 

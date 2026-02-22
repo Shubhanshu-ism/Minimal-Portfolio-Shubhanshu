@@ -22,9 +22,13 @@ export const Footer = ({ showWorkTogether = true }) => {
         <div className="pt-10 pb-12 space-y-12 sm:space-y-16">
             {showWorkTogether && (
                 <section className="flex flex-col items-center text-center space-y-6">
-                    <div className="space-y-3">
-                        <h2 className="text-4xl md:text-[2.75rem] font-bold tracking-tight text-accent font-sans">Let’s work together.</h2>
-                        <p className="text-[17px] text-dim">Creating user experience and visual appealing design</p>
+                    <div className="text-center space-y-4 pt-10 pb-8 border-b border-subtle">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-accent">
+                            {userData.components.footer.ctaTitle}
+                        </h2>
+                        <p className="text-[15px] sm:text-[17px] text-dim pb-2 max-w-md mx-auto">
+                            {userData.components.footer.ctaSubtitle}
+                        </p>
                     </div>
 
                     <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
@@ -42,10 +46,10 @@ export const Footer = ({ showWorkTogether = true }) => {
                 </section>
             )}
 
-            <section className="bg-bgCard border border-subtle p-8 sm:py-10 sm:px-12 rounded-[40px] flex flex-col sm:flex-row items-center justify-between gap-8 shadow-sm">
-                <div className="space-y-2 text-center sm:text-left">
-                    <h2 className="text-[14px] font-bold text-dim uppercase tracking-[0.2em] font-mono">Follow Me</h2>
-                    <p className="text-[14px] text-dim/80 italic font-medium">@Shubhanshu-ism everywhere</p>
+            <section className="flex flex-col md:flex-row items-center justify-between gap-6 py-10 border-b border-subtle">
+                <div className="space-y-1 text-center md:text-left">
+                    <h3 className="text-2xl font-bold text-accent">{userData.components.footer.followMeTitle}</h3>
+                    <p className="text-[14px] text-dim/80 italic font-medium">{userData.components.footer.followMeSubtitle}</p>
                 </div>
                 <div className="flex gap-4 justify-center">
                     <SocialIcon href={userData.socials.twitter} icon={<Twitter size={20} strokeWidth={1.5} />} />
@@ -56,7 +60,8 @@ export const Footer = ({ showWorkTogether = true }) => {
             </section>
 
             <footer className="text-center text-[10px] sm:text-[11px] text-dim/80 uppercase tracking-[0.3em] font-bold font-mono">
-                &copy; 2026 {userData.name} 
+                &copy; {new Date().getFullYear()} {userData.name}
+                 {/* &mdash; {userData.components.footer.copyrightInstitution} */}
             </footer>
         </div>
     );

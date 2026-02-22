@@ -2,6 +2,7 @@ import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
 import { Footer } from '../components/Footer';
 import { Copy, ArrowUpRight, PlusCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AboutPage = () => {
     return (
@@ -19,21 +20,24 @@ const AboutPage = () => {
 
                     <div className="space-y-6">
                         <h1 className="text-[2.75rem] md:text-5xl font-semibold tracking-tight leading-[1.1]">
-                            It's Me {userData.firstName}
+                            {userData.pages.about.title.replace('{firstName}', userData.firstName)}
                         </h1>
-                        <p className="text-lg text-dim leading-relaxed">
-                            I'm {userData.name}, a {userData.role.toLowerCase()}, currently residing in {userData.location}. I have a
-                            deep passion for crafting purposeful products and scalable architectures.
-                            My main goal is to bridge the divide between complex technical requirements and
-                            meaningful, seamless experiences.
-                        </p>
+                        <p
+                            className="text-lg text-dim leading-relaxed"
+                            dangerouslySetInnerHTML={{
+                                __html: userData.pages.about.description
+                                    .replace('{name}', userData.name)
+                                    .replace('{role}', userData.role.toLowerCase())
+                                    .replace('{location}', userData.location)
+                            }}
+                        />
                     </div>
 
                     {/* Image Placeholder */}
                     <div className="w-full rounded-[24px] border border-subtle overflow-hidden shadow-xl bg-bgCard mt-4">
                         <img
-                            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1000"
-                            alt="Shubhanshu Portrait"
+                            src={userData.config.profileImage}
+                            alt={`${userData.firstName} Portrait`}
                             className="w-full aspect-[4/3] sm:aspect-video object-cover grayscale hover:grayscale-0 transition-all duration-500"
                         />
                     </div>
@@ -43,7 +47,7 @@ const AboutPage = () => {
                 <section className="space-y-6">
                     <div className="space-y-4">
                         <h2 className="text-xl font-bold flex items-center gap-2 text-accent">
-                            Education
+                            {userData.pages.about.badges.education}
                         </h2>
                         <div className="bg-bgCard border border-subtle p-6 rounded-[24px] space-y-4 shadow-sm hover:border-accent/20 transition-all">
                             <div>
@@ -68,7 +72,7 @@ const AboutPage = () => {
                 {/* Competitive Programming Grid */}
                 <section className="space-y-6">
                     <h2 className="text-xl font-bold flex items-center gap-2 text-accent">
-                        Coding Prowess
+                        {userData.pages.about.badges.coding}
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {userData.stats.map((stat, i) => (
@@ -88,18 +92,16 @@ const AboutPage = () => {
 
                 {/* My Side Projects */}
                 <section className="space-y-6">
-                    <h2 className="text-xl font-bold text-accent">My Side Projects</h2>
+                    <h2 className="text-xl font-bold text-accent">{userData.pages.about.badges.projects}</h2>
                     <p className="text-[17px] text-dim leading-relaxed">
-                        I did passion side projects in the weekend, please take a look you will love it (i hope).
+                        {userData.pages.about.projectsDescription}
                     </p>
 
                     <div className="grid gap-3 pt-2">
                         {userData.projects.map((project, i) => (
-                            <a
+                            <Link
                                 key={i}
-                                href={project.link}
-                                target="_blank"
-                                rel="noreferrer"
+                                to={`/project/${project.id}`}
                                 className="group bg-bgCard border border-subtle p-4 md:p-5 rounded-[20px] flex items-center justify-between hover:border-accent/20 transition-all"
                             >
                                 <div className="flex items-center gap-4">
@@ -120,7 +122,7 @@ const AboutPage = () => {
                                         <ArrowUpRight size={18} />
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </section>
