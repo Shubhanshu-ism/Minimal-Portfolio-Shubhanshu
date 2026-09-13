@@ -109,7 +109,7 @@ const AboutPage = () => {
                                 href={stat.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                aria-label={`View ${stat.platform} profile - ${stat.label} rating ${stat.rating}`}
+                                aria-label={`${stat.platform} profile — ${stat.label} rating ${stat.rating}`}
                                 className="bg-bgCard border border-subtle p-5 rounded-[22px] flex flex-col justify-between text-center group hover:border-accent/30 hover:-translate-y-0.5 transition-all duration-200 shadow-sm active:scale-[0.98]"
                             >
                                 <div className="flex justify-between items-center w-full">
@@ -194,7 +194,6 @@ const AboutPage = () => {
                             <Link
                                 key={i}
                                 to={`/project/${project.id}`}
-                                aria-label={`View ${project.title} project details`}
                                 className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
                             >
                                 <div className="flex items-center gap-4">

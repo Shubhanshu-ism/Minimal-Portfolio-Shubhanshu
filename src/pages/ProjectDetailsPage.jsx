@@ -55,8 +55,18 @@ const ProjectDetailsPage = () => {
     const [activeDiagramMap, setActiveDiagramMap] = useState({});
     const activeDiagramIndex = activeDiagramMap[id] || 0;
 
-    // Find the project or work item by ID
-    const project = userData.projects.find(p => p.id === id) || userData.work.find(w => w.id === id);
+    // Check whether this item is from work experience or projects
+    const isWorkItem = userData.work.some(w => w.id === id);
+    const project = isWorkItem
+        ? userData.work.find(w => w.id === id)
+        : userData.projects.find(p => p.id === id) || userData.work.find(w => w.id === id);
+
+    const backLink = isWorkItem ? "/work" : "/projects";
+    const backLabel = isWorkItem ? "Back to Work Experience" : "Back to Projects";
+    const relatedTitle = isWorkItem ? "Other Work Experience" : "Other Projects";
+    const relatedItems = (isWorkItem ? userData.work : userData.projects)
+        .filter(item => item.id !== id)
+        .slice(0, 3);
 
     if (!project) {
         return (
@@ -64,8 +74,8 @@ const ProjectDetailsPage = () => {
                 <div className="flex flex-col items-center justify-center space-y-4 py-20 text-center">
                     <h1 className="text-3xl font-bold text-accent">Case Study Not Found</h1>
                     <p className="text-dim">The requested case study or project could not be found.</p>
-                    <Link to="/work" className="text-blue-500 hover:underline flex items-center gap-1 font-semibold">
-                        <ArrowLeft size={16} /> Return to Selected Works
+                    <Link to={backLink} className="text-blue-500 hover:underline flex items-center gap-1 font-semibold">
+                        <ArrowLeft size={16} /> {backLabel}
                     </Link>
                 </div>
             </PageWrapper>
@@ -82,11 +92,11 @@ const ProjectDetailsPage = () => {
                 {/* Back Navigation Breadcrumb */}
                 <div>
                     <Link
-                        to="/work"
+                        to={backLink}
                         className="inline-flex items-center gap-1.5 text-xs font-semibold text-dim hover:text-accent transition-colors group"
                     >
                         <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform" />
-                        <span>Back to Selected Works</span>
+                        <span>{backLabel}</span>
                     </Link>
                 </div>
 
@@ -339,17 +349,17 @@ const ProjectDetailsPage = () => {
                     </div>
                 )}
 
-                {/* Explore More Works List */}
+                {/* Related Items / Other Projects List */}
                 <section className="space-y-5 pt-8 border-t border-subtle">
                     <div className="flex justify-between items-center px-1">
                         <div className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-dim rounded-full"></div>
                             <h2 className="text-xs font-bold text-dim uppercase tracking-[0.18em] font-mono">
-                                Explore More Works
+                                {relatedTitle}
                             </h2>
                         </div>
                         <Link
-                            to="/work"
+                            to={backLink}
                             className="text-[10px] font-bold tracking-widest uppercase bg-black/[0.04] dark:bg-white/[0.06] px-3.5 py-1.5 rounded-full border border-subtle text-dim hover:text-accent transition-colors flex items-center gap-1 font-mono active:scale-[0.96]"
                         >
                             View All <ArrowUpRight size={12} />
@@ -357,34 +367,31 @@ const ProjectDetailsPage = () => {
                     </div>
 
                     <div className="grid gap-3">
-                        {[...userData.work, ...userData.projects]
-                            .filter(item => item.id !== id)
-                            .slice(0, 3)
-                            .map((item, i) => {
-                                const itemTitle = item.title || item.company;
-                                return (
-                                    <Link
-                                        key={i}
-                                        to={`/project/${item.id}`}
-                                        className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-lg text-accent shrink-0 shadow-sm border border-subtle">
-                                                {itemTitle[0]}
-                                            </div>
-                                            <div>
-                                                <h3 className="font-semibold text-accent text-base sm:text-lg">
-                                                    {itemTitle}
-                                                </h3>
-                                                <p className="text-xs text-dim mt-0.5">{item.projectType || item.role}</p>
-                                            </div>
+                        {relatedItems.map((item, i) => {
+                            const itemTitle = item.title || item.company;
+                            return (
+                                <Link
+                                    key={i}
+                                    to={`/project/${item.id}`}
+                                    className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
+                                >
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-lg text-accent shrink-0 shadow-sm border border-subtle">
+                                            {itemTitle[0]}
                                         </div>
-                                        <div className="text-dim group-hover:text-accent group-hover:translate-x-0.5 transition-all pr-2">
-                                            <ChevronRight size={18} />
+                                        <div>
+                                            <h3 className="font-semibold text-accent text-base sm:text-lg">
+                                                {itemTitle}
+                                            </h3>
+                                            <p className="text-xs text-dim mt-0.5">{item.projectType || item.role}</p>
                                         </div>
-                                    </Link>
-                                );
-                            })}
+                                    </div>
+                                    <div className="text-dim group-hover:text-accent group-hover:translate-x-0.5 transition-all pr-2">
+                                        <ChevronRight size={18} />
+                                    </div>
+                                </Link>
+                            );
+                        })}
                     </div>
                 </section>
 

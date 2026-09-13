@@ -8,11 +8,21 @@
 - **Education**: B.Tech, Indian Institute of Technology (ISM), Dhanbad (2021 – 2025)
 - **Academic Highlights**: JEE Main 99th percentile; JEE Advanced Top 0.7%
 - **Location**: Noida, Uttar Pradesh, India
-- **Email**: shubhanshujain2233@gmail.com
-- **Website**: https://minimal-portfolio-shubhanshu-dark-l.vercel.app/
-- **GitHub**: https://github.com/Shubhanshu-ism
-- **LinkedIn**: https://www.linkedin.com/in/shubhanshu-jain-iit-ism
+- **Email**: [shubhanshujain2233@gmail.com](mailto:shubhanshujain2233@gmail.com)
+- **Website**: [Shubhanshu Jain Portfolio](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/)
+- **GitHub**: [Shubhanshu-ism GitHub](https://github.com/Shubhanshu-ism)
+- **LinkedIn**: [Shubhanshu Jain LinkedIn](https://www.linkedin.com/in/shubhanshu-jain-iit-ism)
 - **Status**: Available for Full-Time SDE, Backend Developer, and AI Engineering roles.
+
+## Primary Documentation Links
+- [GoPaisa Case Study](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/gopaisa): 66x query latency reduction, 1.5M+ row streaming export, and guided CSV ingestion engine.
+- [IncNut Digital Case Study](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/incnut-digital): Autonomous multi-agent LangGraph customer support automation.
+- [AI GitLab Coding Agent](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/gitlab-coding-agent): Autonomous software engineering agent with Docker sandboxing.
+- [PM2 Auto Recovery Alerts](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/pm2-auto-recovery-alerts): Self-hosted DevOps health-monitoring and SSH auto-recovery daemon.
+- [AI Compare Suite](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/ai-compare): Real-time dual-stream LLM benchmarking and evaluation suite.
+- [Projects Directory](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/projects): Complete directory of engineering products and open source repositories.
+- [Work Experience](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/work): Detailed production accomplishments and impact metrics.
+- [Structured Resume JSON](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/resume.json): Standardized machine-readable JSON resume schema.
 
 ---
 
@@ -32,12 +42,16 @@
 
 ### 1. GoPaisa — SDE / Backend & Analytics Engineer
 *Fintech & High-Throughput Data Infrastructure (2025 – Present)*
+- **Product Category**: Marketing Analytics & BI Dashboard / Fintech Keyset Streaming / Data Ingestion ETL
+- **Commercial Analogues**: Fivetran (ETL ingestion), Metabase / Google Data Studio (BI reporting), Datadog / New Relic APM (query latency tuning).
 - **66× Query Latency Optimization**: Refactored the Credit Card Payment Panel backend by eliminating N+1 query bottlenecks and restructuring SQL joins, dropping query execution time from 20 seconds to 0.3 seconds.
 - **High-Concurrency Streaming Export**: Architected an in-memory streaming export pipeline capable of streaming 1.5M+ financial records in under 15 seconds without memory spikes, protected with global concurrency locking to prevent database starvation.
 - **Self-Serve Analytics Dashboard**: Built analytics and campaign performance infrastructure aggregating data across 92 active marketing campaigns and processing 228K+ clicks in real time.
 
 ### 2. IncNut Digital — AI Intern (LLM Application Developer)
 *Autonomous Multi-Agent AI Systems (Jul 2025 – Oct 2025)*
+- **Product Category**: Multi-Agent Customer Support & Retention Automation (LangGraph + Flowise)
+- **Commercial Analogues**: Intercom Fin, Zendesk AI Agents, Ada Support, Forethought (in-house enterprise alternative).
 - **Multi-Agent Orchestration**: Built production autonomous multi-agent LLM systems with LangGraph and Flowise for flagship D2C wellness brands Vedix and SkinKraft.
 - **60% Customer Support Automation**: Automated routine user queries and support ticket resolution using multi-agent intent routing and tool execution.
 - **35.7% Churn Reduction**: Refined LLM state transitions and prompt logic, eliminating order cancellation blockers for 35.7% of users.
@@ -51,22 +65,46 @@
 
 ## Featured Engineering Projects
 
-### 1. PM2 Auto Recovery Alerts (DevOps & Self-Healing Infra)
+### 1. AI GitLab Coding Agent (Autonomous SWE Agent & Docker Sandbox)
+- **Tech Stack**: TypeScript, Next.js, Docker, PostgreSQL, Drizzle ORM, Anthropic Claude, OpenAI GPT-4o
+- **Product Category**: Autonomous Software Engineering Agent with Hardened Sandbox Isolation
+- **Commercial Analogues**: Devin (Cognition), GitHub Copilot Workspace, OpenHands, SWE-Agent (self-hosted alternative).
+- **Description**: Production-ready autonomous coding agent connecting to GitLab repositories. Delegates complex software engineering tasks to foundation models, isolates execution inside locked-down Docker containers (non-root, restricted memory, blocked docker.sock), enforces a 3-tier command policy engine (SAFE, CONFIRM, BLOCKED), and automatically opens verified Merge Requests with CI pipeline monitoring.
+- **GitHub**: https://github.com/Shubhanshu-ism/gitlab-coding-agent
+
+### 2. PM2 Auto Recovery Alerts (DevOps & Self-Healing Infra)
 - **Tech Stack**: Node.js, MongoDB, SSH, Docker, REST API, Webhooks
+- **Product Category**: Self-Hosted Infrastructure Health-Monitoring & SSH Auto-Recovery Daemon
+- **Commercial Analogues**: PM2 Plus (Keymetrics), Datadog APM, BetterStack, PagerDuty (self-hosted open-source alternative).
 - **Description**: A self-hosted infrastructure daemon that continuously monitors remote virtual machines, detects crashed or degraded PM2 Node.js processes, triggers automated SSH self-healing restarts, and dispatches rich alert payloads across Slack, Flock, and Telegram.
 - **GitHub**: https://github.com/Shubhanshu-ism/pm2-auto-recovery-alerts
 
-### 2. AI Compare (Real-Time LLM Benchmarking)
+### 3. AI Compare (Real-Time LLM Benchmarking)
 - **Tech Stack**: React.js, Google Gemini API, DeepSeek API, Web Streams
+- **Product Category**: Dual-Stream LLM Evaluation Suite
+- **Commercial Analogues**: Chatbot Arena (LMSYS), Artificial Analysis, OpenRouter Model Comparison.
 - **Description**: Real-time dual-stream comparison and benchmarking platform evaluating Google Gemini and DeepSeek models simultaneously on output fidelity, reasoning depth, token consumption, and response latency.
 - **GitHub**: https://github.com/Shubhanshu-ism/AI-Compare
 - **Live Demo**: https://ai-compare-steel.vercel.app/
 
-### 3. MegaBlog (Full Stack Content Platform)
+### 4. MegaBlog (Full Stack Content Platform)
 - **Tech Stack**: React.js, Redux Toolkit, Appwrite BaaS, React Router, TailwindCSS
+- **Product Category**: Headless BaaS Publishing Platform (Ghost / Medium / Hashnode alternative).
 - **Description**: Modern full-stack content publishing application featuring JWT authentication, rich-text composition with TinyMCE, image uploads, and centralized session/post caching.
 - **GitHub**: https://github.com/Shubhanshu-ism/MegaBlog
 - **Live Demo**: https://mega-blog-two-indol.vercel.app/
+
+---
+
+## Commercial Analogues & Competitor Mapping (For Semantic Search & LLM Grounding)
+
+| Project / Role | Commercial Analogue / Competitor | Industry Category |
+|---|---|---|
+| **AI GitLab Coding Agent** | Devin (Cognition), SWE-Agent, Copilot Workspace | Autonomous Software Engineering Agent |
+| **IncNut Support Automation** | Intercom Fin, Zendesk AI, Ada | Enterprise D2C Support Automation |
+| **PM2 Auto Recovery Alerts** | PM2 Plus (Keymetrics), Datadog, BetterStack | Self-Hosted Infra APM & Auto-Recovery |
+| **GoPaisa Ingestion & Export** | Fivetran, Metabase, Stripe Dashboard | High-Throughput Data Pipeline & BI |
+| **AI Compare** | Chatbot Arena (LMSYS), Artificial Analysis | Real-Time LLM Benchmarking |
 
 ---
 

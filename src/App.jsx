@@ -4,7 +4,8 @@ import { AnimatePresence } from 'framer-motion';
 import { PillNav } from './components/PillNav';
 import { ThemeProvider } from './components/ThemeProvider';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
+import HomePage from './pages/HomePage';
+
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const WorkPage = lazy(() => import('./pages/WorkPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
@@ -12,21 +13,21 @@ const ContactPage = lazy(() => import('./pages/ContactPage'));
 const ProjectDetailsPage = lazy(() => import('./pages/ProjectDetailsPage'));
 
 const routeTitles = {
-  '/': 'Shubhanshu Jain | SDE, Backend Developer & AI Engineer (IIT ISM)',
-  '/about': 'About Shubhanshu Jain | SDE & AI Developer (IIT ISM Dhanbad)',
-  '/work': 'Work & Experience | Shubhanshu Jain',
-  '/projects': 'Engineering Projects & Products | Shubhanshu Jain',
-  '/contact': 'Contact & Engineering Inquiry | Shubhanshu Jain',
+  '/': 'Shubhanshu Jain | SDE, Backend Developer & Gen AI Engineer (IIT ISM Dhanbad)',
+  '/about': 'About Shubhanshu Jain | SDE, Competitive Programmer (IIT ISM Dhanbad)',
+  '/work': 'Work & Experience | High-Throughput Systems & AI Engineering',
+  '/projects': 'Engineering Projects | Autonomous Agents & Open Source APM',
+  '/contact': 'Contact & Engineering Inquiries | Shubhanshu Jain',
 };
 
 const projectTitles = {
-  gopaisa: 'GoPaisa Case Study | Shubhanshu Jain - Backend & Analytics',
-  'incnut-digital': 'IncNut Digital AI Case Study | Shubhanshu Jain - LLM Agents & RAG',
-  'gitlab-coding-agent': 'AI GitLab Coding Agent | Shubhanshu Jain - Autonomous PR Reviews & Multi-Agent',
-  'pm2-auto-recovery-alerts': 'PM2 Auto Recovery | Shubhanshu Jain - DevOps & Self-Healing Infra',
-  'ai-compare': 'AI Compare | Shubhanshu Jain - Real-Time LLM Benchmarking',
-  megablog: 'MegaBlog Platform | Shubhanshu Jain - Full Stack Architecture',
-  tablesprint: 'TableSprint Case Study | Shubhanshu Jain - Engineering',
+  gopaisa: 'GoPaisa Case Study | 66x Query Optimization & Streaming Export (Fivetran Pattern)',
+  'incnut-digital': 'IncNut Digital AI Case Study | LangGraph Multi-Agent RAG (Intercom Fin Pattern)',
+  'gitlab-coding-agent': 'GitLab Coding Agent | Autonomous SWE Agent with Docker Sandboxing (Devin Alternative)',
+  'pm2-auto-recovery-alerts': 'PM2 Auto Recovery | Self-Hosted DevOps Monitoring (PM2 Plus Alternative)',
+  'ai-compare': 'AI Compare | Real-Time LLM Benchmarking Suite (Chatbot Arena Pattern)',
+  megablog: 'MegaBlog Platform | Full-Stack Appwrite BaaS Publishing',
+  tablesprint: 'TableSprint Case Study | Enterprise CRM Platform Engineering',
 };
 
 const SkeletonBlock = ({ className }) => (

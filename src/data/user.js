@@ -19,7 +19,7 @@ export const userData = {
     },
 
     config: {
-        profileImage: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=480&q=75",
+        profileImage: "/profile.webp",
         availability: {
             status: true,
             badgeMain: "Available for Work",
@@ -153,12 +153,12 @@ export const userData = {
             client: "GoPaisa & PolicyBazaar",
             company: "GoPaisa",
             title: "GoPaisa",
-            projectType: "Fintech & Campaign Analytics",
+            projectType: "Fintech ETL & Campaign BI Analytics",
             year: "2026",
             role: "Full Stack Engineer",
             duration: "Jan 2026 – Present",
             link: "http://myreport.gopaisa.com",
-            summary: "Campaign analytics & reporting dashboard built for PolicyBazaar and major insurance campaigns (167K+ clicks) with drag-and-drop CSV ingestion and payment panel 20s → 0.3s query optimization.",
+            summary: "Self-serve campaign analytics & BI reporting dashboard built for PolicyBazaar and major insurance campaigns (167K+ clicks) with drag-and-drop CSV ETL pipeline and payment panel 20s → 0.3s query optimization.",
             overviewParagraph: "Architected the campaign analytics and fintech payment infrastructure at GoPaisa. Spearheaded the creation of GoPaisa Report (myreport.gopaisa.com) for PolicyBazaar and enterprise partners to track 167K+ clicks across NRI health and investment campaigns, and revamped the CC Payment Panel to eliminate high-latency query bottlenecks.",
             caseMetrics: [
                 { value: "66× Faster", label: "Query Latency", desc: "20s → 0.3s query optimization", tooltip: "Eliminated N+1 queries & optimized encrypted joins (20s → 0.3s)" },
@@ -333,11 +333,11 @@ export const userData = {
             client: "IncNut Digital",
             company: "IncNut Digital",
             title: "IncNut Digital",
-            projectType: "Autonomous LLM Agents",
+            projectType: "Autonomous Support AI (Intercom Fin Pattern)",
             year: "2025",
             role: "AI Intern (LLM Application Developer)",
             duration: "Jul 2025 – Oct 2025",
-            summary: "Built autonomous multi-agent LLM systems with LangGraph and Flowise, cutting order cancellation churn for 35.7% of users and reducing support load by 60%.",
+            summary: "Built autonomous multi-agent LLM systems with LangGraph and Flowise (comparable to Intercom Fin / Zendesk AI), cutting order cancellation churn for 35.7% of users and automating 60% of customer support load.",
             overviewParagraph: "Engineered and optimized multi-agent LLM systems for leading D2C wellness brands Vedix and SkinKraft using LangGraph and Flowise.",
             caseMetrics: [
                 { value: "60%", label: "Support Automated", desc: "Routine inquiries handled by LLM agents" },
@@ -353,7 +353,7 @@ export const userData = {
             ],
             images: [
                 "/projects/incnut-analytics.svg",
-                "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200"
+                "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=720&q=75"
             ],
             tech: "LangGraph, Flowise, LangChain, Python, LLM APIs, Prompt Engineering",
             points: [
@@ -410,14 +410,14 @@ export const userData = {
             id: "pm2-auto-recovery-alerts",
             client: "Open Source Tool",
             company: "Self",
-            projectType: "DevOps & Self-Healing Infra",
+            projectType: "Self-Hosted Infra APM & Auto-Recovery",
             year: "2025",
             title: "PM2 Auto Recovery Alerts",
             tech: "Node.js, MongoDB, SSH, Docker",
-            badge: "DevOps / Infra",
+            badge: "DevOps APM (PM2 Plus Alternative)",
             github: "https://github.com/Shubhanshu-ism/pm2-auto-recovery-alerts",
             link: "https://github.com/Shubhanshu-ism/pm2-auto-recovery-alerts",
-            summary: "Self-hosted infrastructure health-monitoring and auto-recovery daemon with automated SSH process restarts and multi-channel alerts.",
+            summary: "Self-hosted infrastructure health-monitoring and auto-recovery daemon — open-source alternative to PM2 Plus and Datadog with automated SSH process restarts and multi-channel alerts.",
             caseMetrics: [
                 { value: "Auto-SSH", label: "Self Healing", desc: "Automated remote PM2 process restarts" },
                 { value: "Docker", label: "Containerized", desc: "Hardened environment with REST API" },
@@ -474,11 +474,11 @@ export const userData = {
             id: "ai-compare",
             client: "Personal Project",
             company: "Self",
-            projectType: "AI & LLM Benchmarking",
+            projectType: "Real-Time LLM Benchmarking Suite",
             year: "2024",
             title: "AI Compare",
             tech: "React.js, Google Gemini, Deepseek",
-            badge: "AI / React",
+            badge: "LLM Benchmark (Chatbot Arena Pattern)",
             link: "https://ai-compare-steel.vercel.app/",
             github: "https://github.com/Shubhanshu-ism/AI-Compare",
             summary: "Dual-stream comparative LLM benchmark evaluating Google Gemini and DeepSeek models side-by-side in real-time.",
@@ -493,7 +493,7 @@ export const userData = {
             solution: "Designed a split-pane reactive interface in React.js that dispatches parallel asynchronous requests to Gemini and DeepSeek APIs, presenting synchronized streaming responses with latency metrics and an extensible architecture for new AI providers.",
             images: [
                 "/projects/ai-compare-suite.svg",
-                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200"
+                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=720&q=75"
             ],
             points: [
                 "Side-by-side AI response comparison tool integrating Deepseek and Gemini APIs.",
@@ -529,7 +529,7 @@ export const userData = {
             ],
             images: [
                 "/projects/megablog-platform.svg",
-                "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1200"
+                "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=720&q=75"
             ],
             points: [
                 "Full-stack blogging platform with JWT auth, rich-text editor, and image uploads on a modular Appwrite backend.",
@@ -541,14 +541,14 @@ export const userData = {
             id: "gitlab-coding-agent",
             client: "Autonomous Dev Infrastructure",
             company: "Self",
-            projectType: "AI Agents & Sandboxed Runtimes",
+            projectType: "Autonomous SWE Agent & Docker Sandbox",
             year: "2026",
             title: "AI GitLab Coding Agent",
             tech: "TypeScript, Next.js, Docker, PostgreSQL, Drizzle ORM, Anthropic, OpenAI",
-            badge: "AI Agents / Infra",
+            badge: "Autonomous SWE Agent (Devin Alternative)",
             github: "https://github.com/Shubhanshu-ism/gitlab-coding-agent",
             link: "https://github.com/Shubhanshu-ism/gitlab-coding-agent",
-            summary: "Autonomous AI-powered coding agent executing software tasks inside hardened Docker sandboxes with state machines, tool policy verification, and automated GitLab MR workflows.",
+            summary: "Autonomous AI-powered software engineering agent (open-source Devin alternative) executing coding tasks inside hardened Docker sandboxes with state machines, tool policy verification, and automated GitLab MR workflows.",
             caseMetrics: [
                 { value: "Hardened", label: "Docker Sandbox", desc: "2GB RAM & 2 CPU non-root isolation" },
                 { value: "FSM", label: "State Machine", desc: "Monotonic atomic EventStore in PostgreSQL" },
@@ -566,7 +566,7 @@ export const userData = {
             ],
             images: [
                 "/projects/gitlab-agent-architecture.svg",
-                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200"
+                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=720&q=75"
             ],
             points: [
                 "Autonomous coding agent harness with pluggable tool registry and command policy engine.",
