@@ -4,9 +4,12 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: 'class', // Enable class-based dark mode
+  darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        'xs': '440px',
+      },
       colors: {
         bgMain: 'var(--bg-main)',
         bgCard: 'var(--bg-card)',
@@ -15,7 +18,7 @@ export default {
         accent: 'var(--text-accent)',
       },
       maxWidth: {
-        'folio': '560px',
+        'folio': '700px',
       },
       borderRadius: {
         '3xl': '24px',
@@ -31,7 +34,8 @@ export default {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       fontFamily: {
-        sans: ['Inter Display', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro Display"', 'system-ui', 'sans-serif'],
+        mono: ['"SF Mono"', 'ui-monospace', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
     },
   },

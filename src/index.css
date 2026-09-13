@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    /* Vite HMR Cache Buster */
-    --bg-main: #F4F4F5;
-    /* Light mode background */
+    --bg-main: #F8F9FA;
     --bg-card: #FFFFFF;
-    /* Light mode card */
-    --bg-input: #F4F4F5;
-    /* Light mode input */
-    --text-dim: #71717A;
-    /* Light mode dim text */
-    --text-accent: #18181B;
-    /* Light mode main text */
-    --border-subtle: rgba(0, 0, 0, 0.08);
-    /* Light mode border */
+    --bg-input: #F1F3F5;
+    --text-dim: #475569;
+    --text-accent: #0F172A;
+    --border-subtle: rgba(0, 0, 0, 0.07);
   }
 
   :root.dark {
-    --bg-main: #161616;
-    /* Dark mode background */
-    --bg-card: #212121;
-    /* Dark mode card */
-    --bg-input: #1a1a1a;
-    /* Dark mode input */
-    --text-dim: #A0A0A0;
-    /* Dark mode dim text */
-    --text-accent: #FFFFFF;
-    /* Dark mode main text */
-    --border-subtle: rgba(255, 255, 255, 0.05);
-    /* Dark mode border */
+    --bg-main: #0B0B0E;
+    --bg-card: #151518;
+    --bg-input: #1C1C22;
+    --text-dim: #94A3B8;
+    --text-accent: #F8FAFC;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-bgMain text-accent font-sans antialiased overflow-x-hidden transition-colors duration-300;
+    @apply bg-bgMain text-accent font-sans antialiased transition-colors duration-200 overflow-x-hidden min-h-screen;
+  }
+
+  /* Emil Kowalski Button Press Feedback */
+  button, a {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
-/* Custom Scrollbar for a premium feel */
+/* Custom Scrollbar for a premium Apple-grade feel */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -49,6 +49,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
+  background-color: var(--border-subtle);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
   background-color: var(--text-dim);
-  border-radius: 20px;
 }

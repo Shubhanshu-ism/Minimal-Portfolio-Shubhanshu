@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, User, Briefcase, Mail, Sun, Moon, PlusCircle } from 'lucide-react';
+import { Home, User, Briefcase, FolderGit2, Mail, Sun, Moon, PlusCircle } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 const NavIcon = ({ to, icon, label }) => {
@@ -29,6 +29,7 @@ export const PillNav = () => {
                     <NavIcon to="/" icon={<Home size={20} strokeWidth={2} />} label="Home" />
                     <NavIcon to="/about" icon={<User size={20} strokeWidth={2} />} label="About" />
                     <NavIcon to="/work" icon={<Briefcase size={20} strokeWidth={2} />} label="Work" />
+                    <NavIcon to="/projects" icon={<FolderGit2 size={20} strokeWidth={2} />} label="Projects" />
                     <NavIcon to="/contact" icon={<Mail size={20} strokeWidth={2} />} label="Contact" />
                 </div>
 
