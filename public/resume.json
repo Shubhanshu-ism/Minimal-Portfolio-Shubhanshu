@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Shubhanshu Jain",
+    "label": "Software Development Engineer (SDE) / Backend Developer / AI Systems Engineer",
+    "email": "shubhanshujain2233@gmail.com",
+    "url": "https://minimal-portfolio-shubhanshu-dark-l.vercel.app/",
+    "summary": "Software Development Engineer (SDE) from IIT (ISM) Dhanbad specializing in scalable backend architectures, high-throughput database latency reduction, and autonomous multi-agent LLM systems (RAG, LangGraph, agent harnesses).",
+    "location": {
+      "city": "Noida",
+      "region": "Uttar Pradesh",
+      "countryCode": "IN"
+    },
+    "profiles": [
+      { "network": "GitHub", "username": "Shubhanshu-ism", "url": "https://github.com/Shubhanshu-ism" },
+      { "network": "LinkedIn", "username": "shubhanshu-jain-iit-ism", "url": "https://www.linkedin.com/in/shubhanshu-jain-iit-ism" },
+      { "network": "LeetCode", "username": "sj_33", "url": "https://leetcode.com/u/sj_33/" },
+      { "network": "CodeChef", "username": "shubh_jain_1", "url": "https://www.codechef.com/users/shubh_jain_1" },
+      { "network": "Codeforces", "username": "Tanjiro_cp", "url": "https://codeforces.com/profile/Tanjiro_cp" },
+      { "network": "Twitter", "username": "Shubhanshu2233", "url": "https://x.com/Shubhanshu2233" }
+    ]
+  },
+  "education": [
+    {
+      "institution": "Indian Institute of Technology (ISM), Dhanbad",
+      "url": "https://www.iitism.ac.in",
+      "area": "Electrical Engineering",
+      "studyType": "B.Tech",
+      "startDate": "2021",
+      "endDate": "2025",
+      "score": "JEE Main: 99%ile; JEE Advanced: Top 0.7%"
+    }
+  ],
+  "work": [
+    {
+      "name": "GoPaisa",
+      "position": "SDE / Backend & Analytics Engineer",
+      "startDate": "2025",
+      "highlights": [
+        "66x latency reduction (from 20s to 0.3s) on CC Payment Panel queries by optimizing SQL joins and resolving N+1 bottlenecks.",
+        "Engineered in-memory streaming export delivering 1.5M+ records in <15s with global concurrency locking.",
+        "Built self-serve analytics dashboard handling 228K+ clicks across 92 active marketing campaigns."
+      ]
+    },
+    {
+      "name": "IncNut Digital",
+      "position": "AI Intern (LLM Application Developer)",
+      "startDate": "2025-07",
+      "endDate": "2025-10",
+      "highlights": [
+        "Orchestrated autonomous multi-agent LLM workflows with LangGraph and Flowise for Vedix and SkinKraft.",
+        "Automated 60% of routine customer support queries via agentic intent routing and tool execution.",
+        "Reduced order cancellation churn for 35.7% of users through optimized prompt logic and fallback handling."
+      ]
+    },
+    {
+      "name": "TableSprint",
+      "position": "Full Stack Engineering Trainee",
+      "startDate": "2024",
+      "highlights": [
+        "Built component-driven enterprise UI workflows using React.js and Node.js."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Backend & Distributed Systems",
+      "keywords": ["Node.js", "Express.js", "FastAPI", "REST APIs", "WebSockets", "SSE", "PM2", "PostgreSQL", "MongoDB", "Docker", "Nginx", "System Design"]
+    },
+    {
+      "name": "AI, RAG & LLM Agents",
+      "keywords": ["LangChain", "LangGraph", "Flowise", "Agent Harnesses", "Multi-Agent RAG", "Google Gemini API", "OpenAI APIs", "DeepSeek", "n8n"]
+    },
+    {
+      "name": "Languages",
+      "keywords": ["JavaScript", "TypeScript", "Python", "C++", "C", "SQL", "HTML5", "CSS3"]
+    },
+    {
+      "name": "Competitive Programming",
+      "keywords": ["LeetCode Knight (2010)", "CodeChef 5-Star (2029)", "Codeforces Specialist (1527)", "Data Structures & Algorithms"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "PM2 Auto Recovery Alerts",
+      "description": "Self-hosted infrastructure health-monitoring and auto-recovery daemon with automated SSH process restarts and multi-channel alerting.",
+      "keywords": ["Node.js", "MongoDB", "SSH", "Docker", "DevOps"],
+      "url": "https://github.com/Shubhanshu-ism/pm2-auto-recovery-alerts"
+    },
+    {
+      "name": "AI Compare",
+      "description": "Dual-stream real-time comparative LLM benchmark evaluating Google Gemini and DeepSeek models side-by-side.",
+      "keywords": ["React.js", "Google Gemini", "DeepSeek", "AI Benchmarking"],
+      "url": "https://ai-compare-steel.vercel.app/"
+    },
+    {
+      "name": "MegaBlog",
+      "description": "Full-stack publishing platform with Appwrite BaaS, JWT auth, rich-text editing, and Redux Toolkit state.",
+      "keywords": ["React.js", "Redux Toolkit", "Appwrite", "TailwindCSS"],
+      "url": "https://mega-blog-two-indol.vercel.app/"
+    }
+  ]
+}

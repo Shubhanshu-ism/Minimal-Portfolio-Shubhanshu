@@ -25,6 +25,7 @@ const WorkCard = ({ item, badgeLabel }) => {
     return (
         <Link
             to={`/project/${item.id}`}
+            aria-label={`View ${title} case study`}
             className="group block bg-bgCard border border-subtle p-6 sm:p-7 rounded-[26px] hover:border-accent/30 hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-200 shadow-sm relative"
         >
             <div className="flex flex-col justify-between h-full space-y-4">

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="gp-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#04070d"/>
+    </linearGradient>
+    <linearGradient id="gp-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f17"/>
+    </linearGradient>
+    <linearGradient id="gp-blue-glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="url(#gp-bg)"/>
+
+  <!-- Main Container Card -->
+  <rect x="50" y="40" width="1100" height="670" rx="16" fill="url(#gp-card)" stroke="#1f293d" stroke-width="1.5"/>
+
+  <!-- Top App Navbar -->
+  <rect x="50" y="40" width="1100" height="60" rx="16" fill="#0b0f17" stroke="#1f293d" stroke-width="1"/>
+  <rect x="50" y="85" width="1100" height="15" fill="#0b0f17"/>
+
+  <circle cx="85" cy="70" r="12" fill="#3b82f6"/>
+  <text x="85" y="75" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="13" font-weight="900" text-anchor="middle">GP</text>
+  <text x="110" y="75" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">GoPaisa Report</text>
+  <text x="235" y="75" fill="#64748b" font-family="'SF Mono', monospace" font-size="12">myreport.gopaisa.com</text>
+
+  <!-- Status indicator -->
+  <rect x="910" y="55" width="120" height="28" rx="14" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="1"/>
+  <circle cx="925" cy="69" r="4" fill="#10b981"/>
+  <text x="937" y="73" fill="#34d399" font-family="'SF Mono', monospace" font-size="11" font-weight="700">228K+ CLICKS</text>
+
+  <!-- Metric Badges Row -->
+  <g transform="translate(85, 125)">
+    <!-- Metric 1: Latency -->
+    <rect x="0" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">QUERY LATENCY</text>
+    <text x="20" y="65" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">0.3s <tspan fill="#64748b" font-size="14" font-weight="500">vs 20s</tspan></text>
+    <text x="155" y="32" fill="#10b981" font-family="'SF Mono', monospace" font-size="11" font-weight="700">66× FASTER</text>
+
+    <!-- Metric 2: Active Campaigns -->
+    <rect x="260" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="280" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">ACTIVE CAMPAIGNS</text>
+    <text x="280" y="65" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">92 <tspan fill="#64748b" font-size="14" font-weight="500">Live</tspan></text>
+    <text x="415" y="32" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11" font-weight="700">MULTI-CLIENT</text>
+
+    <!-- Metric 3: Export Volume -->
+    <rect x="520" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="540" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">CSV STREAMING</text>
+    <text x="540" y="65" fill="#10b981" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">1.5M+ <tspan fill="#64748b" font-size="14" font-weight="500">Rows</tspan></text>
+    <text x="680" y="32" fill="#10b981" font-family="'SF Mono', monospace" font-size="11" font-weight="700">&lt; 15 SEC</text>
+
+    <!-- Metric 4: Concurrency Lock -->
+    <rect x="780" y="0" width="250" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="800" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">SYSTEM RELIABILITY</text>
+    <text x="800" y="65" fill="#f59e0b" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">0 Crashes</text>
+    <text x="940" y="32" fill="#f59e0b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">REDIS LOCK</text>
+  </g>
+
+  <!-- Big Chart & Table Section -->
+  <g transform="translate(85, 245)">
+    <!-- Chart Container -->
+    <rect x="0" y="0" width="1030" height="260" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="15" font-weight="700">Real-Time Traffic &amp; Conversion Stream (Hourly Analytics)</text>
+    <text x="25" y="55" fill="#64748b" font-family="'SF Mono', monospace" font-size="11">Aggregated across Flipkart, Amazon, Myntra, Ajio affiliate campaigns</text>
+
+    <!-- Chart Grid Lines -->
+    <line x1="25" y1="90" x2="1005" y2="90" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="25" y1="140" x2="1005" y2="140" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="25" y1="190" x2="1005" y2="190" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="25" y1="230" x2="1005" y2="230" stroke="#334155" stroke-width="1"/>
+
+    <!-- Filled Area Graph -->
+    <polygon points="25,230 25,180 120,160 220,120 320,140 420,95 520,110 620,85 720,70 820,100 920,65 1005,80 1005,230" fill="url(#gp-blue-glow)"/>
+
+    <!-- Path Curve -->
+    <path d="M 25 180 Q 120 160 220 120 T 420 95 T 620 85 T 820 100 T 1005 80" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+
+    <!-- Secondary Line (Conversions) -->
+    <path d="M 25 210 Q 120 200 220 180 T 420 160 T 620 150 T 820 165 T 1005 145" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+
+    <circle cx="820" cy="100" r="5" fill="#3b82f6" stroke="#ffffff" stroke-width="2"/>
+    <rect x="760" y="55" width="120" height="28" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
+    <text x="820" y="73" fill="#ffffff" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">24.2K Clicks/hr</text>
+  </g>
+
+  <!-- Bottom Data Table Preview -->
+  <g transform="translate(85, 525)">
+    <rect x="0" y="0" width="1030" height="155" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <!-- Table Header -->
+    <rect x="0" y="0" width="1030" height="35" rx="12" fill="#111827"/>
+    <rect x="0" y="25" width="1030" height="10" fill="#111827"/>
+    <text x="25" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">CAMPAIGN ID</text>
+    <text x="200" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">MERCHANT PARTNER</text>
+    <text x="450" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">CLICKS (24H)</text>
+    <text x="650" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">CONV. RATE</text>
+    <text x="850" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">QUERY LATENCY</text>
+
+    <!-- Row 1 -->
+    <text x="25" y="62" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12">#GP-CAMP-0842</text>
+    <text x="200" y="62" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Flipkart Electronics Super Sale</text>
+    <text x="450" y="62" fill="#f1f5f9" font-family="'SF Mono', monospace" font-size="12">84,120</text>
+    <text x="650" y="62" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">4.82%</text>
+    <text x="850" y="62" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">0.28s <tspan fill="#64748b">(cached)</tspan></text>
+
+    <!-- Row 2 -->
+    <line x1="20" y1="78" x2="1010" y2="78" stroke="#1e293b" stroke-width="0.75"/>
+    <text x="25" y="102" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12">#GP-CAMP-0919</text>
+    <text x="200" y="102" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Amazon Great Indian Festival</text>
+    <text x="450" y="102" fill="#f1f5f9" font-family="'SF Mono', monospace" font-size="12">112,490</text>
+    <text x="650" y="102" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">5.14%</text>
+    <text x="850" y="102" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">0.31s <tspan fill="#64748b">(indexed join)</tspan></text>
+
+    <!-- Row 3 -->
+    <line x1="20" y1="118" x2="1010" y2="118" stroke="#1e293b" stroke-width="0.75"/>
+    <text x="25" y="140" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12">#GP-CAMP-1102</text>
+    <text x="200" y="140" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Myntra Fashion Carnival</text>
+    <text x="450" y="140" fill="#f1f5f9" font-family="'SF Mono', monospace" font-size="12">31,840</text>
+    <text x="650" y="140" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">3.95%</text>
+    <text x="850" y="140" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">0.29s <tspan fill="#64748b">(indexed join)</tspan></text>
+  </g>
+</svg>

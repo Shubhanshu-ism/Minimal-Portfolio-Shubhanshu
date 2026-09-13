@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%" fill="none">
+  <defs>
+    <linearGradient id="inc-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="inc-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f17"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#inc-bg)"/>
+
+  <rect x="50" y="40" width="1100" height="670" rx="16" fill="url(#inc-card)" stroke="#1f293d" stroke-width="1.5"/>
+
+  <rect x="50" y="40" width="1100" height="56" rx="16" fill="#0b0f17" stroke="#1f293d" stroke-width="1"/>
+  <rect x="50" y="80" width="1100" height="16" fill="#0b0f17"/>
+
+  <circle cx="85" cy="68" r="6" fill="#ef4444"/>
+  <circle cx="105" cy="68" r="6" fill="#f59e0b"/>
+  <circle cx="125" cy="68" r="6" fill="#10b981"/>
+
+  <text x="600" y="73" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    IncNut Digital &#8226; High-Scale E-Commerce &amp; Consumer Intelligence Dashboard
+  </text>
+
+  <!-- Metric Badges Row -->
+  <g transform="translate(85, 120)">
+    <!-- Metric 1 -->
+    <rect x="0" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">AUDIENCE REACH</text>
+    <text x="20" y="65" fill="#f59e0b" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">4.5M+ <tspan fill="#64748b" font-size="14">Consumers</tspan></text>
+    <text x="145" y="32" fill="#f59e0b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">SCALE</text>
+
+    <!-- Metric 2 -->
+    <rect x="260" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="280" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">CORE WEB VITALS LCP</text>
+    <text x="280" y="65" fill="#10b981" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">2.1s <tspan fill="#64748b" font-size="14">Optimized</tspan></text>
+    <text x="405" y="32" fill="#10b981" font-family="'SF Mono', monospace" font-size="11" font-weight="700">SPEED</text>
+
+    <!-- Metric 3 -->
+    <rect x="520" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="540" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">CONVERSION LIFT</text>
+    <text x="540" y="65" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">+35% <tspan fill="#64748b" font-size="14">Growth</tspan></text>
+    <text x="675" y="32" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11" font-weight="700">MARTECH</text>
+
+    <!-- Metric 4 -->
+    <rect x="780" y="0" width="250" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="800" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">RECOMMENDATION ACCURACY</text>
+    <text x="800" y="65" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">94.8%</text>
+    <text x="940" y="32" fill="#a855f7" font-family="'SF Mono', monospace" font-size="11" font-weight="700">COLLAB FILTER</text>
+  </g>
+
+  <!-- Big Graph & Funnel -->
+  <g transform="translate(85, 235)">
+    <!-- Funnel Visualization Card -->
+    <rect x="0" y="0" width="500" height="440" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="15" font-weight="700">Conversion Funnel Analytics</text>
+    <text x="25" y="55" fill="#64748b" font-family="'SF Mono', monospace" font-size="11">Automated funnel tracking with zero telemetry drop</text>
+
+    <!-- Funnel Bars -->
+    <g transform="translate(25, 90)">
+      <rect width="450" height="50" rx="8" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
+      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">1. Product Catalog Visits</text>
+      <text x="430" y="30" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">4.5M (100%)</text>
+    </g>
+
+    <g transform="translate(50, 160)">
+      <rect width="400" height="50" rx="8" fill="#a855f7" fill-opacity="0.2" stroke="#a855f7" stroke-width="1"/>
+      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">2. Personalized AI Quiz Match</text>
+      <text x="380" y="30" fill="#c084fc" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">2.8M (62%)</text>
+    </g>
+
+    <g transform="translate(75, 230)">
+      <rect width="350" height="50" rx="8" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="1"/>
+      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">3. Cart Additions</text>
+      <text x="330" y="30" fill="#fbbf24" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">1.4M (31%)</text>
+    </g>
+
+    <g transform="translate(100, 300)">
+      <rect width="300" height="50" rx="8" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
+      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">4. Orders Placed</text>
+      <text x="280" y="30" fill="#34d399" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">780K (+35% lift)</text>
+    </g>
+    <text x="250" y="405" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" text-anchor="middle">Personalized SkinKraft &amp; Vedix Consumer Journey</text>
+  </g>
+
+  <!-- Right Performance Card -->
+  <g transform="translate(615, 235)">
+    <rect x="0" y="0" width="500" height="440" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="15" font-weight="700">Core Web Vitals Optimization</text>
+    <text x="25" y="55" fill="#64748b" font-family="'SF Mono', monospace" font-size="11">SSR &amp; dynamic asset bundle size reduction</text>
+
+    <!-- Performance Metric 1 -->
+    <g transform="translate(25, 90)">
+      <rect width="450" height="90" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+      <text x="20" y="30" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Largest Contentful Paint (LCP)</text>
+      <text x="20" y="65" fill="#10b981" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">2.1s <tspan fill="#64748b" font-size="13">(4.8s previously)</tspan></text>
+      <rect x="340" y="30" width="90" height="28" rx="14" fill="#10b981" fill-opacity="0.15"/>
+      <text x="385" y="48" fill="#34d399" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">56% FASTER</text>
+    </g>
+
+    <!-- Performance Metric 2 -->
+    <g transform="translate(25, 200)">
+      <rect width="450" height="90" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+      <text x="20" y="30" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Cumulative Layout Shift (CLS)</text>
+      <text x="20" y="65" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">0.01 <tspan fill="#64748b" font-size="13">(Target: &lt; 0.1)</tspan></text>
+      <rect x="340" y="30" width="90" height="28" rx="14" fill="#38bdf8" fill-opacity="0.15"/>
+      <text x="385" y="48" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">PERFECT</text>
+    </g>
+
+    <!-- Performance Metric 3 -->
+    <g transform="translate(25, 310)">
+      <rect width="450" height="90" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1"/>
+      <text x="20" y="30" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">First Input Delay / INP</text>
+      <text x="20" y="65" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">42ms <tspan fill="#64748b" font-size="13">(Target: &lt; 200ms)</tspan></text>
+      <rect x="340" y="30" width="90" height="28" rx="14" fill="#a855f7" fill-opacity="0.15"/>
+      <text x="385" y="48" fill="#c084fc" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">INSTANT</text>
+    </g>
+  </g>
+</svg>

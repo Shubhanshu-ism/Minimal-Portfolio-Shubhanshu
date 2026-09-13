@@ -70,7 +70,7 @@ export const Footer = ({ showWorkTogether = true }) => {
                 </div>
             </section>
 
-            <footer className="text-center text-[10px] sm:text-[11px] text-dim/70 uppercase tracking-[0.25em] font-medium font-mono space-y-1">
+            <footer className="text-center text-[10px] sm:text-[11px] text-dim uppercase tracking-[0.25em] font-medium font-mono space-y-1">
                 <p>&copy; {new Date().getFullYear()} {userData.name} &middot; {userData.components.footer.copyrightInstitution}</p>
             </footer>
         </div>

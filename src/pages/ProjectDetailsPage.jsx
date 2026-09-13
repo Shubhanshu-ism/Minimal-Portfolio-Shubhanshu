@@ -1,14 +1,50 @@
+import { useState, lazy, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
 import { Footer } from '../components/Footer';
-import { ArrowUpRight, ChevronRight, Github, Cpu, CheckCircle2, ArrowLeft, Terminal, Layers, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ChevronRight, Github, Cpu, CheckCircle2, ArrowLeft, Terminal, Layers, Sparkles, Workflow, GitBranch } from 'lucide-react';
+
+const MermaidDiagram = lazy(() => import('../components/MermaidDiagram'));
+
+const DiagramSkeleton = () => (
+    <div className="w-full bg-bgCard border border-subtle rounded-[24px] p-8 shadow-sm flex flex-col items-center justify-center min-h-[380px] animate-pulse space-y-4">
+        <div className="h-5 w-44 bg-black/5 dark:bg-white/5 rounded-full" />
+        <div className="h-4 w-72 bg-black/5 dark:bg-white/5 rounded-full" />
+        <div className="h-48 w-full max-w-lg bg-black/5 dark:bg-white/5 rounded-2xl mt-4" />
+    </div>
+);
+
+const SafeImage = ({ src, alt, className }) => {
+    const [hasError, setHasError] = useState(false);
+
+    if (hasError || !src) {
+        return (
+            <div className="w-full h-full min-h-[200px] flex flex-col items-center justify-center bg-black/[0.02] dark:bg-white/[0.03] p-8 text-center text-dim space-y-2.5 select-none border border-subtle">
+                <Terminal size={32} className="text-dim/50 stroke-[1.5]" />
+                <span className="text-xs font-mono font-medium text-dim/70 max-w-sm leading-relaxed">{alt}</span>
+            </div>
+        );
+    }
+
+    return (
+        <img
+            src={src}
+            alt={alt}
+            onError={() => setHasError(true)}
+            className={className}
+            loading="lazy"
+            decoding="async"
+        />
+    );
+};
 
 const getItemIcon = (item) => {
     if (item.company === 'GoPaisa') return <Terminal size={24} className="text-[#3b82f6]" />;
     if (item.company === 'TableSprint') return <Layers size={24} className="text-[#10b981]" />;
     if (item.company === 'IncNut Digital') return <Sparkles size={24} className="text-[#8b5cf6]" />;
     if (item.id === 'pm2-auto-recovery-alerts') return <Cpu size={24} className="text-amber-500" />;
+    if (item.id === 'gitlab-coding-agent') return <GitBranch size={24} className="text-[#fc6d26]" />;
     if (item.id === 'ai-compare') return <Sparkles size={24} className="text-cyan-500" />;
     if (item.id === 'megablog') return <Layers size={24} className="text-rose-500" />;
     return <Terminal size={24} className="text-accent" />;
@@ -16,6 +52,8 @@ const getItemIcon = (item) => {
 
 const ProjectDetailsPage = () => {
     const { id } = useParams();
+    const [activeDiagramMap, setActiveDiagramMap] = useState({});
+    const activeDiagramIndex = activeDiagramMap[id] || 0;
 
     // Find the project or work item by ID
     const project = userData.projects.find(p => p.id === id) || userData.work.find(w => w.id === id);
@@ -155,7 +193,7 @@ const ProjectDetailsPage = () => {
                 {/* Primary Hero Screenshot Preview */}
                 {project.images && project.images[0] && (
                     <div className="w-full bg-bgCard rounded-[24px] overflow-hidden border border-subtle shadow-md aspect-[16/10] sm:aspect-video relative group">
-                        <img
+                        <SafeImage
                             src={project.images[0]}
                             alt={`${title} primary system preview`}
                             className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
@@ -226,12 +264,72 @@ const ProjectDetailsPage = () => {
                     </section>
                 )}
 
+                {/* System Architecture & Data Flows (Mermaid Diagrams) */}
+                {project.diagrams && project.diagrams.length > 0 && (
+                    <section className="space-y-5">
+                        <div className="space-y-1 px-1">
+                            <div className="flex items-center gap-2">
+                                <Workflow size={20} className="text-blue-500" />
+                                <h2 className="text-xl sm:text-2xl font-bold text-accent tracking-tight">System Architecture & Data Flows</h2>
+                            </div>
+                            <p className="text-xs sm:text-sm text-dim leading-relaxed">
+                                End-to-end service lifecycles, database query strategies, and distributed execution pipelines directly verified from production codebases.
+                            </p>
+                        </div>
+
+                        {/* Spacious Full-Width Diagram Tabs if multiple diagrams */}
+                        {project.diagrams.length > 1 && (
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-[22px] bg-black/[0.02] dark:bg-white/[0.03] border border-subtle">
+                                {project.diagrams.map((diag, idx) => {
+                                    const isActive = activeDiagramIndex === idx;
+                                    return (
+                                        <button
+                                            key={diag.id || idx}
+                                            onClick={() => setActiveDiagramMap(prev => ({ ...prev, [id]: idx }))}
+                                            className={`flex flex-col items-start text-left p-3.5 rounded-[18px] transition-all duration-200 border ${
+                                                isActive
+                                                    ? 'bg-bgCard border-accent/25 shadow-sm text-accent ring-1 ring-accent/10'
+                                                    : 'border-transparent text-dim hover:text-accent hover:bg-black/[0.02] dark:hover:bg-white/[0.02]'
+                                            }`}
+                                        >
+                                            <div className="flex items-center justify-between w-full">
+                                                <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md ${
+                                                    isActive ? 'bg-blue-500/15 text-blue-500' : 'bg-black/[0.04] dark:bg-white/[0.06] text-dim'
+                                                }`}>
+                                                    {diag.badge}
+                                                </span>
+                                                <span className="text-[10px] font-mono text-dim/60">0{idx + 1}</span>
+                                            </div>
+                                            <span className="font-semibold text-xs sm:text-sm mt-2 leading-snug">
+                                                {diag.tabTitle || diag.title}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        )}
+
+                        {/* Active Diagram Viewer */}
+                        {project.diagrams[activeDiagramIndex] && (
+                            <Suspense fallback={<DiagramSkeleton />}>
+                                <MermaidDiagram
+                                    key={project.diagrams[activeDiagramIndex].id || activeDiagramIndex}
+                                    chart={project.diagrams[activeDiagramIndex].chart}
+                                    title={project.diagrams[activeDiagramIndex].title}
+                                    description={project.diagrams[activeDiagramIndex].description}
+                                    badge={project.diagrams[activeDiagramIndex].badge}
+                                />
+                            </Suspense>
+                        )}
+                    </section>
+                )}
+
                 {/* Secondary Images */}
                 {project.images && project.images.length > 1 && (
                     <div className={`grid gap-4 ${project.images.length > 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 max-w-lg mx-auto'}`}>
                         {project.images.slice(1).map((imgUrl, idx) => (
                             <div key={idx} className="bg-bgCard border border-subtle rounded-[20px] overflow-hidden shadow-sm aspect-[16/10]">
-                                <img
+                                <SafeImage
                                     src={imgUrl}
                                     alt={`${title} screenshot ${idx + 2}`}
                                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"

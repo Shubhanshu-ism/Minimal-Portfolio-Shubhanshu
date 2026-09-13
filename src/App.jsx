@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { PillNav } from './components/PillNav';
@@ -7,8 +7,27 @@ import { ThemeProvider } from './components/ThemeProvider';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const WorkPage = lazy(() => import('./pages/WorkPage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const ProjectDetailsPage = lazy(() => import('./pages/ProjectDetailsPage'));
+
+const routeTitles = {
+  '/': 'Shubhanshu Jain | SDE, Backend Developer & AI Engineer (IIT ISM)',
+  '/about': 'About Shubhanshu Jain | SDE & AI Developer (IIT ISM Dhanbad)',
+  '/work': 'Work & Experience | Shubhanshu Jain',
+  '/projects': 'Engineering Projects & Products | Shubhanshu Jain',
+  '/contact': 'Contact & Engineering Inquiry | Shubhanshu Jain',
+};
+
+const projectTitles = {
+  gopaisa: 'GoPaisa Case Study | Shubhanshu Jain - Backend & Analytics',
+  'incnut-digital': 'IncNut Digital AI Case Study | Shubhanshu Jain - LLM Agents & RAG',
+  'gitlab-coding-agent': 'AI GitLab Coding Agent | Shubhanshu Jain - Autonomous PR Reviews & Multi-Agent',
+  'pm2-auto-recovery-alerts': 'PM2 Auto Recovery | Shubhanshu Jain - DevOps & Self-Healing Infra',
+  'ai-compare': 'AI Compare | Shubhanshu Jain - Real-Time LLM Benchmarking',
+  megablog: 'MegaBlog Platform | Shubhanshu Jain - Full Stack Architecture',
+  tablesprint: 'TableSprint Case Study | Shubhanshu Jain - Engineering',
+};
 
 const SkeletonBlock = ({ className }) => (
   <div className={`bg-black/[0.04] dark:bg-white/[0.06] rounded-xl animate-pulse ${className}`} />
@@ -64,6 +83,16 @@ const PageLoader = () => (
 function AnimatedRoutes() {
   const location = useLocation();
 
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.startsWith('/project/')) {
+      const id = path.replace('/project/', '');
+      document.title = projectTitles[id] || 'Project Details | Shubhanshu Jain';
+    } else {
+      document.title = routeTitles[path] || 'Shubhanshu Jain | SDE, Backend Developer & AI Engineer';
+    }
+  }, [location.pathname]);
+
   return (
     <Suspense fallback={<PageLoader />}>
       <AnimatePresence mode="wait">
@@ -71,6 +100,7 @@ function AnimatedRoutes() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/project/:id" element={<ProjectDetailsPage />} />
         </Routes>

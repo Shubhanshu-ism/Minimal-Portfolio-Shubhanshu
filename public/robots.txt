@@ -1,0 +1,30 @@
+# Robots.txt for Shubhanshu Jain Portfolio
+User-agent: *
+Allow: /
+
+# LLM & AI Agents (OpenAI, Anthropic, Perplexity, Google Gemini)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# LLM Context Document
+# https://minimal-portfolio-shubhanshu-dark-l.vercel.app/llms.txt
+
+Sitemap: https://minimal-portfolio-shubhanshu-dark-l.vercel.app/sitemap.xml
