@@ -56,3 +56,11 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--text-dim);
 }
+
+/* Project artwork is inlined so it inherits the theme variables above;
+   each SVG scopes its own rules under .pa. */
+.svg-theme-container svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}

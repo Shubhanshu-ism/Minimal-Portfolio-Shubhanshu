@@ -1,22 +1,51 @@
-import { useState, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
 import { Footer } from '../components/Footer';
-import { ArrowUpRight, ChevronRight, Github, Cpu, CheckCircle2, ArrowLeft, Terminal, Layers, Sparkles, Workflow, GitBranch } from 'lucide-react';
+import { ItemIcon } from '../components/ItemIcon';
+import { ArrowUpRight, ChevronRight, Github, Cpu, CheckCircle2, ArrowLeft, Terminal, Workflow } from 'lucide-react';
 
 const MermaidDiagram = lazy(() => import('../components/MermaidDiagram'));
 
 const DiagramSkeleton = () => (
-    <div className="w-full bg-bgCard border border-subtle rounded-[24px] p-8 shadow-sm flex flex-col items-center justify-center min-h-[380px] animate-pulse space-y-4">
+    <div className="w-full bg-bgCard border border-subtle rounded-3xl p-8 shadow-sm flex flex-col items-center justify-center min-h-[380px] animate-pulse space-y-4">
         <div className="h-5 w-44 bg-black/5 dark:bg-white/5 rounded-full" />
         <div className="h-4 w-72 bg-black/5 dark:bg-white/5 rounded-full" />
         <div className="h-48 w-full max-w-lg bg-black/5 dark:bg-white/5 rounded-2xl mt-4" />
     </div>
 );
 
+const svgCache = new Map();
+
 const SafeImage = ({ src, alt, className }) => {
-    const [hasError, setHasError] = useState(false);
+    // Both pieces of state remember which src they belong to, so a stale SVG or error
+    // from the previous project never shows after navigating to another one.
+    const [loaded, setLoaded] = useState(null);
+    const [failedSrc, setFailedSrc] = useState(null);
+    const isSvg = typeof src === 'string' && src.toLowerCase().endsWith('.svg');
+    const svgContent = svgCache.get(src) ?? (loaded?.src === src ? loaded.text : null);
+    const hasError = failedSrc === src;
+
+    useEffect(() => {
+        if (!isSvg || !src || svgCache.has(src)) return;
+
+        let isMounted = true;
+        fetch(src)
+            .then(res => {
+                if (!res.ok) throw new Error('Failed to load SVG');
+                return res.text();
+            })
+            .then(text => {
+                svgCache.set(src, text);
+                if (isMounted) setLoaded({ src, text });
+            })
+            .catch(() => {
+                if (isMounted) setFailedSrc(src);
+            });
+
+        return () => { isMounted = false; };
+    }, [src, isSvg]);
 
     if (hasError || !src) {
         return (
@@ -27,11 +56,25 @@ const SafeImage = ({ src, alt, className }) => {
         );
     }
 
+    if (isSvg) {
+        // Inlined (not <img>) so the artwork picks up the current theme variables.
+        return svgContent ? (
+            <div
+                className={`svg-theme-container ${className || ''}`}
+                dangerouslySetInnerHTML={{ __html: svgContent }}
+                role="img"
+                aria-label={alt}
+            />
+        ) : (
+            <div className={`${className || ''} bg-bgMain`} aria-busy="true" />
+        );
+    }
+
     return (
         <img
             src={src}
             alt={alt}
-            onError={() => setHasError(true)}
+            onError={() => setFailedSrc(src)}
             className={className}
             loading="lazy"
             decoding="async"
@@ -39,15 +82,16 @@ const SafeImage = ({ src, alt, className }) => {
     );
 };
 
-const getItemIcon = (item) => {
-    if (item.company === 'GoPaisa') return <Terminal size={24} className="text-[#3b82f6]" />;
-    if (item.company === 'TableSprint') return <Layers size={24} className="text-[#10b981]" />;
-    if (item.company === 'IncNut Digital') return <Sparkles size={24} className="text-[#8b5cf6]" />;
-    if (item.id === 'pm2-auto-recovery-alerts') return <Cpu size={24} className="text-amber-500" />;
-    if (item.id === 'gitlab-coding-agent') return <GitBranch size={24} className="text-[#fc6d26]" />;
-    if (item.id === 'ai-compare') return <Sparkles size={24} className="text-cyan-500" />;
-    if (item.id === 'megablog') return <Layers size={24} className="text-rose-500" />;
-    return <Terminal size={24} className="text-accent" />;
+// "Title: detail" bullets render the title as a bold lead so long lists stay scannable.
+const LeadText = ({ text }) => {
+    const cut = text.indexOf(': ');
+    if (cut <= 0 || cut > 48) return <span>{text}</span>;
+    return (
+        <span>
+            <span className="block font-semibold text-accent">{text.slice(0, cut)}</span>
+            <span className="block mt-0.5">{text.slice(cut + 2)}</span>
+        </span>
+    );
 };
 
 const ProjectDetailsPage = () => {
@@ -102,7 +146,7 @@ const ProjectDetailsPage = () => {
 
                 {/* Top Metadata Grid (No Truncation) */}
                 <header className="space-y-6">
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-3.5 gap-x-4 p-5 rounded-[22px] bg-bgCard border border-subtle shadow-sm text-xs">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-3.5 gap-x-4 p-5 rounded-3xl bg-bgCard border border-subtle shadow-sm text-xs">
                         <div>
                             <span className="text-[10px] font-mono uppercase tracking-wider text-dim block">Client / Scope</span>
                             <span className="text-accent font-semibold mt-1 block leading-tight">{project.client || project.company}</span>
@@ -125,7 +169,7 @@ const ProjectDetailsPage = () => {
                     <div className="space-y-5 pt-1">
                         <div className="flex items-center gap-4">
                             <div className="w-14 h-14 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-2xl text-accent shrink-0 shadow-sm border border-subtle">
-                                {getItemIcon(project)}
+                                <ItemIcon item={project} size={24} />
                             </div>
                             <div>
                                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.03em] text-accent leading-tight">
@@ -162,7 +206,7 @@ const ProjectDetailsPage = () => {
                                     href={project.link}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="inline-flex items-center gap-2 bg-[#0F172A] text-white dark:bg-white dark:text-[#0F172A] px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 active:scale-[0.96] transition-all shadow-sm"
+                                    className="inline-flex items-center gap-2 bg-accent text-bgMain px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 active:scale-[0.96] transition-all shadow-sm"
                                 >
                                     <span>{project.company === 'GoPaisa' ? 'Visit Live myreport.gopaisa.com' : 'Visit Live Deployment'}</span>
                                     <ArrowUpRight size={16} />
@@ -190,7 +234,7 @@ const ProjectDetailsPage = () => {
                             {project.caseMetrics.map((m, idx) => (
                                 <div
                                     key={idx}
-                                    className="bg-bgCard border border-subtle p-4 rounded-[20px] text-center shadow-sm"
+                                    className="bg-bgCard border border-subtle p-4 rounded-2xl text-center shadow-sm"
                                 >
                                     <p className="text-2xl sm:text-3xl font-extrabold text-accent tracking-tight">{m.value}</p>
                                     <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-dim mt-1.5">{m.label}</p>
@@ -202,11 +246,11 @@ const ProjectDetailsPage = () => {
 
                 {/* Primary Hero Screenshot Preview */}
                 {project.images && project.images[0] && (
-                    <div className="w-full bg-bgCard rounded-[24px] overflow-hidden border border-subtle shadow-md aspect-[16/10] sm:aspect-video relative group">
+                    <div className="w-full bg-bgCard rounded-3xl overflow-hidden border border-subtle shadow-sm aspect-[16/10]">
                         <SafeImage
                             src={project.images[0]}
                             alt={`${title} primary system preview`}
-                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                            className="w-full h-full object-cover"
                         />
                     </div>
                 )}
@@ -216,7 +260,7 @@ const ProjectDetailsPage = () => {
                     <section className="space-y-8">
                         {project.problemToSolve && (
                             <div className="space-y-3">
-                                <h2 className="text-xl font-bold text-accent">The Engineering Challenge</h2>
+                                <h2 className="text-xl font-bold text-accent">The Problem</h2>
                                 <p className="text-base sm:text-[17px] text-dim leading-relaxed">
                                     {project.problemToSolve}
                                 </p>
@@ -225,7 +269,7 @@ const ProjectDetailsPage = () => {
 
                         {project.solution && (
                             <div className="space-y-3">
-                                <h2 className="text-xl font-bold text-accent">The Technical Architecture</h2>
+                                <h2 className="text-xl font-bold text-accent">What I Built</h2>
                                 <p className="text-base sm:text-[17px] text-dim leading-relaxed">
                                     {project.solution}
                                 </p>
@@ -239,14 +283,14 @@ const ProjectDetailsPage = () => {
                     <section className="space-y-4">
                         <div className="flex items-center gap-2 px-1">
                             <CheckCircle2 size={18} className="text-emerald-500" />
-                            <h2 className="text-xl font-bold text-accent tracking-tight">Key Accomplishments & Deliverables</h2>
+                            <h2 className="text-xl font-bold text-accent tracking-tight">Key Results</h2>
                         </div>
-                        <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-[24px] shadow-sm">
+                        <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-3xl shadow-sm">
                             <ul className="space-y-4">
                                 {project.points.map((point, idx) => (
-                                    <li key={idx} className="text-sm sm:text-base text-dim leading-relaxed flex items-start gap-3">
-                                        <span className="text-accent/60 text-xs mt-1.5 shrink-0">▸</span>
-                                        <span>{point}</span>
+                                    <li key={idx} className="text-sm sm:text-[15px] text-dim leading-relaxed flex items-start gap-3">
+                                        <span className="text-accent/60 text-xs mt-1 shrink-0">▸</span>
+                                        <LeadText text={point} />
                                     </li>
                                 ))}
                             </ul>
@@ -259,14 +303,14 @@ const ProjectDetailsPage = () => {
                     <section className="space-y-4">
                         <div className="flex items-center gap-2 px-1">
                             <Cpu size={18} className="text-blue-500" />
-                            <h2 className="text-xl font-bold text-accent tracking-tight">System Architecture Decisions</h2>
+                            <h2 className="text-xl font-bold text-accent tracking-tight">How It Works Under the Hood</h2>
                         </div>
-                        <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-[24px] shadow-sm">
-                            <div className="grid gap-3.5">
+                        <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-3xl shadow-sm">
+                            <div className="grid gap-4">
                                 {project.architecture.map((arch, idx) => (
-                                    <div key={idx} className="flex items-start gap-3 text-sm sm:text-base text-dim leading-relaxed">
+                                    <div key={idx} className="flex items-start gap-3 text-sm sm:text-[15px] text-dim leading-relaxed">
                                         <span className="text-blue-500 font-mono text-xs mt-1 shrink-0 font-bold">#{idx + 1}</span>
-                                        <span>{arch}</span>
+                                        <LeadText text={arch} />
                                     </div>
                                 ))}
                             </div>
@@ -287,16 +331,18 @@ const ProjectDetailsPage = () => {
                             </p>
                         </div>
 
-                        {/* Spacious Full-Width Diagram Tabs if multiple diagrams */}
+                        {/* Diagram Tabs: 2 columns for even counts, 3 for odd so no tab sits alone */}
                         {project.diagrams.length > 1 && (
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-[22px] bg-black/[0.02] dark:bg-white/[0.03] border border-subtle">
+                            <div className={`grid grid-cols-1 ${
+                                project.diagrams.length % 2 === 0 ? 'sm:grid-cols-2' : 'sm:grid-cols-3'
+                            } gap-2.5 p-1.5 rounded-3xl bg-black/[0.02] dark:bg-white/[0.03] border border-subtle`}>
                                 {project.diagrams.map((diag, idx) => {
                                     const isActive = activeDiagramIndex === idx;
                                     return (
                                         <button
                                             key={diag.id || idx}
                                             onClick={() => setActiveDiagramMap(prev => ({ ...prev, [id]: idx }))}
-                                            className={`flex flex-col items-start text-left p-3.5 rounded-[18px] transition-all duration-200 border ${
+                                            className={`flex flex-col items-start text-left p-3.5 rounded-2xl transition-all duration-200 border ${
                                                 isActive
                                                     ? 'bg-bgCard border-accent/25 shadow-sm text-accent ring-1 ring-accent/10'
                                                     : 'border-transparent text-dim hover:text-accent hover:bg-black/[0.02] dark:hover:bg-white/[0.02]'
@@ -336,13 +382,13 @@ const ProjectDetailsPage = () => {
 
                 {/* Secondary Images */}
                 {project.images && project.images.length > 1 && (
-                    <div className={`grid gap-4 ${project.images.length > 2 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 max-w-lg mx-auto'}`}>
+                    <div className="grid gap-4">
                         {project.images.slice(1).map((imgUrl, idx) => (
-                            <div key={idx} className="bg-bgCard border border-subtle rounded-[20px] overflow-hidden shadow-sm aspect-[16/10]">
+                            <div key={idx} className="bg-bgCard border border-subtle rounded-3xl overflow-hidden shadow-sm aspect-[16/10]">
                                 <SafeImage
                                     src={imgUrl}
                                     alt={`${title} screenshot ${idx + 2}`}
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                    className="w-full h-full object-cover"
                                 />
                             </div>
                         ))}
@@ -373,11 +419,11 @@ const ProjectDetailsPage = () => {
                                 <Link
                                     key={i}
                                     to={`/project/${item.id}`}
-                                    className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
+                                    className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-3xl flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
                                 >
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-lg text-accent shrink-0 shadow-sm border border-subtle">
-                                            {itemTitle[0]}
+                                        <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-subtle">
+                                            <ItemIcon item={item} />
                                         </div>
                                         <div>
                                             <h3 className="font-semibold text-accent text-base sm:text-lg">

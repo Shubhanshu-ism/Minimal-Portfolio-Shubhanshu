@@ -133,7 +133,7 @@ export const MermaidDiagram = ({ chart, title, description, badge = "Architectur
         };
     }, [isFullscreen]);
 
-    // Non-passive wheel zoom listener on the fullscreen canvas to completely prevent page scroll lag
+    // Non-passive wheel zoom listener on the fullscreen canvas with smooth, controlled rate of change
     useEffect(() => {
         const viewport = fullscreenViewportRef.current;
         if (!viewport || !isFullscreen) return;
@@ -141,8 +141,39 @@ export const MermaidDiagram = ({ chart, title, description, badge = "Architectur
         const handleNativeWheel = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            const factor = e.deltaY < 0 ? 1.12 : 0.88;
-            setZoomLevel(z => Math.min(Math.max(z * factor, 0.4), 4));
+
+            // Normalize delta mode (pixels vs lines vs pages)
+            let delta = e.deltaY;
+            if (e.deltaMode === 1) delta *= 20; // line mode
+            else if (e.deltaMode === 2) delta *= 160; // page mode
+
+            // Clamp delta per event to prevent sudden spikes on fast-scrolling/free-spinning wheels
+            const clampedDelta = Math.max(-80, Math.min(80, delta));
+
+            // Gentle sensitivity: ~0.0009 for smooth trackpad scrolling and controlled mousewheel steps
+            // e.ctrlKey indicates a native trackpad pinch gesture in Chrome/Safari
+            const sensitivity = e.ctrlKey ? 0.003 : 0.0009;
+            const factor = Math.exp(-clampedDelta * sensitivity);
+
+            setZoomLevel(prevZoom => {
+                const nextZoom = Math.min(Math.max(prevZoom * factor, 0.4), 4);
+                const roundedZoom = Number(nextZoom.toFixed(3));
+
+                // Smoothly zoom towards the mouse cursor position for a natural canvas feel
+                if (roundedZoom !== prevZoom && viewport) {
+                    const rect = viewport.getBoundingClientRect();
+                    const mouseX = e.clientX - (rect.left + rect.width / 2);
+                    const mouseY = e.clientY - (rect.top + rect.height / 2);
+                    const ratio = roundedZoom / prevZoom;
+
+                    setPan(prevPan => ({
+                        x: Number((mouseX - (mouseX - prevPan.x) * ratio).toFixed(2)),
+                        y: Number((mouseY - (mouseY - prevPan.y) * ratio).toFixed(2))
+                    }));
+                }
+
+                return roundedZoom;
+            });
         };
 
         viewport.addEventListener('wheel', handleNativeWheel, { passive: false });
@@ -230,7 +261,7 @@ export const MermaidDiagram = ({ chart, title, description, badge = "Architectur
     }, [isFullscreen, handleReset]);
 
     return (
-        <div className="w-full bg-bgCard border border-subtle rounded-[24px] overflow-hidden shadow-sm transition-all flex flex-col">
+        <div className="w-full bg-bgCard border border-subtle rounded-3xl overflow-hidden shadow-sm transition-all flex flex-col">
             {/* Header Toolbar */}
             <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-subtle bg-black/[0.02] dark:bg-white/[0.02]">
                 <div className="flex items-center gap-2.5">

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { userData } from '../data/user';
 import { PageWrapper } from '../components/PageWrapper';
 import { Footer } from '../components/Footer';
+import { ItemIcon } from '../components/ItemIcon';
 import { Link } from 'react-router-dom';
 import { Copy, ChevronRight, ArrowUpRight, PlusCircle, CheckCircle2, FileText, Zap, ExternalLink } from 'lucide-react';
 
@@ -49,7 +50,7 @@ const HomePage = () => {
                             <div className="flex flex-wrap items-center gap-3 pt-2">
                                 <Link
                                     to="/contact"
-                                    className="bg-[#0F172A] text-white dark:bg-white dark:text-[#0F172A] px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 active:scale-[0.96] transition-all shadow-sm"
+                                    className="bg-accent text-bgMain px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 active:scale-[0.96] transition-all shadow-sm"
                                 >
                                     <PlusCircle size={16} strokeWidth={2.2} /> Hire Me
                                 </Link>
@@ -97,7 +98,7 @@ const HomePage = () => {
                         {userData.metrics.map((metric, i) => (
                             <div
                                 key={i}
-                                className="bg-bgCard border border-subtle p-5 sm:p-6 rounded-[22px] flex flex-col justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 shadow-sm"
+                                className="bg-bgCard border border-subtle p-5 sm:p-6 rounded-3xl flex flex-col justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 shadow-sm"
                             >
                                 <div className="flex justify-between items-center mb-3">
                                     <span className="text-[11px] font-bold text-dim uppercase tracking-wider font-mono">{metric.label}</span>
@@ -134,11 +135,11 @@ const HomePage = () => {
                             <Link
                                 key={i}
                                 to={`/project/${job.id}`}
-                                className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
+                                className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-3xl flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-lg text-accent shrink-0 shadow-sm border border-subtle">
-                                        {job.company[0]}
+                                    <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-subtle">
+                                        <ItemIcon item={job} />
                                     </div>
                                     <div>
                                         <div className="flex items-center gap-2">
@@ -189,11 +190,11 @@ const HomePage = () => {
                             <Link
                                 key={i}
                                 to={`/project/${project.id}`}
-                                className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
+                                className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-3xl flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-lg text-accent shrink-0 shadow-sm border border-subtle">
-                                        {project.title[0]}
+                                    <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-subtle">
+                                        <ItemIcon item={project} />
                                     </div>
                                     <div>
                                         <h3 className="font-semibold text-accent text-base sm:text-lg">

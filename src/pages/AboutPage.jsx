@@ -43,7 +43,7 @@ const AboutPage = () => {
                     </div>
 
                     {/* Portrait Image */}
-                    <div className="w-full rounded-[24px] border border-subtle overflow-hidden shadow-lg bg-bgCard mt-2">
+                    <div className="w-full rounded-3xl border border-subtle overflow-hidden shadow-lg bg-bgCard mt-2">
                         <img
                             src={userData.config.profileImage}
                             alt={`${userData.firstName} Portrait`}
@@ -69,7 +69,7 @@ const AboutPage = () => {
                             return (
                                 <div
                                     key={key}
-                                    className="bg-bgCard border border-subtle p-5 sm:p-6 rounded-[22px] space-y-3.5 shadow-sm hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200"
+                                    className="bg-bgCard border border-subtle p-5 sm:p-6 rounded-3xl space-y-3.5 shadow-sm hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200"
                                 >
                                     <div className="flex items-center gap-2">
                                         <IconComponent size={14} className="text-dim" />
@@ -110,7 +110,7 @@ const AboutPage = () => {
                                 target="_blank"
                                 rel="noreferrer"
                                 aria-label={`${stat.platform} profile — ${stat.label} rating ${stat.rating}`}
-                                className="bg-bgCard border border-subtle p-5 rounded-[22px] flex flex-col justify-between text-center group hover:border-accent/30 hover:-translate-y-0.5 transition-all duration-200 shadow-sm active:scale-[0.98]"
+                                className="bg-bgCard border border-subtle p-5 rounded-3xl flex flex-col justify-between text-center group hover:border-accent/30 hover:-translate-y-0.5 transition-all duration-200 shadow-sm active:scale-[0.98]"
                             >
                                 <div className="flex justify-between items-center w-full">
                                     <h3 className="text-xs font-bold text-dim uppercase tracking-widest font-mono">{stat.platform}</h3>
@@ -153,7 +153,7 @@ const AboutPage = () => {
                                 {userData.pages.about.badges.education}
                             </h2>
                         </div>
-                        <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-[24px] space-y-5 shadow-sm hover:border-accent/25 transition-all duration-200">
+                        <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-3xl space-y-5 shadow-sm hover:border-accent/25 transition-all duration-200">
                             <div className="space-y-1.5">
                                 <div className="flex flex-wrap items-center justify-between gap-2">
                                     <h3 className="text-lg font-bold text-accent">{userData.education.institution}</h3>
@@ -194,7 +194,7 @@ const AboutPage = () => {
                             <Link
                                 key={i}
                                 to={`/project/${project.id}`}
-                                className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
+                                className="group bg-bgCard border border-subtle p-4 sm:p-5 rounded-3xl flex items-center justify-between hover:border-accent/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-[0.98] shadow-sm"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-lg text-accent shrink-0 shadow-sm border border-subtle">

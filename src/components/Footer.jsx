@@ -40,7 +40,7 @@ export const Footer = ({ showWorkTogether = true }) => {
                     <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
                         <Link
                             to="/contact"
-                            className="bg-[#18181B] text-white dark:bg-[#1C1C1E] dark:text-white border border-transparent dark:border-white/10 px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm active:scale-[0.98]"
+                            className="bg-accent text-bgMain px-5 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm active:scale-[0.98]"
                         >
                             <PlusCircle size={16} strokeWidth={2} /> Hire Me
                         </Link>

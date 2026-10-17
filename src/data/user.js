@@ -31,12 +31,12 @@ export const userData = {
         {
             value: "66× Faster",
             label: "Latency Reduction",
-            sublabel: "Cut CC Payment Panel query latency from 20s to 0.3s via join & N+1 fixes"
+            sublabel: "Cut CC Payment Panel query latency from 20s to 0.3s by eliminating sub-queries via join optimization & dynamic pruning"
         },
         {
-            value: "1.5M+",
-            label: "Rows Exported",
-            sublabel: "In-memory streaming in <15s with global concurrency locks"
+            value: "2M Rows",
+            label: "Hard-Cap Stream",
+            sublabel: "High-throughput worker pool streaming in <1min with global concurrency locks"
         },
         {
             value: "60%",
@@ -153,38 +153,244 @@ export const userData = {
             client: "GoPaisa & PolicyBazaar",
             company: "GoPaisa",
             title: "GoPaisa",
-            projectType: "Fintech ETL & Campaign BI Analytics",
+            projectType: "Fintech Payments & Partner Reporting",
             year: "2026",
             role: "Full Stack Engineer",
             duration: "Jan 2026 – Present",
             link: "http://myreport.gopaisa.com",
-            summary: "Self-serve campaign analytics & BI reporting dashboard built for PolicyBazaar and major insurance campaigns (167K+ clicks) with drag-and-drop CSV ETL pipeline and payment panel 20s → 0.3s query optimization.",
-            overviewParagraph: "Architected the campaign analytics and fintech payment infrastructure at GoPaisa. Spearheaded the creation of GoPaisa Report (myreport.gopaisa.com) for PolicyBazaar and enterprise partners to track 167K+ clicks across NRI health and investment campaigns, and revamped the CC Payment Panel to eliminate high-latency query bottlenecks.",
+            summary: "Built PolicyBazaar's self-serve campaign report (167K+ clicks), made a key payments screen 66× faster, and created a live monitor for the payment services.",
+            overviewParagraph: "At GoPaisa I build the systems behind payments and partner reporting. I created GoPaisa Report so partners like PolicyBazaar can track their campaign results (167K+ clicks) on their own, made a key payments screen load in 0.3 seconds instead of 20, rebuilt report downloads to handle up to 2 million rows safely, and built API Pulse, a live monitor that shows problems in the payment services the moment they happen.",
             caseMetrics: [
-                { value: "66× Faster", label: "Query Latency", desc: "20s → 0.3s query optimization", tooltip: "Eliminated N+1 queries & optimized encrypted joins (20s → 0.3s)" },
-                { value: "1.5M+", label: "Rows Streamed", desc: "In-memory export in <15s", tooltip: "Chunked streaming export with global concurrency locking" },
+                { value: "66× Faster", label: "Payment Screen Load", desc: "20s → 0.3s query optimization", tooltip: "Replaced correlated sub-queries with pre-aggregated LEFT JOINs & dynamic pruning (20s → 0.3s)" },
+                { value: "2M Rows", label: "Per Report Download", desc: "Backpressure HTTP streaming", tooltip: "Chunked streaming export with worker_threads AES-256 decryption & concurrency locking" },
                 { value: "167K+", label: "Clicks Tracked", desc: "Real-time PolicyBazaar reporting", tooltip: "Tracked across NRI Health & Investment campaigns" },
-                { value: "92", label: "Active Campaigns", desc: "Multi-client analytics platform", tooltip: "Centralized tracking with Google OAuth 2.0 RBAC" }
+                { value: "~79 Columns", label: "Pick-What-You-Need Exports", desc: "Dynamic dependency planner", tooltip: "Resolves ~79 columns across transactions, users & beneficiaries; prunes joins dynamically" }
             ],
-            problemToSolve: "Business teams and partners like PolicyBazaar lacked self-serve visibility into high-volume affiliate campaigns (generating 167K+ clicks), relying on manual database extracts for reporting. Simultaneously, the fintech CC Payment Panel suffered from severe 20s latency caused by unoptimized database joins and unshielded concurrent CSV exports that risked crashing servers under heavy traffic.",
-            solution: "Engineered GoPaisa Report from scratch (React, Node.js, MongoDB) featuring real-time Marketing Overview KPI cards, interactive date-range trend lines, and a guided drag-and-drop CSV ingestion pipeline with automated schema validation. Concurrently overhauled the CC Payment Panel to cut latency from 20s to 0.3s and streamed 1.5M+ rows in under 15s with global concurrency locking.",
+            problemToSolve: "Partners like PolicyBazaar had no way to check their own campaign results, so engineers pulled the numbers from the database by hand. At the same time, a key payments screen took about 20 seconds to load, and large report downloads could overload the servers when several people ran them at once.",
+            solution: "I built GoPaisa Report, a self-serve dashboard with live campaign numbers, trend charts and a guided spreadsheet upload. On the payments side, I rewrote how the slowest screen looks up data so it loads in 0.3 seconds instead of 20, and rebuilt report downloads to handle up to 2 million rows safely while card and PAN details stay encrypted. I also built API Pulse, which lets the team watch the health of the payment services live.",
             images: [
-                "/projects/gopaisa-dashboard.png",
-                "/projects/gopaisa-reports.png",
-                "/projects/gopaisa-export-dark.png",
-                "/projects/gopaisa-export-light.png",
-                "/projects/gopaisa-upload.png"
+                "/projects/gopaisa-analytics.svg",
+                "/projects/gopaisa-api-pulse.svg"
             ],
-            tech: "React.js, Node.js, MongoDB, Nginx, PM2, Redis, WebSockets, AES-256, Google OAuth 2.0",
+            tech: "React.js, Node.js, PostgreSQL (pg-cursor), worker_threads, MongoDB, Redis, Nginx, PM2, AES-256, HMAC Auth, WebSockets, Server-Sent Events, Google OAuth 2.0",
             points: [
-                "GoPaisa Report (myreport.gopaisa.com): Designed and deployed campaign reporting dashboard from scratch (React, Node.js, MongoDB) for PolicyBazaar and enterprise campaigns, tracking 167K+ live clicks across NRI health & investment campaigns with Google OAuth 2.0 RBAC.",
-                "Guided CSV Ingestion Engine: Built an intuitive drag-and-drop CSV upload pipeline with client-side schema validation (supporting Date, Campaign Name, Campaign ID, Advertiser, Status, Clicks, Leads, Payout up to 9MB) and duplicate conflict detection.",
-                "Marketing Overview & Real-Time Trend Charts: Created live KPI metric cards (Total Records, Clicks with +38.2% delta, Payout) and time-series performance graphs with instantaneous filtered CSV exports.",
-                "CC Payment Panel Optimization: Cut page load latency from 20s to 0.3s (66× improvement) by eliminating N+1 database bottlenecks, streamlining encrypted multi-table joins, and caching frequent queries.",
-                "High-Throughput Streaming Export: Built an in-memory CSV export service with Redis-based global concurrency locking to stream 1.5M+ rows in under 15 seconds without memory spikes.",
-                "Microservices Infrastructure: Deployed an abuse-resistant file pipeline (SHA-256 duplicate detection, rate limiting), dynamic cron execution engine, and self-healing microservices on Nginx and PM2."
+                "Self-Serve Campaign Reports: PolicyBazaar's team used to wait for engineers to pull campaign numbers by hand. I built a dashboard where they sign in with Google and track 167K+ clicks on their own, any time.",
+                "Safe Spreadsheet Uploads: Uploading campaign data used to risk bad or duplicate entries. Every file is now checked, duplicates are flagged before anything is saved, and progress shows live.",
+                "Results at a Glance: Headline numbers and trend charts that answer “how are our campaigns doing?” in seconds, with one-click downloads.",
+                "Payment Screen 66× Faster: A key screen for the payments team took about 20 seconds to load. After I reworked how it fetches data, it loads in 0.3 seconds.",
+                "Huge Downloads Without Crashes: Big report downloads could overload the servers. They now handle up to 2 million rows smoothly, and sensitive card and PAN details stay encrypted until the last step.",
+                "No Wasted Work: If someone closes the page mid-download, the work on the server stops right away instead of quietly using up resources.",
+                "API Pulse, a Live Health Monitor: One screen that shows every failing or slow request across the payment services as it happens, plus a health status for each service, so problems are spotted in seconds instead of dug out of logs later.",
+                "Alerts and Payment Tools: Instant chat alerts when a server logs an error, a service that sends payouts and verifies bank details, a one-time-code check before money goes out, and a task system that makes sure support calls customers back on time."
+            ],
+            architecture: [
+                "Fetch Only What's Needed: Users pick from ~79 columns, and the system pulls in only the related tables those columns actually need (dynamic join pruning).",
+                "One Lookup Instead of Thousands: The slow screen ran a separate check for every single row. It now does one combined lookup up front (a pre-aggregated join), which is where the 66× speed-up came from.",
+                "Decrypt Each Value Once, in Parallel: Sensitive fields are decrypted on background workers, and repeated values are decrypted only once, so the main server stays responsive (worker threads).",
+                "Steady Memory for Big Downloads: Data is read 5,000 rows at a time and sent only as fast as the user's connection can take it, so memory stays flat even at 2 million rows (backpressure streaming).",
+                "Locked-Down Exports: Each download needs a short-lived signed ticket, only one heavy export runs at a time, and closing the tab cancels the database work.",
+                "Monitoring That Can't Hurt Payments: The monitoring hook reports in the background and gives up quickly when needed, so it can never slow down or break a payment. A service that goes quiet for over a minute is flagged."
             ],
             diagrams: [
+                {
+                    id: "payment-panel",
+                    tabTitle: "CC Payment Panel & Support Ops",
+                    title: "CC Payment Panel Operations & Real-Time Support Engine",
+                    badge: "Core Platform",
+                    description: "Dual-database fintech operations platform (PostgreSQL + MongoDB) orchestrating real-time Socket.IO ticket synchronization, immutable mutation audit logging (auditMutationLogger), SLA escalation watchdogs, and click-to-call phone unmasking.",
+                    chart: `flowchart TD
+    %% ==========================================
+    %% 1. CLIENT & SUPPORT AGENT UI
+    %% ==========================================
+    subgraph UI ["Client UI: CC Payment Panel & Support Ops (React + MUI)"]
+        Dashboard["Payment Dashboard & Live Analytics<br/>(Settlements, Volume, Status Breakdown)"]
+        ToCallHub["To-Call Task Management Board<br/>(Unassigned, Assigned, In-Progress, Escalated)"]
+        PhoneReveal["Click-to-Call Phone Unmasking<br/>(Audit-Confirmed Decryption Request)"]
+        SocketHook["useToCallSocket() & React Query<br/>(Socket.IO Real-Time Event Sync)"]
+    end
+
+    %% ==========================================
+    %% 2. GATEWAY, AUTH & AUDIT MIDDLEWARE
+    %% ==========================================
+    subgraph Gateway ["API Gateway & Compliance Middlewares (Node.js)"]
+        PassportAuth["Passport.js Session Auth & RBAC<br/>(SuperAdmin, Operations, Support Agent)"]
+        AuditSnapshot["auditLoadBeforeSnapshot<br/>(Captures Pre-Mutation DB State)"]
+        AuditLogger["auditMutationLogger<br/>(Immutable MongoDB Mutation Audit Trail)"]
+        JoiValidator["Joi Schema Validation & Sanitization"]
+    end
+
+    %% ==========================================
+    %% 3. BUSINESS LOGIC & SERVICE LAYER
+    %% ==========================================
+    subgraph Services ["Core Payment Panel Services"]
+        QuerySvc["queryService.js<br/>Parallel Multi-DB Reads & SLA Counts"]
+        AgentSvc["agentService.js<br/>Phone Decryption & Call Outcomes"]
+        IngestSvc["ingestService.js<br/>Auto-Task Creation on Payment Failure"]
+        CronSvc["cronScheduler.js<br/>SLA Breach & Escalation Watchdog"]
+    end
+
+    %% ==========================================
+    %% 4. REAL-TIME EVENT ENGINE
+    %% ==========================================
+    subgraph RealTime ["Real-Time WebSocket Engine (Socket.IO)"]
+        SocketServer["Socket.IO Server<br/>(Rooms: agent:id, role:support)"]
+        LiveEvents["Live Broadcasts:<br/>• task:assigned • task:resolved • sla:escalated"]
+    end
+
+    %% ==========================================
+    %% 5. DUAL DATABASE STORAGE ENGINE
+    %% ==========================================
+    subgraph Storage ["Dual-Database Architecture"]
+        PG[("PostgreSQL (ACID Transactions)<br/>• transactions • users • beneficiaries<br/>• settlements • credit_cards")]
+        Mongo[("MongoDB (Operational & Audit Data)<br/>• support_to_call_tasks • audit_logs<br/>• agent_history • support_qna")]
+    end
+
+    %% ==========================================
+    %% CONNECTIONS & FLOW
+    %% ==========================================
+    Dashboard & ToCallHub & PhoneReveal --> Gateway
+    SocketServer <-->|"Bidirectional WebSocket"| SocketHook
+    Gateway --> PassportAuth --> AuditSnapshot --> AuditLogger --> JoiValidator --> Services
+
+    IngestSvc -->|"Trigger on Payment Failure"| SocketServer
+    CronSvc -->|"SLA Timeout Check"| SocketServer
+    SocketServer --> LiveEvents
+
+    Services --> Storage
+    QuerySvc -->|"Financial Ledgers"| PG
+    QuerySvc -->|"Task States & SLA Counts"| Mongo
+    AgentSvc -->|"Update Call Outcome"| Mongo
+    AgentSvc -->|"Fetch Masked Customer Data"| PG
+    AuditLogger -->|"Immutable Log Write"| Mongo`
+                },
+                {
+                    id: "streaming-export",
+                    tabTitle: "Transaction Download Backend",
+                    title: "High-Throughput Streaming & Decryption Worker Pool",
+                    badge: "Payment Panel Engine",
+                    description: "High-throughput backpressure streaming pipeline handling up to 2,000,000 rows across ~79 columns with scoped HMAC export tickets, precision SQL dependency planning, dynamic join pruning for card label optimization (eliminating correlated sub-queries), multi-threaded worker pool AES-256 decryption across 3 sensitive fields (Sender PAN, Beneficiary PAN, Card Last4), and safe query abort cancellation.",
+                    chart: `flowchart TD
+    %% ==========================================
+    %% 1. CLIENT & UI LAYER
+    %% ==========================================
+    subgraph UI ["Client UI (Payment Panel & Data Export Portal)"]
+        Req["User selects Date Range, Filters & Columns<br/>(Searchable Across ~79 Multi-Table Columns)"]
+        TicketReq["Request Scoped Export Ticket<br/>POST /platform-users/transactions/export-ticket"]
+        DirectPass["Or Direct Authentication<br/>(Password Rate-Limited)"]
+    end
+
+    %% ==========================================
+    %% 2. GATEWAY & SECURITY GUARD
+    %% ==========================================
+    subgraph Security ["Gatekeeper & Concurrency Guard"]
+        VerifyTicket["Verify Scoped HMAC Export Ticket<br/>(verifyExportTicket Middleware)"]
+        LimitCheck{"Row Limit Validation<br/>(Hard Cap: 2,000,000 Rows)"}
+        GlobalLock{"Global Concurrency Lock<br/>(export:lock:userId)"}
+        Reject400["400 Bad Request / Exceeds Limit"]
+        Reject429["429 Conflict / Export Active"]
+    end
+
+    %% ==========================================
+    %% 3. PRECISION DEPENDENCY PLANNER
+    %% ==========================================
+    subgraph Planner ["Precision Dependency Planner & Query Optimization"]
+        CompilePlan["compileExportPlan()"]
+        ColumnResolve["Resolve Selection from ~79 Columns<br/>& Cross-Table Dependencies (dependsOn)"]
+        CardLabelOpt["Card Label Query Optimization (20s → 0.3s)<br/>• Eliminated correlated EXISTS sub-queries<br/>• Removed redundant v.id != t.id inequality<br/>• Attached pre-aggregated verification_child_parent LEFT JOIN"]
+        DynamicJoin["Dynamic JOIN Pruning<br/>(LEFT JOIN users / beneficiaries / vcp ONLY if needed)"]
+        OrderIndex["Index-Aligned Sorting<br/>(ORDER BY t.created_at DESC)"]
+    end
+
+    %% ==========================================
+    %% 4. DATABASE STREAMING ENGINE
+    %% ==========================================
+    subgraph DB ["Database Streaming Engine (pg-cursor)"]
+        PgCursor["PostgreSQL Native Cursor (pg-cursor)<br/>DECLARE export_cur NO SCROLL CURSOR"]
+        FetchBatch["Fetch Bounded Batch<br/>(5,000 rows/batch cursor.read)"]
+        MongoStream["MongoDB Cursor Stream<br/>(In-Place Document Flattening)"]
+    end
+
+    %% ==========================================
+    %% 5. BATCH-LEVEL WORKER DECRYPTION POOL
+    %% ==========================================
+    subgraph CryptoLayer ["Batch-Level Decryption Pipeline"]
+        Dedup["Batch-Local Ciphertext Deduplication<br/>collectAllUniqueCiphertexts() across 3 fields<br/>(Sender PAN, Beneficiary PAN, Card Last-4)"]
+
+        subgraph WorkerPool ["DecryptWorkerPool (worker_threads)"]
+            Chunker["Sub-Batch Chunker<br/>(250 unique ciphertexts/batch)"]
+            JobQueue["Pending Job Queue<br/>[Job 1: 250, Job 2: 250, Job 3: 250...]"]
+            Dispatcher{"Thread Dispatcher<br/>Capped to min(4, CPU - 1)"}
+            W1["Worker Thread 1<br/>(AES-256 / PBKDF2)"]
+            W2["Worker Thread 2<br/>(AES-256 / PBKDF2)"]
+            W3["Worker Thread 3<br/>(AES-256 / PBKDF2)"]
+            Aggregator["Promise.all().flat()<br/>Assemble Decrypted Payloads"]
+        end
+
+        DecMap["In-Memory DecryptMap<br/>Map(ciphertext → plaintext)"]
+        ApplyMap["applyDecryptMapToAllRows()<br/>Fast In-Place Row Hydration in O(1)"]
+    end
+
+    %% ==========================================
+    %% 6. BACKPRESSURE & CSV STREAMING
+    %% ==========================================
+    subgraph Streaming ["Backpressure HTTP Streaming Engine"]
+        FormatCells["Format Cells: Rupee Amounts, IST Dates & Enums"]
+        CSVTransform["csvRowToLine() Chunk Generator"]
+        WriteCheck{"writeWithBackpressure()<br/>res.write(chunk) == false?"}
+        DrainWait["Pause Cursor & Await 'drain' Event"]
+        HTTPResp["HTTP 200 Chunked Stream<br/>Transfer-Encoding: chunked<br/>X-Export-Total-Rows"]
+    end
+
+    %% ==========================================
+    %% 7. TELEMETRY & CANCELLATION
+    %% ==========================================
+    subgraph Telemetry ["Live Telemetry & Cancellation"]
+        ProgressReg["In-Memory Progress Registry<br/>(Track rows exported, throughput & elapsed time)"]
+        ProgressPoll["GET /exports/:id/progress<br/>(Live Progress Bar in Modal)"]
+        AbortHandler{"Client Disconnect or User Abort?<br/>res.on('close') / POST /:id/cancel"}
+        CancelPg["safeCancelPgClient() & CLOSE cursor<br/>(Zero DB Leak / Rollback)"]
+    end
+
+    %% ==========================================
+    %% CONNECTIONS & FLOW
+    %% ==========================================
+    Req --> TicketReq & DirectPass
+    TicketReq & DirectPass --> VerifyTicket
+    VerifyTicket --> LimitCheck
+    LimitCheck -- "> 2M Rows" --> Reject400
+    LimitCheck -- "<= 2M Rows" --> GlobalLock
+    GlobalLock -- "Lock Busy" --> Reject429
+    GlobalLock -- "Lock Acquired" --> CompilePlan
+
+    CompilePlan --> ColumnResolve --> CardLabelOpt --> DynamicJoin --> OrderIndex
+    OrderIndex --> PgCursor & MongoStream
+
+    PgCursor --> FetchBatch
+    FetchBatch --> Dedup
+    Dedup --> Chunker
+    Chunker --> JobQueue
+    JobQueue --> Dispatcher
+    Dispatcher --> W1 & W2 & W3
+    W1 & W2 & W3 --> Aggregator
+    Aggregator --> DecMap
+    DecMap --> ApplyMap
+    ApplyMap --> FormatCells
+
+    FormatCells --> CSVTransform
+    CSVTransform --> WriteCheck
+
+    WriteCheck -- "Buffer Saturated" --> DrainWait
+    DrainWait -.->|"Resume on 'drain'"| FetchBatch
+    WriteCheck -- "Stream Ready" --> HTTPResp
+
+    %% Telemetry & Cancellation links
+    FetchBatch -. "Batch Update" .-> ProgressReg
+    ProgressReg -. "Polls Metrics" .-> ProgressPoll
+    HTTPResp -. "User Closes / Aborts" .-> AbortHandler
+    AbortHandler -- "Yes" --> CancelPg
+    CancelPg -. "Terminates Query" .-> PgCursor
+    HTTPResp -. "On Complete" .-> ReleaseLock["Auto-Release Lock & Close Connection"]`
+                },
                 {
                     id: "csv-pipeline",
                     tabTitle: "PolicyBazaar CSV Ingestion",
@@ -239,51 +445,40 @@ export const userData = {
     R --> S[SSE: done true, result success]`
                 },
                 {
-                    id: "streaming-export",
-                    tabTitle: "Transaction Download Backend",
-                    title: "High-Throughput Streaming & Decryption Worker Pool",
-                    badge: "Payment Panel Engine",
-                    description: "1.5M+ row streaming export cutting query latency from 20s to 0.3s using Keyset pagination, Redis concurrency locks, and Worker Thread AES decryption.",
+                    id: "api-pulse",
+                    tabTitle: "API Pulse Live Monitoring",
+                    title: "API Pulse: Real-Time API Monitoring for Payment Microservices",
+                    badge: "Observability & SSE",
+                    description: "Drop-in Express middleware reports errors and slow requests plus 30s traffic heartbeats; the API Pulse server validates, stores and streams them over SSE to a live golden-signals dashboard.",
                     chart: `flowchart TD
-    subgraph UI [dataexport.gopaisa.com UI]
-        Req[User selects Date Range, Dataset & 21 Columns]
-        Pass[Enters Export Password]
+    subgraph Services ["Payment Microservices (Express)"]
+        PC["payment-collection<br/>monitoring middleware"]
+        PB["payment-panel-backend<br/>monitoring middleware"]
     end
 
-    subgraph Security [Gatekeeper & Concurrency Guard]
-        Auth[JWT & Passport Validation]
-        Lock{Redis Global Lock<br/>export:lock:userId}
-        Reject[429 Conflict / Export Active]
+    PC & PB --> Hook["res.on('finish') hook<br/>status, latency, route, error message"]
+    Hook --> Window["In-memory 30s rolling window<br/>req/s, success, errors, avg latency"]
+    Hook --> Gate{"Status >= 400<br/>or latency > 2s?"}
+    Gate -- No --> CountOnly["Counted in window only"]
+    Gate -- Yes --> Event["Build event<br/>UUIDv7 id, severity, sanitized context"]
+
+    Window -->|"POST /ingest/heartbeats every 30s"| Ingest
+    Event -->|"POST /ingest/events, fire-and-forget"| Ingest
+
+    subgraph Pulse ["API Pulse Server"]
+        Ingest["Ingestion API<br/>internal API key"] --> Registry{"Registered project,<br/>environment and service?"}
+        Registry -- No --> Reject["400 UNREGISTERED_SERVICE"]
+        Registry -- Yes --> Store[("MongoDB<br/>api_events, 7-day TTL<br/>service_health")]
+        Store --> Broadcast["SSE broadcast<br/>api-event, health-update"]
+        Store --> Summary["Summary API<br/>error rate, P50 / P95 / P99"]
+        Summary --> HealthCheck{"Last heartbeat age"}
+        HealthCheck -- "< 60s" --> Healthy["healthy"]
+        HealthCheck -- "60-120s" --> Warn["warning"]
+        HealthCheck -- "> 120s" --> Critical["critical"]
     end
 
-    subgraph DB [Dual Database Engine]
-        MongoBS[MongoDB Daily-Step<br/>Binary Search Indexer]
-        PgKeyset[PostgreSQL Sequelize<br/>Keyset Cursor Pagination]
-    end
-
-    subgraph WorkerPool [DecryptWorkerPool - worker_threads]
-        Pool[ThreadPool capped to CPU - 1]
-        W1[Worker 1: AES-256 Decrypt PII]
-        W2[Worker 2: Unmask Card Digits]
-    end
-
-    subgraph Streaming [Backpressure Stream Engine]
-        Format[Format Rupee Currency & Dates]
-        CSVStream[Transform to CSV Stream chunk-by-chunk]
-        HTTPResp[HTTP 200 Stream Response<br/>Content-Disposition: attachment]
-    end
-
-    Req --> Pass --> Auth
-    Auth --> Lock
-    Lock -- Lock Acquired --> MongoBS
-    Lock -- Lock Busy --> Reject
-    MongoBS --> PgKeyset
-    PgKeyset --> Pool
-    Pool --> W1 & W2
-    W1 & W2 --> Format
-    Format --> CSVStream
-    CSVStream --> HTTPResp
-    HTTPResp -. On Complete .-> Release[Auto-Release Redis Lock]`
+    Broadcast --> Dash["Live Dashboard<br/>event stream, filters, search, details drawer"]
+    Summary --> Dash`
                 },
                 {
                     id: "file-upload",
@@ -310,22 +505,65 @@ export const userData = {
             client: "TableSprint",
             company: "TableSprint",
             title: "TableSprint",
-            projectType: "Enterprise CRM Platform (Frontend)",
+            projectType: "Mobile-Friendly Data Screens",
             year: "2025",
             role: "Full Stack Developer Trainee",
             duration: "Nov 2025 – Dec 2025",
-            summary: "Onboarded to a production MERN CRM codebase and resolved cross-device responsive UI and layout alignment issues.",
-            overviewParagraph: "Joined as a developer trainee working on the frontend of an enterprise MERN-based CRM platform. Spent the initial period understanding the existing component architecture and code patterns, then resolved UI responsiveness bugs to ensure clean visual consistency across mobile and desktop screens.",
-            problemToSolve: "The CRM dashboard featured dense data tables and multi-pane layouts that had minor layout misalignment and horizontal overflow issues on smaller laptop and mobile viewports.",
-            solution: "Explored the existing React and Tailwind CSS codebase, diagnosed responsive layout conflicts, and updated component styling and breakpoint classes to fix alignment issues across varying screen sizes.",
+            summary: "Made data-heavy screens work on phones, so filtered lists show the same records on every device with nothing cut off.",
+            overviewParagraph: "At TableSprint I fixed how data-heavy screens behave on phones and tablets. Lists that open with filters already applied (like status or date) now show exactly the same records on every screen size, and wide tables turn into readable cards on mobile instead of being cut off or scrolling sideways.",
+            caseMetrics: [
+                { value: "100%", label: "Same Data on Every Device", desc: "Identical filtered data across desktop & mobile" },
+                { value: "0", label: "Sideways Scrolling", desc: "Eliminated horizontal scroll & layout breaks" },
+                { value: "Mobile-First", label: "Tables Become Cards", desc: "Seamless table-to-card layout with active filters" }
+            ],
+            problemToSolve: "Data screens that open with filters already applied (for example “active enterprise deals”) behaved differently on phones: filters could reset, columns got cut off, and pages scrolled sideways. Mobile users could end up seeing different or incomplete data.",
+            solution: "I rebuilt these screens so every screen size reads the same filter settings, and wide tables turn into easy-to-read cards on phones. The result: the same records on every device and no sideways scrolling.",
+            architecture: [
+                "One Source of Truth for Filters: Desktop, tablet and phone all read the same filter state, so counts and results always match.",
+                "Layout Changes, Data Doesn't: Below 640px the table switches to cards, but every field from the table is still shown.",
+                "Shared Screen-Size Rules: One consistent set of breakpoint rules across components (Tailwind CSS), which fixed overflow bugs at their source."
+            ],
             images: [
                 "/projects/tablesprint-platform.svg"
             ],
-            tech: "React.js, Tailwind CSS, JavaScript, MERN Stack",
+            tech: "React.js, Tailwind CSS, JavaScript, Responsive Design, Mobile-First UI, MERN Stack",
             points: [
-                "Onboarded to an enterprise MERN CRM codebase, studying component hierarchies and design conventions.",
-                "Fixed responsive UI issues across mobile and desktop views, improving layout consistency and eliminating overflow bugs.",
-                "Standardized responsive breakpoints and component alignment for dashboard screens."
+                "Same Data on Every Screen: Lists that open with filters already applied now show exactly the same records on a phone as on a laptop.",
+                "Tables That Work on Phones: Wide data tables turn into easy-to-tap cards on small screens without losing any information or active filters.",
+                "No Sideways Scrolling: Fixed layouts that spilled off the edge of mobile screens, so nothing is cut off.",
+                "Filters Stay Put: Resizing the window or rotating a phone never resets the filters or changes the record count."
+            ],
+            diagrams: [
+                {
+                    id: "tablesprint-responsive-flow",
+                    title: "Cross-Device Data Consistency & Responsive Filtered Component Pipeline",
+                    badge: "Responsive Architecture (Mobile & Desktop)",
+                    description: "Data flow illustrating how pre-applied filter state is ingested, synchronized across breakpoints, and adaptively rendered as a full multi-column grid on desktop and an optimized card stack on mobile viewports.",
+                    chart: `flowchart TD
+    subgraph Ingestion ["1. Pre-Applied Filter State Ingestion"]
+        Dataset["Enterprise CRM Dataset<br/>(94 Total Records)"] --> FilterEngine["Filter Engine<br/>• Status: Active Deals<br/>• Tier: Enterprise<br/>• Region: APAC & EMEA"]
+        FilterEngine --> FilteredState["Filtered State (18 Matched Records)<br/>Persistent Query State & Active Chips"]
+    end
+
+    subgraph Breakpoint ["2. Viewport Breakpoint Detector"]
+        FilteredState --> VPCheck{"Viewport Width<br/>Breakpoint Evaluation"}
+    end
+
+    subgraph DesktopFlow ["3A. Desktop Viewport (>= 1024px)"]
+        VPCheck -->|Desktop Screen| DTView["Full Multi-Column Data Grid<br/>• 5 Columns (Account, Stage, Tier, Value, Status)<br/>• Sortable Headers & Horizontal Alignment<br/>• 18 Filtered Rows Displayed"]
+        DTView --> DTMetric["✔ 0 Layout Shift | Full Horizontal Space"]
+    end
+
+    subgraph MobileFlow ["3B. Mobile Viewport (< 640px)"]
+        VPCheck -->|Mobile Screen| MBView["Adaptive Filtered Card Stack<br/>• Table Columns Transformed to Compact Cards<br/>• Touch-Friendly Filter Sheet Drawer<br/>• 18 Identical Filtered Records"]
+        MBView --> MBMetric["✔ 0px Horizontal Overflow | Touch-Optimized"]
+    end
+
+    subgraph Validation ["4. Data Parity & State Verification"]
+        DTMetric & MBMetric --> ParityCheck{"Cross-Device Data Parity<br/>Verification"}
+        ParityCheck --> ParitySuccess["100% Data Consistency Across Devices<br/>(Zero Filter State Drop Across Breakpoints)"]
+    end`
+                }
             ]
         },
         {
@@ -333,41 +571,42 @@ export const userData = {
             client: "IncNut Digital",
             company: "IncNut Digital",
             title: "IncNut Digital",
-            projectType: "Autonomous Support AI (Intercom Fin Pattern)",
+            projectType: "AI Customer Support",
             year: "2025",
             role: "AI Intern (LLM Application Developer)",
             duration: "Jul 2025 – Oct 2025",
-            summary: "Built autonomous multi-agent LLM systems with LangGraph and Flowise (comparable to Intercom Fin / Zendesk AI), cutting order cancellation churn for 35.7% of users and automating 60% of customer support load.",
-            overviewParagraph: "Engineered and optimized multi-agent LLM systems for leading D2C wellness brands Vedix and SkinKraft using LangGraph and Flowise.",
+            summary: "Built AI support assistants for wellness brands Vedix and SkinKraft that now handle 60% of routine customer tickets and cut order cancellations for 35.7% of users.",
+            overviewParagraph: "At IncNut Digital I built AI assistants that answer customer support tickets for two wellness brands, Vedix and SkinKraft. I proved the idea with a quick visual prototype (FlowiseAI), then rebuilt it as a reliable production system (LangGraph) where every conversation can be reviewed (LangSmith). It now handles 60% of routine questions and cut order cancellations for 35.7% of users.",
             caseMetrics: [
-                { value: "60%", label: "Support Automated", desc: "Routine inquiries handled by LLM agents" },
-                { value: "35.7%", label: "Cancellation Boost", desc: "Blockers removed with LangGraph state flows" },
-                { value: "2 Brands", label: "Production Scale", desc: "Deployed for Vedix & SkinKraft" }
+                { value: "60%", label: "Tickets Handled by AI", desc: "Routine inquiries handled by LLM agents" },
+                { value: "35.7%", label: "Fewer Cancellations", desc: "Blockers removed with LangGraph state flows" },
+                { value: "2 Brands", label: "Live in Production", desc: "Deployed for Vedix & SkinKraft" }
             ],
-            problemToSolve: "High customer query volume created substantial human support ticket backlog, while rigid order cancellation funnels caused user frustration and high cancellation abandonment.",
-            solution: "Built and orchestrated production LLM agents using LangGraph and Flowise. Refined prompt logic, state transitions, and fallback paths, cutting order cancellation blockers for 35.7% of users and automating 60% of routine customer support tickets.",
+            problemToSolve: "Support teams at two wellness brands were buried under a growing backlog of customer tickets, and the cancellation process was so rigid that frustrated customers simply cancelled their orders.",
+            solution: "I built AI support assistants that read each ticket, check who the customer is, look up their orders and reply. I first proved the idea with a quick visual prototype (FlowiseAI), then rebuilt it as a reliable production system (LangGraph) where every conversation can be reviewed (LangSmith). It now handles 60% of routine tickets, and a smarter cancellation flow cut order cancellations for 35.7% of users.",
             architecture: [
-                "LangGraph state machine orchestrating intent classification, retrieval, and automated agent handoffs.",
-                "Flowise visual workflow integration with custom Python tool execution hooks and webhook notifications.",
-                "Dynamic prompt optimization and fallback routing minimizing cancellation churn for 35.7% of users."
+                "From Prototype to Reliable System: The visual prototype was great for testing ideas, but production needed exact control over every step, so I moved it into code (FlowiseAI → LangGraph).",
+                "Every Conversation Is Traceable: Each AI conversation is recorded step by step, making it easy to see why the AI answered a certain way and what it cost (LangSmith).",
+                "Check, Then Answer: The AI confirms who the customer is, looks up their orders, decides what they need, and only then uses tools like order lookups to reply.",
+                "Smarter Cancellation Path: Before processing a cancellation, the AI tries to solve the problem behind it, such as suggesting a better-suited product."
             ],
             images: [
-                "/projects/incnut-analytics.svg",
-                "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=720&q=75"
+                "/projects/incnut-analytics.svg"
             ],
-            tech: "LangGraph, Flowise, LangChain, Python, LLM APIs, Prompt Engineering",
+            tech: "LangGraph, LangSmith, FlowiseAI, LangChain, Python, LLM APIs (GPT-4o), Prompt Engineering, React, Freshdesk Webhooks",
             points: [
-                "Built and optimized LLM agents (LangGraph, Flowise) for Vedix and SkinKraft.",
-                "Refined prompt logic, cutting order cancellation blockers for 35.7% of users.",
-                "Automated customer queries reducing support workload by 60%."
+                "AI Support for Two Brands: Built AI assistants that answer customer support tickets for Vedix and SkinKraft, now handling 60% of routine questions without a human.",
+                "Prototype First: Proved the idea quickly in a visual tool (FlowiseAI), where a “manager” AI hands each question to specialist AIs that can search the web and the brand's product knowledge.",
+                "Built for Production: Rebuilt it in code (LangGraph) so the AI follows reliable, predictable steps and sorts each ticket into one of 12 request types, with every conversation reviewable (LangSmith).",
+                "Fewer Cancellations: Redesigned how the AI handles “I want to cancel” requests so it tries to fix the real problem first, which cut order cancellations for 35.7% of users."
             ],
             diagrams: [
                 {
                     id: "incnut-multi-agent-rag",
-                    tabTitle: "LangGraph Multi-Agent Architecture",
-                    title: "IncNut Multi-Agent LangGraph RAG & Ticket Routing Engine",
-                    badge: "LangGraph State Machine",
-                    description: "End-to-end multi-agent orchestration: Freshdesk webhook ingestion, gatekeeper customer verification, structured 12-specialist intent routing, cyclic ReAct tool execution, and post-graph reply structuring.",
+                    tabTitle: "LangGraph & LangSmith Production (V2)",
+                    title: "Production LangGraph Cyclic State Machine & LangSmith Observability",
+                    badge: "Production V2 (LangGraph)",
+                    description: "Production state-graph engine monitored with LangSmith: Freshdesk webhook ingestion, gatekeeper customer verification, structured 12-specialist intent routing, cyclic ReAct ToolNode execution, and post-graph reply structuring.",
                     chart: `flowchart TD
     subgraph Phase1["1. Ingestion & Identity Gatekeeper"]
         Start([Freshdesk Ticket In]) --> GK["gatekeeper_analyst<br/>(validates customer record)"]
@@ -400,48 +639,112 @@ export const userData = {
         Guard -- Valid Answer --> ReplyAgent["run_reply_agent()<br/>(Structures email_copy & ticket metadata)"]
         ReplyAgent --> FreshdeskUpdate["Update Freshdesk Ticket<br/>(Send response & set category/status)"]
     end`
+                },
+                {
+                    id: "flowise-supervisor-flow",
+                    tabTitle: "FlowiseAI Initial Architecture (V1)",
+                    title: "Initial FlowiseAI Multi-Agentic RAG Architecture (Supervisor-Worker Pattern)",
+                    badge: "Initial V1 (FlowiseAI)",
+                    description: "The initial multi-agent RAG prototype built with FlowiseAI: A ChatOpenAI-powered Supervisor AI orchestrating specialized Worker AI personas (Lead/Customer Research with Google Search, Retention & Solutions drafting) under single-task-at-a-time execution and recursion limit guardrails.",
+                    chart: `flowchart TD
+    %% ==========================================
+    %% 1. USER & INGESTION
+    %% ==========================================
+    subgraph Client ["User / Channel Entrypoint"]
+        User["User Inquiry / Support Ticket<br/>(D2C Customer Query for Vedix / SkinKraft)"]
+    end
+
+    %% ==========================================
+    %% 2. MODEL & TOOL CONFIG NODES
+    %% ==========================================
+    subgraph ConfigNodes ["Flowise Canvas Configuration Nodes"]
+        ChatModel["ChatOpenAI Node<br/>• Model: gpt-4o<br/>• Temperature: 0.9<br/>• Function Calling Enabled"]
+        SearchTool["Google Custom Search Tool<br/>(API Credential & Web Retrieval)"]
+        KBRag["Knowledge Base Vector Store<br/>(Vedix & SkinKraft Regimen Data)"]
+    end
+
+    %% ==========================================
+    %% 3. SUPERVISOR NODE (ORCHESTRATOR)
+    %% ==========================================
+    subgraph SupervisorNode ["Flowise Supervisor AI Node (Orchestrator)"]
+        Sup["Supervisor Agent<br/>• System Prompt with {team_members} variable<br/>• 'FINISH' Directive Termination Signal<br/>• Recursion Limit Guardrail"]
+        StateMem["Agent Memory Node<br/>(Preserves State Across Handoffs)"]
+    end
+
+    %% ==========================================
+    %% 4. WORKER AI TEAM (SPECIALIZED AGENTS)
+    %% ==========================================
+    subgraph WorkerTeam ["Flowise Worker AI Team (Sequential Execution)"]
+        W1["Worker 1: Customer & Product Research<br/>• Prompt: Explore digital landscape & customer history<br/>• Tools: Google Search & Brand Knowledge Base<br/>• Max Iterations Guardrail"]
+        W2["Worker 2: Resolution & Retention Specialist<br/>• Prompt: Formulate personalized solutions & email drafts<br/>• Tool: CRM / Retention Voucher API<br/>• Max Iterations Guardrail"]
+    end
+
+    %% ==========================================
+    %% 5. DELIVERY & COMPLETION
+    %% ==========================================
+    subgraph Delivery ["Final Resolution Flow"]
+        FinalResp["Supervisor Validates Output<br/>Issues 'FINISH' Directive"]
+        UserOut["Personalized Resolution Delivered<br/>(Sent to Support Agent / Customer)"]
+    end
+
+    %% ==========================================
+    %% CONNECTIONS & FLOW
+    %% ==========================================
+    User --> Sup
+    ChatModel -->|"Tool Calling Chat Model"| Sup
+    ChatModel -.->|"Inherited Chat Model"| W1 & W2
+    SearchTool & KBRag -->|"Connected Tools"| W1
+
+    Sup -->|"Step 1: Delegate Research Task"| W1
+    W1 -->|"Return Research Findings"| Sup
+    Sup -->|"Step 2: Delegate Solution Task"| W2
+    W2 -->|"Return Formulated Draft / Solution"| Sup
+
+    Sup --> FinalResp
+    FinalResp --> UserOut`
                 }
             ]
         }
     ],
+
 
     projects: [
         {
             id: "pm2-auto-recovery-alerts",
             client: "Open Source Tool",
             company: "Self",
-            projectType: "Self-Hosted Infra APM & Auto-Recovery",
+            projectType: "Server Monitoring & Auto-Recovery",
             year: "2025",
             title: "PM2 Auto Recovery Alerts",
             tech: "Node.js, MongoDB, SSH, Docker",
             badge: "DevOps APM (PM2 Plus Alternative)",
             github: "https://github.com/Shubhanshu-ism/pm2-auto-recovery-alerts",
             link: "https://github.com/Shubhanshu-ism/pm2-auto-recovery-alerts",
-            summary: "Self-hosted infrastructure health-monitoring and auto-recovery daemon — open-source alternative to PM2 Plus and Datadog with automated SSH process restarts and multi-channel alerts.",
+            summary: "Watches your servers, restarts crashed apps automatically and alerts your team on Slack, Flock or Telegram. An open-source alternative to PM2 Plus.",
             caseMetrics: [
-                { value: "Auto-SSH", label: "Self Healing", desc: "Automated remote PM2 process restarts" },
-                { value: "Docker", label: "Containerized", desc: "Hardened environment with REST API" },
-                { value: "3 Channels", label: "Alert Dispatch", desc: "Slack, Flock, and Telegram webhooks" }
+                { value: "Auto-Restart", label: "Self-Healing Apps", desc: "Automated remote PM2 process restarts" },
+                { value: "Docker", label: "One-Step Setup", desc: "Hardened environment with REST API" },
+                { value: "3 Channels", label: "Slack · Flock · Telegram", desc: "Slack, Flock, and Telegram webhooks" }
             ],
-            description: "Self-hosted health-monitoring and auto-recovery engine — SSH-based PM2 restart automation, secured target-management API, pluggable Slack/Flock/Telegram alerting.",
-            overviewParagraph: "A self-hosted infrastructure daemon that continuously monitors remote virtual machines, detects crashed or degraded PM2 Node.js processes, triggers automated SSH self-healing restarts, and notifies teams across Slack, Flock, or Telegram.",
-            problemToSolve: "Distributed Node.js microservices deployed across remote servers frequently experience silent crashes from memory spikes or unhandled rejections. Without active self-healing, services remain down until an engineer logs in manually via SSH.",
-            solution: "Architected a containerized Node.js service running in Docker that securely executes SSH remote commands without exposed keys, stores server targets in MongoDB via an authenticated REST API, and dispatches rich alert payloads across multiple communication webhooks.",
+            description: "Watches your servers, restarts crashed apps automatically and alerts your team.",
+            overviewParagraph: "A small, self-hosted service that keeps an eye on apps running on remote servers. When one crashes, it restarts it automatically and tells the team on Slack, Flock or Telegram, so nobody has to log in and fix it by hand.",
+            problemToSolve: "Apps running on remote servers sometimes crash quietly, for example when they run out of memory. Without something watching them, they stay down until an engineer notices, logs in and restarts them by hand.",
+            solution: "I built a small always-on service that checks every app on a schedule, restarts any that have crashed, and tells the team on Slack, Flock or Telegram what happened. Servers are added through a secure API, and the whole thing runs in a single Docker container.",
             architecture: [
-                "Continuous health daemon polling target server endpoints and PM2 process tables via SSH.",
-                "Self-healing SSH execution channel automatically issuing `pm2 restart <service>` upon failure detection.",
-                "Target management REST API backed by MongoDB for dynamically registering remote server instances.",
-                "Pluggable alerting dispatcher supporting webhooks for Slack, Flock, and Telegram."
+                "Regular Health Checks: Pings each app's health check on a schedule and reads its process status on the server (over SSH).",
+                "Knows a Crash From an Outage: If an app is up but a service it depends on is down, it alerts instead of restarting, so it never restarts a healthy app.",
+                "Server List in a Database: The servers to watch are stored in MongoDB and managed through a REST API.",
+                "Pluggable Alerts: New alert channels are easy to add; Slack, Flock and Telegram are built in."
             ],
             images: [
                 "/projects/pm2-daemon.svg",
                 "/projects/pm2-architecture.svg"
             ],
             points: [
-                "Self-hosted health-monitoring and auto-recovery engine for Node.js production servers.",
-                "SSH-based PM2 restart automation, reducing manual intervention and minimizing downtime.",
-                "Secured target-management API with MongoDB and Docker containerization.",
-                "Pluggable alerting integrations for Slack, Flock, and Telegram."
+                "Apps That Fix Themselves: Watches production apps around the clock and automatically restarts any that crash.",
+                "Less Manual Firefighting: No more waiting for an engineer to log in and restart a service by hand, which cuts downtime.",
+                "Easy to Add Servers: New servers are added through a simple, secured API, and everything runs in one Docker container.",
+                "Instant Team Alerts: Sends a message to Slack, Flock or Telegram whenever something fails or recovers."
             ],
             diagrams: [
                 {
@@ -474,105 +777,102 @@ export const userData = {
             id: "ai-compare",
             client: "Personal Project",
             company: "Self",
-            projectType: "Real-Time LLM Benchmarking Suite",
+            projectType: "AI Model Comparison",
             year: "2024",
             title: "AI Compare",
             tech: "React.js, Google Gemini, Deepseek",
             badge: "LLM Benchmark (Chatbot Arena Pattern)",
             link: "https://ai-compare-steel.vercel.app/",
             github: "https://github.com/Shubhanshu-ism/AI-Compare",
-            summary: "Dual-stream comparative LLM benchmark evaluating Google Gemini and DeepSeek models side-by-side in real-time.",
+            summary: "Ask one question and watch Google Gemini and DeepSeek answer side by side in real time, with the response speed of each.",
             caseMetrics: [
-                { value: "Dual Stream", label: "Real-Time Sync", desc: "Simultaneous model evaluation" },
+                { value: "Side by Side", label: "Live Answers", desc: "Simultaneous model evaluation" },
                 { value: "Dual Models", label: "Gemini + DeepSeek", desc: "Direct latency & token benchmark" },
-                { value: "Extensible", label: "Plugin System", desc: "Pluggable AI provider architecture" }
+                { value: "Extensible", label: "Add Any AI Provider", desc: "Pluggable AI provider architecture" }
             ],
-            description: "Side-by-side AI response comparison tool integrating Deepseek and Gemini APIs supporting plug-in of other AI providers.",
-            overviewParagraph: "A real-time side-by-side LLM benchmark and comparison tool allowing prompt engineers and developers to evaluate output fidelity, reasoning quality, and latency between Google Gemini and DeepSeek models simultaneously.",
-            problemToSolve: "Benchmarking prompt effectiveness across foundation models requires jumping between separate provider playgrounds, making direct comparative analysis slow and subjective.",
-            solution: "Designed a split-pane reactive interface in React.js that dispatches parallel asynchronous requests to Gemini and DeepSeek APIs, presenting synchronized streaming responses with latency metrics and an extensible architecture for new AI providers.",
+            description: "Compare answers from Google Gemini and DeepSeek side by side.",
+            overviewParagraph: "A web app for comparing AI models fairly. You type a question once and watch Google Gemini and DeepSeek answer side by side as they write, along with how quickly each one responded. New AI providers can be added easily.",
+            problemToSolve: "Comparing AI models meant pasting the same question into separate websites and switching back and forth, which made fair, side-by-side judgement slow and guesswork-heavy.",
+            solution: "I built one screen where you ask a question once and watch Google Gemini and DeepSeek answer side by side in real time, with how fast each one responded. New AI providers can be plugged in without rewriting the app.",
             images: [
-                "/projects/ai-compare-suite.svg",
-                "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=720&q=75"
+                "/projects/ai-compare-suite.svg"
             ],
             points: [
-                "Side-by-side AI response comparison tool integrating Deepseek and Gemini APIs.",
-                "Extensible architecture supporting easy plug-in of additional AI providers.",
-                "Real-time dual-stream comparison with latency and output metrics."
+                "Compare Answers Side by Side: Ask one question and watch Google Gemini and DeepSeek answer at the same time.",
+                "Easy to Add More AIs: Built so new AI providers can be plugged in without rewriting the app.",
+                "Speed and Quality at a Glance: Shows how quickly each model responded next to its answer."
             ]
         },
         {
             id: "megablog",
             client: "Personal Project",
             company: "Self",
-            projectType: "Full Stack Publishing",
+            projectType: "Blogging Platform",
             year: "2024",
             title: "MegaBlog",
             tech: "React.js, Redux Toolkit, Appwrite, React Router, TailwindCSS",
             badge: "Full Stack / BaaS",
             link: "https://mega-blog-two-indol.vercel.app/",
             github: "https://github.com/Shubhanshu-ism/MegaBlog",
-            summary: "Full-stack publishing platform with modular Appwrite BaaS backend, JWT auth, rich-text editing, and Redux Toolkit state.",
+            summary: "A complete blogging platform: sign up, write with a rich text editor, upload images and publish, all on a hosted backend.",
             caseMetrics: [
-                { value: "Full Stack", label: "Appwrite BaaS", desc: "Modular database & auth services" },
-                { value: "Redux", label: "Global State", desc: "Centralized session & article caching" },
-                { value: "JWT Auth", label: "Security", desc: "Protected client-side routing" }
+                { value: "Full Stack", label: "Hosted Backend", desc: "Modular database & auth services" },
+                { value: "Redux", label: "Fast, Synced Pages", desc: "Centralized session & article caching" },
+                { value: "Secure", label: "Sign-In & Private Pages", desc: "Protected client-side routing" }
             ],
-            description: "Full-stack blogging platform with JWT auth, rich-text editor, and image uploads on a modular Appwrite backend; Redux Toolkit for state, React Router for protected navigation.",
-            overviewParagraph: "A modern full-stack content publishing web app engineered with React, Redux Toolkit, and Appwrite BaaS, featuring secure authentication, rich-text composition, responsive image storage, and dynamic article routing.",
-            problemToSolve: "Creating a production-ready publishing platform without cumbersome backend boilerplate, while maintaining a clean separation between UI components and BaaS SDK calls.",
-            solution: "Engineered service abstraction wrappers around Appwrite services (auth, database, file storage) paired with Redux Toolkit for centralized state and protected React Router routes.",
+            description: "A complete blogging platform for writing and publishing posts.",
+            overviewParagraph: "A full blogging website where people can create an account, write posts in a rich text editor, add images and publish. It runs on a hosted backend (Appwrite), so accounts, posts and images work without a custom server.",
+            problemToSolve: "Building a real blogging platform usually means writing and maintaining a whole backend for accounts, posts and image storage, which slows everything else down.",
+            solution: "I built MegaBlog on a hosted backend (Appwrite) that handles accounts, posts and images, kept all backend calls in one small layer so the interface stays clean, and added a central store (Redux Toolkit) so pages load fast and stay in sync.",
             architecture: [
-                "Service abstraction layer decoupling UI from Appwrite SDK calls.",
-                "Redux Toolkit store managing authentication state, active sessions, and post caches.",
-                "Protected client-side routing with TinyMCE rich text integration."
+                "Backend Kept Separate: All Appwrite calls live in small service files, so the interface never depends directly on the backend.",
+                "One Central Store: Redux Toolkit holds login sessions and post data in one place.",
+                "Protected Pages: Writing and editing pages require sign-in, with a TinyMCE rich text editor."
             ],
             images: [
-                "/projects/megablog-platform.svg",
-                "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=720&q=75"
+                "/projects/megablog-platform.svg"
             ],
             points: [
-                "Full-stack blogging platform with JWT auth, rich-text editor, and image uploads on a modular Appwrite backend.",
-                "Redux Toolkit for state management and session caching.",
-                "Protected navigation routes and responsive layout built with TailwindCSS."
+                "A Complete Blogging Platform: Sign up, write posts in a rich text editor, upload images and publish, all on a hosted Appwrite backend.",
+                "Fast, Consistent Pages: Login state and posts live in one central store (Redux Toolkit), so pages load quickly and stay in sync.",
+                "Private Pages Stay Private: Only signed-in users can reach writing and editing pages, and the layout works on any screen size."
             ]
         },
         {
             id: "gitlab-coding-agent",
             client: "Autonomous Dev Infrastructure",
             company: "Self",
-            projectType: "Autonomous SWE Agent & Docker Sandbox",
+            projectType: "AI Coding Assistant",
             year: "2026",
             title: "AI GitLab Coding Agent",
             tech: "TypeScript, Next.js, Docker, PostgreSQL, Drizzle ORM, Anthropic, OpenAI",
             badge: "Autonomous SWE Agent (Devin Alternative)",
             github: "https://github.com/Shubhanshu-ism/gitlab-coding-agent",
             link: "https://github.com/Shubhanshu-ism/gitlab-coding-agent",
-            summary: "Autonomous AI-powered software engineering agent (open-source Devin alternative) executing coding tasks inside hardened Docker sandboxes with state machines, tool policy verification, and automated GitLab MR workflows.",
+            summary: "An AI coding assistant that writes and tests code in a locked-down sandbox, checks every command for safety, and opens a merge request for review.",
             caseMetrics: [
-                { value: "Hardened", label: "Docker Sandbox", desc: "2GB RAM & 2 CPU non-root isolation" },
-                { value: "FSM", label: "State Machine", desc: "Monotonic atomic EventStore in PostgreSQL" },
-                { value: "GitOps", label: "Automated MRs", desc: "Automated branch, commits & pipeline tracking" }
+                { value: "Sandboxed", label: "Isolated Workspace", desc: "2GB RAM & 2 CPU non-root isolation" },
+                { value: "3 Levels", label: "Command Safety Checks", desc: "Monotonic atomic EventStore in PostgreSQL" },
+                { value: "Auto MRs", label: "Ready for Review", desc: "Automated branch, commits & pipeline tracking" }
             ],
-            description: "Production-ready coding agent harness orchestrating LLMs inside secure Docker containers with strict safety policies and GitLab integration.",
-            overviewParagraph: "An AI-native development harness that connects to GitLab repositories, delegates complex software engineering tasks to foundation models (Claude / GPT-4o), safely executes code changes and test runs inside isolated Docker containers, and opens verified Merge Requests.",
-            problemToSolve: "Allowing autonomous AI agents to edit code and run shell commands in production codebases risks catastrophic accidental file deletion, shell injection, runaway infinite loops, and untracked state mutations.",
-            solution: "Architected a Next.js agent harness powered by a strict Finite State Machine and an atomic PostgreSQL EventStore. Designed a 3-tier command policy engine (SAFE, CONFIRM, BLOCKED) and isolated all workspace mutations in locked-down Docker containers with non-root execution and blocked docker.sock.",
+            description: "An AI that writes and tests code safely, then opens a merge request.",
+            overviewParagraph: "An AI coding assistant that connects to GitLab projects. Give it a task and it reads the code, makes changes and runs the tests inside an isolated sandbox, asking a human before anything risky, then opens a merge request for review. It works with leading AI models (Claude and GPT-4o).",
+            problemToSolve: "Letting an AI edit code and run commands on a real project is risky: one wrong command could delete files, run forever, or change things nobody can trace.",
+            solution: "I built a system where the AI works only inside a locked-down sandbox, every command it wants to run is checked first (safe ones run, risky ones wait for a human, destructive ones are blocked), and every step is recorded. When it's done, it opens a merge request for a developer to review.",
             architecture: [
-                "AgentHarness orchestrating lifecycle methods (run, cancel, resume) with monotonic event sequence counters.",
-                "Atomic EventStore in PostgreSQL powering real-time client Server-Sent Events (SSE) with Last-Event-ID replay.",
-                "Command Policy Engine enforcing human approval (PAUSED_FOR_TOOL_APPROVAL) on high-impact commands and outright blocking destructive operations.",
-                "Hardened Docker execution container with non-root agent user, 2GB memory cap, and restricted host access."
+                "Clear Run States: Each run moves through defined stages (running, paused for approval, finished), so it can be stopped or resumed cleanly.",
+                "Recorded Event Log: Every step is saved in order in PostgreSQL and streamed live to the browser, even after a reconnect.",
+                "Three-Level Safety Policy: Commands are classed as safe, needs approval, or blocked before they ever run.",
+                "Hardened Sandbox: Runs as a non-admin user with 2GB memory and 2 CPUs, and can't reach the host machine's Docker."
             ],
             images: [
-                "/projects/gitlab-agent-architecture.svg",
-                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=720&q=75"
+                "/projects/gitlab-agent-architecture.svg"
             ],
             points: [
-                "Autonomous coding agent harness with pluggable tool registry and command policy engine.",
-                "Strict Finite State Machine backed by PostgreSQL event streaming with SSE replay.",
-                "Sandboxed Docker workspace with resource quotas and non-root execution.",
-                "Automated Git branching, atomic committing, and GitLab Merge Request creation with CI pipeline monitoring."
+                "An AI That Codes Safely: Give it a coding task and it reads the code, makes changes, runs the tests and opens a merge request for review.",
+                "Guardrails on Every Command: Every command is checked first. Safe ones run, risky ones wait for human approval, and destructive ones (like deleting files) are blocked.",
+                "Isolated Workspace: The AI works inside a locked-down container with limited memory and no admin rights, so it can't harm the real system.",
+                "Full Live History: Every step is recorded and streamed live, so developers can watch, and later replay, exactly what the AI did."
             ],
             diagrams: [
                 {

@@ -4,28 +4,21 @@ import { PageWrapper } from '../components/PageWrapper';
 import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Github, Sparkles, Cpu, Layers, GitBranch, ArrowRight } from 'lucide-react';
-
-const getItemIcon = (item) => {
-    if (item.id === 'gitlab-coding-agent') return <GitBranch size={22} className="text-[#fc6d26]" />;
-    if (item.id === 'pm2-auto-recovery-alerts') return <Cpu size={22} className="text-amber-500" />;
-    if (item.id === 'ai-compare') return <Sparkles size={22} className="text-cyan-500" />;
-    if (item.id === 'megablog') return <Layers size={22} className="text-rose-500" />;
-    return <GitBranch size={22} className="text-accent" />;
-};
+import { ItemIcon } from '../components/ItemIcon';
+import { ArrowUpRight, Github, ArrowRight } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
     const title = project.title;
     const techList = project.tech ? project.tech.split(',').slice(0, 5) : [];
 
     return (
-        <div className="group bg-bgCard border border-subtle p-6 sm:p-8 rounded-[28px] hover:border-accent/30 transition-all duration-300 shadow-sm relative flex flex-col justify-between space-y-6">
+        <div className="group bg-bgCard border border-subtle p-6 sm:p-8 rounded-3xl hover:border-accent/30 transition-all duration-300 shadow-sm relative flex flex-col justify-between space-y-6">
             <div className="space-y-5">
                 {/* Header: Icon, Titles & Badges */}
                 <div className="flex items-start justify-between gap-4">
                     <div className="flex items-center gap-4 min-w-0">
-                        <div className="w-13 h-13 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-xl text-accent shrink-0 shadow-sm border border-subtle">
-                            {getItemIcon(project)}
+                        <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-subtle">
+                            <ItemIcon item={project} size={22} />
                         </div>
                         <div className="min-w-0">
                             <h3 className="text-xl sm:text-2xl font-bold text-accent tracking-tight truncate">
@@ -58,7 +51,7 @@ const ProjectCard = ({ project }) => {
                         {project.caseMetrics.map((m, idx) => (
                             <div
                                 key={idx}
-                                className="bg-black/[0.02] dark:bg-white/[0.03] border border-subtle p-3 rounded-[16px] text-center"
+                                className="bg-black/[0.02] dark:bg-white/[0.03] border border-subtle p-3 rounded-2xl text-center"
                             >
                                 <p className="text-base sm:text-lg font-bold text-accent tracking-tight">{m.value}</p>
                                 <p className="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-dim mt-0.5 truncate">{m.label}</p>
@@ -200,7 +193,7 @@ const ProjectsPage = () => {
                 </section>
 
                 {/* Cross Link to Work Experience */}
-                <div className="p-6 sm:p-7 rounded-[24px] bg-black/[0.02] dark:bg-white/[0.03] border border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="p-6 sm:p-7 rounded-3xl bg-black/[0.02] dark:bg-white/[0.03] border border-subtle flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                     <div>
                         <h4 className="font-bold text-accent text-base sm:text-lg">Looking for Production Experience?</h4>
                         <p className="text-xs sm:text-sm text-dim mt-0.5">Explore GoPaisa, PolicyBazaar campaigns, TableSprint, and IncNut Digital case studies.</p>

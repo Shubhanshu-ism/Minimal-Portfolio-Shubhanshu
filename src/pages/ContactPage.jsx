@@ -70,7 +70,7 @@ const ContactPage = () => {
 
                     <div className="grid gap-3">
                         {/* Email Card */}
-                        <div className="bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center justify-between shadow-sm hover:border-accent/25 transition-all">
+                        <div className="bg-bgCard border border-subtle p-4 sm:p-5 rounded-3xl flex items-center justify-between shadow-sm hover:border-accent/25 transition-all">
                             <div className="flex items-center gap-4 min-w-0">
                                 <div className="w-11 h-11 rounded-xl bg-black/[0.03] dark:bg-white/[0.06] flex items-center justify-center text-accent shrink-0 border border-subtle">
                                     <Mail size={18} />
@@ -97,7 +97,7 @@ const ContactPage = () => {
 
 
                         {/* Location Card */}
-                        <div className="bg-bgCard border border-subtle p-4 sm:p-5 rounded-[22px] flex items-center gap-4 shadow-sm hover:border-accent/25 transition-all">
+                        <div className="bg-bgCard border border-subtle p-4 sm:p-5 rounded-3xl flex items-center gap-4 shadow-sm hover:border-accent/25 transition-all">
                             <div className="w-11 h-11 rounded-xl bg-black/[0.03] dark:bg-white/[0.06] flex items-center justify-center text-accent shrink-0 border border-subtle">
                                 <MapPin size={18} />
                             </div>
@@ -118,7 +118,7 @@ const ContactPage = () => {
                         </h2>
                     </div>
 
-                    <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-[26px] shadow-sm relative overflow-hidden">
+                    <div className="bg-bgCard border border-subtle p-6 sm:p-7 rounded-3xl shadow-sm relative overflow-hidden">
                         <form onSubmit={handleSubmit} className="space-y-4 relative z-10 w-full">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                                 <div className="space-y-1.5">
@@ -159,7 +159,7 @@ const ContactPage = () => {
                                 className={`w-full py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.98] ${
                                     status === 'success'
                                         ? 'bg-emerald-600 text-white border-transparent'
-                                        : 'bg-[#0F172A] text-white dark:bg-white dark:text-[#0F172A] hover:opacity-90 shadow-sm'
+                                        : 'bg-accent text-bgMain hover:opacity-90 shadow-sm'
                                 }`}
                             >
                                 {status === 'default' && (

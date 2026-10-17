@@ -66,12 +66,12 @@ const PageLoader = () => (
     {/* Metric cards */}
     <div className="grid grid-cols-2 gap-3">
       {[...Array(4)].map((_, i) => (
-        <SkeletonBlock key={i} className="h-20 rounded-[20px]" />
+        <SkeletonBlock key={i} className="h-20 rounded-2xl" />
       ))}
     </div>
 
     {/* Hero image placeholder */}
-    <SkeletonBlock className="w-full aspect-video rounded-[24px]" />
+    <SkeletonBlock className="w-full aspect-video rounded-3xl" />
 
     {/* Text paragraphs */}
     <div className="space-y-3">
