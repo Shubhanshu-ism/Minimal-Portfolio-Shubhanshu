@@ -15,7 +15,7 @@
 - **Status**: Available for Full-Time SDE, Backend Developer, and AI Engineering roles.
 
 ## Primary Documentation Links
-- [GoPaisa Case Study](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/gopaisa): 66x query latency reduction, 1.5M+ row streaming export, and guided CSV ingestion engine.
+- [GoPaisa Case Study](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/gopaisa): 66x query latency reduction, 2M-row streaming export, guided CSV ingestion engine, and API Pulse real-time API monitoring.
 - [IncNut Digital Case Study](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/incnut-digital): Autonomous multi-agent LangGraph customer support automation.
 - [AI GitLab Coding Agent](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/gitlab-coding-agent): Autonomous software engineering agent with Docker sandboxing.
 - [PM2 Auto Recovery Alerts](https://minimal-portfolio-shubhanshu-dark-l.vercel.app/project/pm2-auto-recovery-alerts): Self-hosted DevOps health-monitoring and SSH auto-recovery daemon.
@@ -45,7 +45,9 @@
 - **Product Category**: Marketing Analytics & BI Dashboard / Fintech Keyset Streaming / Data Ingestion ETL
 - **Commercial Analogues**: Fivetran (ETL ingestion), Metabase / Google Data Studio (BI reporting), Datadog / New Relic APM (query latency tuning).
 - **66× Query Latency Optimization**: Refactored the Credit Card Payment Panel backend by eliminating N+1 query bottlenecks and restructuring SQL joins, dropping query execution time from 20 seconds to 0.3 seconds.
-- **High-Concurrency Streaming Export**: Architected an in-memory streaming export pipeline capable of streaming 1.5M+ financial records in under 15 seconds without memory spikes, protected with global concurrency locking to prevent database starvation.
+- **High-Concurrency Streaming Export**: Architected a streaming export pipeline for up to 2M financial records using PostgreSQL cursors, backpressure and a worker-thread decryption pool, protected with global concurrency locking to prevent database starvation.
+- **API Pulse (Real-Time API Monitoring)**: Built a monitoring service for the payment microservices: a drop-in Express middleware reports errors and slow requests plus 30-second traffic heartbeats, and a live SSE dashboard shows golden signals (throughput, success rate, error rate, P50/P95/P99 latency, service health).
+- **Production Alerting & Payment Services**: PM2 log watcher with deduplicated Flock alerts, a Razorpay/IFSC payment-disbursal microservice, and TOTP two-step verification for disbursements.
 - **Self-Serve Analytics Dashboard**: Built analytics and campaign performance infrastructure aggregating data across 92 active marketing campaigns and processing 228K+ clicks in real time.
 
 ### 2. IncNut Digital — AI Intern (LLM Application Developer)
@@ -104,6 +106,7 @@
 | **IncNut Support Automation** | Intercom Fin, Zendesk AI, Ada | Enterprise D2C Support Automation |
 | **PM2 Auto Recovery Alerts** | PM2 Plus (Keymetrics), Datadog, BetterStack | Self-Hosted Infra APM & Auto-Recovery |
 | **GoPaisa Ingestion & Export** | Fivetran, Metabase, Stripe Dashboard | High-Throughput Data Pipeline & BI |
+| **GoPaisa API Pulse** | Datadog APM, Sentry, Better Stack | Real-Time API Monitoring |
 | **AI Compare** | Chatbot Arena (LMSYS), Artificial Analysis | Real-Time LLM Benchmarking |
 
 ---

@@ -1,126 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%" fill="none">
-  <defs>
-    <linearGradient id="gp-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="100%" stop-color="#04070d"/>
-    </linearGradient>
-    <linearGradient id="gp-card" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#0b0f17"/>
-    </linearGradient>
-    <linearGradient id="gp-blue-glow" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
-    </linearGradient>
-  </defs>
-
-  <!-- Background -->
-  <rect width="1200" height="750" fill="url(#gp-bg)"/>
-
-  <!-- Main Container Card -->
-  <rect x="50" y="40" width="1100" height="670" rx="16" fill="url(#gp-card)" stroke="#1f293d" stroke-width="1.5"/>
-
-  <!-- Top App Navbar -->
-  <rect x="50" y="40" width="1100" height="60" rx="16" fill="#0b0f17" stroke="#1f293d" stroke-width="1"/>
-  <rect x="50" y="85" width="1100" height="15" fill="#0b0f17"/>
-
-  <circle cx="85" cy="70" r="12" fill="#3b82f6"/>
-  <text x="85" y="75" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="13" font-weight="900" text-anchor="middle">GP</text>
-  <text x="110" y="75" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="16" font-weight="700">GoPaisa Report</text>
-  <text x="235" y="75" fill="#64748b" font-family="'SF Mono', monospace" font-size="12">myreport.gopaisa.com</text>
-
-  <!-- Status indicator -->
-  <rect x="910" y="55" width="120" height="28" rx="14" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="1"/>
-  <circle cx="925" cy="69" r="4" fill="#10b981"/>
-  <text x="937" y="73" fill="#34d399" font-family="'SF Mono', monospace" font-size="11" font-weight="700">228K+ CLICKS</text>
-
-  <!-- Metric Badges Row -->
-  <g transform="translate(85, 125)">
-    <!-- Metric 1: Latency -->
-    <rect x="0" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="20" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">QUERY LATENCY</text>
-    <text x="20" y="65" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">0.3s <tspan fill="#64748b" font-size="14" font-weight="500">vs 20s</tspan></text>
-    <text x="155" y="32" fill="#10b981" font-family="'SF Mono', monospace" font-size="11" font-weight="700">66× FASTER</text>
-
-    <!-- Metric 2: Active Campaigns -->
-    <rect x="260" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="280" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">ACTIVE CAMPAIGNS</text>
-    <text x="280" y="65" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">92 <tspan fill="#64748b" font-size="14" font-weight="500">Live</tspan></text>
-    <text x="415" y="32" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11" font-weight="700">MULTI-CLIENT</text>
-
-    <!-- Metric 3: Export Volume -->
-    <rect x="520" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="540" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">CSV STREAMING</text>
-    <text x="540" y="65" fill="#10b981" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">1.5M+ <tspan fill="#64748b" font-size="14" font-weight="500">Rows</tspan></text>
-    <text x="680" y="32" fill="#10b981" font-family="'SF Mono', monospace" font-size="11" font-weight="700">&lt; 15 SEC</text>
-
-    <!-- Metric 4: Concurrency Lock -->
-    <rect x="780" y="0" width="250" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="800" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">SYSTEM RELIABILITY</text>
-    <text x="800" y="65" fill="#f59e0b" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">0 Crashes</text>
-    <text x="940" y="32" fill="#f59e0b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">REDIS LOCK</text>
-  </g>
-
-  <!-- Big Chart & Table Section -->
-  <g transform="translate(85, 245)">
-    <!-- Chart Container -->
-    <rect x="0" y="0" width="1030" height="260" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="15" font-weight="700">Real-Time Traffic &amp; Conversion Stream (Hourly Analytics)</text>
-    <text x="25" y="55" fill="#64748b" font-family="'SF Mono', monospace" font-size="11">Aggregated across Flipkart, Amazon, Myntra, Ajio affiliate campaigns</text>
-
-    <!-- Chart Grid Lines -->
-    <line x1="25" y1="90" x2="1005" y2="90" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="25" y1="140" x2="1005" y2="140" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="25" y1="190" x2="1005" y2="190" stroke="#1e293b" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="25" y1="230" x2="1005" y2="230" stroke="#334155" stroke-width="1"/>
-
-    <!-- Filled Area Graph -->
-    <polygon points="25,230 25,180 120,160 220,120 320,140 420,95 520,110 620,85 720,70 820,100 920,65 1005,80 1005,230" fill="url(#gp-blue-glow)"/>
-
-    <!-- Path Curve -->
-    <path d="M 25 180 Q 120 160 220 120 T 420 95 T 620 85 T 820 100 T 1005 80" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
-
-    <!-- Secondary Line (Conversions) -->
-    <path d="M 25 210 Q 120 200 220 180 T 420 160 T 620 150 T 820 165 T 1005 145" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
-
-    <circle cx="820" cy="100" r="5" fill="#3b82f6" stroke="#ffffff" stroke-width="2"/>
-    <rect x="760" y="55" width="120" height="28" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="1"/>
-    <text x="820" y="73" fill="#ffffff" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">24.2K Clicks/hr</text>
-  </g>
-
-  <!-- Bottom Data Table Preview -->
-  <g transform="translate(85, 525)">
-    <rect x="0" y="0" width="1030" height="155" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <!-- Table Header -->
-    <rect x="0" y="0" width="1030" height="35" rx="12" fill="#111827"/>
-    <rect x="0" y="25" width="1030" height="10" fill="#111827"/>
-    <text x="25" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">CAMPAIGN ID</text>
-    <text x="200" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">MERCHANT PARTNER</text>
-    <text x="450" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">CLICKS (24H)</text>
-    <text x="650" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">CONV. RATE</text>
-    <text x="850" y="23" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">QUERY LATENCY</text>
-
-    <!-- Row 1 -->
-    <text x="25" y="62" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12">#GP-CAMP-0842</text>
-    <text x="200" y="62" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Flipkart Electronics Super Sale</text>
-    <text x="450" y="62" fill="#f1f5f9" font-family="'SF Mono', monospace" font-size="12">84,120</text>
-    <text x="650" y="62" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">4.82%</text>
-    <text x="850" y="62" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">0.28s <tspan fill="#64748b">(cached)</tspan></text>
-
-    <!-- Row 2 -->
-    <line x1="20" y1="78" x2="1010" y2="78" stroke="#1e293b" stroke-width="0.75"/>
-    <text x="25" y="102" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12">#GP-CAMP-0919</text>
-    <text x="200" y="102" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Amazon Great Indian Festival</text>
-    <text x="450" y="102" fill="#f1f5f9" font-family="'SF Mono', monospace" font-size="12">112,490</text>
-    <text x="650" y="102" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">5.14%</text>
-    <text x="850" y="102" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">0.31s <tspan fill="#64748b">(indexed join)</tspan></text>
-
-    <!-- Row 3 -->
-    <line x1="20" y1="118" x2="1010" y2="118" stroke="#1e293b" stroke-width="0.75"/>
-    <text x="25" y="140" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12">#GP-CAMP-1102</text>
-    <text x="200" y="140" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Myntra Fashion Carnival</text>
-    <text x="450" y="140" fill="#f1f5f9" font-family="'SF Mono', monospace" font-size="12">31,840</text>
-    <text x="650" y="140" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">3.95%</text>
-    <text x="850" y="140" fill="#10b981" font-family="'SF Mono', monospace" font-size="12">0.29s <tspan fill="#64748b">(indexed join)</tspan></text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" class="pa" role="img" aria-label="GoPaisa Report campaign analytics dashboard">
+<title>GoPaisa Report campaign analytics dashboard</title>
+<defs><style>.pa{font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif}
+.pa text{white-space:pre}
+.pa .m{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+.pa .bg{fill:var(--bg-main,#F8F9FA)}
+.pa .cd{fill:var(--bg-card,#FFFFFF)}
+.pa .in{fill:var(--bg-input,#F1F3F5)}
+.pa .ln{stroke:var(--border-subtle,rgba(0,0,0,.07));stroke-width:1.5}
+.pa .lnx{stroke:var(--text-dim,#475569);stroke-opacity:.35;stroke-width:1.5;fill:none}
+.pa .t1{fill:var(--text-accent,#0F172A)}
+.pa .t2{fill:var(--text-dim,#475569)}
+.pa .t3{fill:var(--text-dim,#475569);fill-opacity:.7}
+.pa .sk{fill:var(--text-dim,#475569);fill-opacity:.13}
+.pa .dt{fill:var(--text-dim,#475569);fill-opacity:.28}</style><linearGradient id="gp-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B82F6" stop-opacity=".22"/><stop offset="1" stop-color="#3B82F6" stop-opacity="0"/></linearGradient></defs>
+<rect width="960" height="600" class="bg"/>
+<rect width="960" height="44" class="cd"/>
+<line x1="0" y1="44" x2="960" y2="44" class="ln"/>
+<circle cx="22" cy="22" r="5" class="dt"/>
+<circle cx="40" cy="22" r="5" class="dt"/>
+<circle cx="58" cy="22" r="5" class="dt"/>
+<text x="84" y="27" class="t1" font-size="14"><tspan font-weight="600">GoPaisa Report</tspan><tspan class="m t3" font-size="12" dx="12">myreport.gopaisa.com</tspan></text>
+<rect x="880" y="11" width="56" height="22" rx="11" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-opacity="0.28" stroke-width="1.5"/><circle cx="892" cy="22" r="3" fill="#3B82F6"/><text x="901" y="25.96" class="m" fill="#3B82F6" font-size="11" font-weight="600">LIVE</text>
+<rect x="24" y="60" width="293" height="112" rx="14" class="cd ln"/><text x="44" y="88" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">TOTAL CLICKS</text><rect x="243" y="72" width="58" height="22" rx="11" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="252" y="86.96" class="m" fill="#10B981" font-size="11" font-weight="600">+38.2%</text><text x="44" y="130" class="t1" font-size="32" font-weight="700" letter-spacing="-0.8">1,67,663</text><text x="44" y="156" class="t3" font-size="12">PolicyBazaar NRI campaigns</text><rect x="333" y="60" width="293" height="112" rx="14" class="cd ln"/><text x="353" y="88" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">CAMPAIGN ROWS</text><rect x="566" y="72" width="44" height="22" rx="11" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="575" y="86.96" class="m" fill="#10B981" font-size="11" font-weight="600">+10%</text><text x="353" y="130" class="t1" font-size="32" font-weight="700" letter-spacing="-0.8">62</text><text x="353" y="156" class="t3" font-size="12">imported via guided CSV upload</text><rect x="642" y="60" width="293" height="112" rx="14" class="cd ln"/><text x="662" y="88" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">ACCESS</text><rect x="875" y="72" width="44" height="22" rx="11" fill="#3B82F6" fill-opacity="0.12" stroke="#3B82F6" stroke-opacity="0.28" stroke-width="1.5"/><text x="884" y="86.96" class="m" fill="#3B82F6" font-size="11" font-weight="600">RBAC</text><text x="662" y="130" class="t1" font-size="32" font-weight="700" letter-spacing="-0.8">Google SSO</text><text x="662" y="156" class="t3" font-size="12">OAuth 2.0 · role-based views</text><rect x="24" y="188" width="560" height="388" rx="14" class="cd ln"/><text x="48" y="222" class="t1" font-size="16" font-weight="600">Clicks over time</text><text x="48" y="242" class="t3" font-size="12">Daily · last 30 days</text><circle cx="452" cy="218" r="4" fill="#3B82F6"/><text x="462" y="222" class="t2" font-size="12">Clicks</text><circle cx="516" cy="218" r="4" fill="#10B981"/><text x="526" y="222" class="t2" font-size="12">Leads</text><line x1="76" y1="528" x2="560" y2="528" class="ln" stroke-dasharray="3 5"/><text x="66" y="532" class="t3 m" font-size="11" text-anchor="end">0</text><line x1="76" y1="442.6666666666667" x2="560" y2="442.6666666666667" class="ln" stroke-dasharray="3 5"/><text x="66" y="446.6666666666667" class="t3 m" font-size="11" text-anchor="end">3K</text><line x1="76" y1="357.33333333333337" x2="560" y2="357.33333333333337" class="ln" stroke-dasharray="3 5"/><text x="66" y="361.33333333333337" class="t3 m" font-size="11" text-anchor="end">6K</text><line x1="76" y1="272" x2="560" y2="272" class="ln" stroke-dasharray="3 5"/><text x="66" y="276" class="t3 m" font-size="11" text-anchor="end">9K</text><path d="M76 439.8222222222222 C78.8 438.4 87.1 430.3 92.7 431.3 C98.3 432.2 103.8 459.3 109.4 445.5 C114.9 431.8 120.5 367.3 126.1 348.8 C131.6 330.3 137.2 337.4 142.8 334.6 C148.3 331.7 153.9 333.2 159.4 331.7 C165.0 330.3 170.6 327.5 176.1 326.0 C181.7 324.6 187.3 322.7 192.8 323.2 C198.4 323.7 204.0 329.4 209.5 328.9 C215.1 328.4 220.6 322.3 226.2 320.4 C231.8 318.5 237.3 316.6 242.9 317.5 C248.5 318.5 254.0 324.1 259.6 326.0 C265.1 327.9 270.7 329.4 276.3 328.9 C281.8 328.4 287.4 327.0 293.0 323.2 C298.5 319.4 304.1 308.0 309.7 306.1 C315.2 304.2 320.8 309.9 326.3 311.8 C331.9 313.7 337.5 317.5 343.0 317.5 C348.6 317.5 354.2 311.3 359.7 311.8 C365.3 312.3 370.9 319.4 376.4 320.4 C382.0 321.3 387.5 318.5 393.1 317.5 C398.7 316.6 404.2 316.1 409.8 314.7 C415.4 313.2 420.9 307.6 426.5 309.0 C432.0 310.4 437.6 321.8 443.2 323.2 C448.7 324.6 454.3 318.9 459.9 317.5 C465.4 316.1 471.0 316.6 476.6 314.7 C482.1 312.8 487.7 305.2 493.2 306.1 C498.8 307.1 504.4 318.5 509.9 320.4 C515.5 322.3 521.1 318.9 526.6 317.5 C532.2 316.1 537.7 312.3 543.3 311.8 C548.9 311.3 557.2 314.2 560.0 314.7 L560 528 L76 528 Z" fill="url(#gp-area)"/><path d="M76 439.8222222222222 C78.8 438.4 87.1 430.3 92.7 431.3 C98.3 432.2 103.8 459.3 109.4 445.5 C114.9 431.8 120.5 367.3 126.1 348.8 C131.6 330.3 137.2 337.4 142.8 334.6 C148.3 331.7 153.9 333.2 159.4 331.7 C165.0 330.3 170.6 327.5 176.1 326.0 C181.7 324.6 187.3 322.7 192.8 323.2 C198.4 323.7 204.0 329.4 209.5 328.9 C215.1 328.4 220.6 322.3 226.2 320.4 C231.8 318.5 237.3 316.6 242.9 317.5 C248.5 318.5 254.0 324.1 259.6 326.0 C265.1 327.9 270.7 329.4 276.3 328.9 C281.8 328.4 287.4 327.0 293.0 323.2 C298.5 319.4 304.1 308.0 309.7 306.1 C315.2 304.2 320.8 309.9 326.3 311.8 C331.9 313.7 337.5 317.5 343.0 317.5 C348.6 317.5 354.2 311.3 359.7 311.8 C365.3 312.3 370.9 319.4 376.4 320.4 C382.0 321.3 387.5 318.5 393.1 317.5 C398.7 316.6 404.2 316.1 409.8 314.7 C415.4 313.2 420.9 307.6 426.5 309.0 C432.0 310.4 437.6 321.8 443.2 323.2 C448.7 324.6 454.3 318.9 459.9 317.5 C465.4 316.1 471.0 316.6 476.6 314.7 C482.1 312.8 487.7 305.2 493.2 306.1 C498.8 307.1 504.4 318.5 509.9 320.4 C515.5 322.3 521.1 318.9 526.6 317.5 C532.2 316.1 537.7 312.3 543.3 311.8 C548.9 311.3 557.2 314.2 560.0 314.7" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round"/><path d="M76 505.3582222222222 C78.8 505.1 87.1 503.8 92.7 504.0 C98.3 504.1 103.8 508.5 109.4 506.3 C114.9 504.1 120.5 493.8 126.1 490.8 C131.6 487.8 137.2 489.0 142.8 488.5 C148.3 488.1 153.9 488.3 159.4 488.1 C165.0 487.8 170.6 487.4 176.1 487.2 C181.7 486.9 187.3 486.6 192.8 486.7 C198.4 486.8 204.0 487.7 209.5 487.6 C215.1 487.5 220.6 486.5 226.2 486.2 C231.8 485.9 237.3 485.6 242.9 485.8 C248.5 485.9 254.0 486.9 259.6 487.2 C265.1 487.5 270.7 487.7 276.3 487.6 C281.8 487.5 287.4 487.3 293.0 486.7 C298.5 486.1 304.1 484.3 309.7 484.0 C315.2 483.7 320.8 484.6 326.3 484.9 C331.9 485.2 337.5 485.8 343.0 485.8 C348.6 485.8 354.2 484.8 359.7 484.9 C365.3 485.0 370.9 486.1 376.4 486.2 C382.0 486.4 387.5 485.9 393.1 485.8 C398.7 485.6 404.2 485.6 409.8 485.3 C415.4 485.1 420.9 484.2 426.5 484.4 C432.0 484.7 437.6 486.5 443.2 486.7 C448.7 486.9 454.3 486.0 459.9 485.8 C465.4 485.6 471.0 485.6 476.6 485.3 C482.1 485.0 487.7 483.8 493.2 484.0 C498.8 484.1 504.4 485.9 509.9 486.2 C515.5 486.5 521.1 486.0 526.6 485.8 C532.2 485.6 537.7 485.0 543.3 484.9 C548.9 484.8 557.2 485.3 560.0 485.3" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round"/><text x="76" y="552" class="t3 m" font-size="11" text-anchor="start">Jan 29</text><text x="197" y="552" class="t3 m" font-size="11" text-anchor="middle">Feb 5</text><text x="318" y="552" class="t3 m" font-size="11" text-anchor="middle">Feb 12</text><text x="439" y="552" class="t3 m" font-size="11" text-anchor="middle">Feb 19</text><text x="560" y="552" class="t3 m" font-size="11" text-anchor="end">Feb 26</text><line x1="309.65517241379314" y1="268" x2="309.65517241379314" y2="528" class="lnx" stroke-dasharray="3 4"/><circle cx="309.65517241379314" cy="306.1333333333333" r="6" class="cd" stroke="#3B82F6" stroke-width="3"/><rect x="323.65517241379314" y="244.13333333333333" width="124" height="48" rx="10" class="cd ln"/><text x="335.65517241379314" y="264.1333333333333" class="t3 m" font-size="11">Feb 12</text><text x="335.65517241379314" y="283.1333333333333" class="t1" font-size="14" font-weight="600">7,812 clicks</text><rect x="600" y="188" width="336" height="388" rx="14" class="cd ln"/><text x="624" y="222" class="t1" font-size="16" font-weight="600">Top campaigns</text><text x="624" y="242" class="t3" font-size="12">By clicks · same period</text><text x="624" y="286" class="t1" font-size="14" font-weight="500">NRI Investment</text><text x="912" y="286" class="t2 m" font-size="13" text-anchor="end">1,45,080</text><rect x="624" y="298" width="288" height="6" rx="3" class="sk"/><rect x="624" y="298" width="288" height="6" rx="3" fill="#3B82F6"/><text x="624" y="342" class="t1" font-size="14" font-weight="500">NRI Health</text><text x="912" y="342" class="t2 m" font-size="13" text-anchor="end">11,270</text><rect x="624" y="354" width="288" height="6" rx="3" class="sk"/><rect x="624" y="354" width="22.372208436724566" height="6" rx="3" fill="#3B82F6"/><text x="624" y="398" class="t1" font-size="14" font-weight="500">NRI Investment II</text><text x="912" y="398" class="t2 m" font-size="13" text-anchor="end">10,432</text><rect x="624" y="410" width="288" height="6" rx="3" class="sk"/><rect x="624" y="410" width="20.708684863523573" height="6" rx="3" fill="#3B82F6"/><text x="624" y="454" class="t1" font-size="14" font-weight="500">NRI Health II</text><text x="912" y="454" class="t2 m" font-size="13" text-anchor="end">881</text><rect x="624" y="466" width="288" height="6" rx="3" class="sk"/><rect x="624" y="466" width="6" height="6" rx="3" fill="#3B82F6"/><line x1="624" y1="516" x2="912" y2="516" class="ln"/><text x="624" y="550" class="t2" font-size="13">Total clicks</text><text x="912" y="550" class="t1 m" font-size="16" font-weight="600" text-anchor="end">1,67,663</text>
 </svg>

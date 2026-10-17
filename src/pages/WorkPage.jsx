@@ -4,17 +4,8 @@ import { PageWrapper } from '../components/PageWrapper';
 import { Link } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Terminal, Layers, Sparkles, Cpu } from 'lucide-react';
-
-const getItemIcon = (item) => {
-    if (item.company === 'GoPaisa') return <Terminal size={20} className="text-[#3b82f6]" />;
-    if (item.company === 'TableSprint') return <Layers size={20} className="text-[#10b981]" />;
-    if (item.company === 'IncNut Digital') return <Sparkles size={20} className="text-[#8b5cf6]" />;
-    if (item.id === 'pm2-auto-recovery-alerts') return <Cpu size={20} className="text-amber-500" />;
-    if (item.id === 'ai-compare') return <Sparkles size={20} className="text-cyan-500" />;
-    if (item.id === 'megablog') return <Layers size={20} className="text-rose-500" />;
-    return <Terminal size={20} className="text-accent" />;
-};
+import { ItemIcon } from '../components/ItemIcon';
+import { ArrowUpRight } from 'lucide-react';
 
 const WorkCard = ({ item, badgeLabel }) => {
     const title = item.title || item.company;
@@ -25,14 +16,14 @@ const WorkCard = ({ item, badgeLabel }) => {
     return (
         <Link
             to={`/project/${item.id}`}
-            className="group block bg-bgCard border border-subtle p-6 sm:p-7 rounded-[26px] hover:border-accent/30 hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-200 shadow-sm relative"
+            className="group block bg-bgCard border border-subtle p-6 sm:p-7 rounded-3xl hover:border-accent/30 hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-200 shadow-sm relative"
         >
             <div className="flex flex-col justify-between h-full space-y-4">
                 {/* Header: Icon, Titles, and Badge */}
                 <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-4 min-w-0">
-                        <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center font-bold text-xl text-accent shrink-0 shadow-sm border border-subtle">
-                            {getItemIcon(item)}
+                        <div className="w-12 h-12 bg-black/[0.03] dark:bg-white/[0.06] rounded-2xl flex items-center justify-center shrink-0 shadow-sm border border-subtle">
+                            <ItemIcon item={item} />
                         </div>
                         <div className="min-w-0">
                             <h3 className="text-xl sm:text-2xl font-bold text-accent tracking-tight truncate">

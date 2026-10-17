@@ -1,179 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%" fill="none">
-  <defs>
-    <linearGradient id="agent-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="100%" stop-color="#020617"/>
-    </linearGradient>
-    <linearGradient id="agent-card" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#090d16"/>
-    </linearGradient>
-    <linearGradient id="gitlab-orange" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fc6d26"/>
-      <stop offset="100%" stop-color="#e24329"/>
-    </linearGradient>
-    <linearGradient id="docker-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0ea5e9"/>
-      <stop offset="100%" stop-color="#0284c7"/>
-    </linearGradient>
-    <filter id="glow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#fc6d26" flood-opacity="0.2"/>
-    </filter>
-  </defs>
-
-  <!-- Canvas Background -->
-  <rect width="1200" height="750" fill="url(#agent-bg)"/>
-
-  <!-- Main Architecture Container -->
-  <rect x="40" y="30" width="1120" height="690" rx="20" fill="url(#agent-card)" stroke="#1e293b" stroke-width="1.5"/>
-
-  <!-- Header -->
-  <g transform="translate(70, 60)">
-    <!-- GitLab Logo Badge -->
-    <path d="M24 6 L30 24 L18 24 Z" fill="#e24329"/>
-    <path d="M6 24 L0 42 C-0.5 44 1.5 46 3 46 L30 24 L6 24 Z" fill="#fc6d26"/>
-    <path d="M42 24 L48 42 C48.5 44 46.5 46 45 46 L18 24 L42 24 Z" fill="#fc6d26"/>
-    <path d="M3 46 L24 62 L30 24 L0 42 Z" fill="#fca326"/>
-    <path d="M45 46 L24 62 L18 24 L48 42 Z" fill="#fca326"/>
-    
-    <text x="65" y="34" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="20" font-weight="700">
-      AI GitLab Coding Agent &amp; Sandboxed Runtime
-    </text>
-    <text x="65" y="54" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="12">
-      AgentHarness &bull; Finite State Machine &bull; Command Policy Engine &bull; Isolated Docker Container
-    </text>
-  </g>
-
-  <!-- Top Status Metrics Grid -->
-  <g transform="translate(70, 140)">
-    <!-- Metric 1: Execution Sandbox -->
-    <rect width="245" height="70" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="20" y="30" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="11">WORKSPACE</text>
-    <text x="20" y="54" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">Docker Container</text>
-
-    <!-- Metric 2: Security Policy -->
-    <rect x="270" width="245" height="70" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="290" y="30" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="11">POLICY GUARD</text>
-    <text x="290" y="54" fill="#10b981" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">3-Tier Verification</text>
-
-    <!-- Metric 3: State Tracking -->
-    <rect x="540" width="245" height="70" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="560" y="30" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="11">PERSISTENCE</text>
-    <text x="560" y="54" fill="#f59e0b" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">Atomic EventStore</text>
-
-    <!-- Metric 4: Git Provider -->
-    <rect x="810" width="245" height="70" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="830" y="30" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="11">GIT PROVIDER</text>
-    <text x="830" y="54" fill="#fc6d26" font-family="-apple-system, sans-serif" font-size="18" font-weight="700">GitLab API &amp; CI</text>
-  </g>
-
-  <!-- Architecture Flow Columns -->
-  <!-- Column 1: Harness & FSM -->
-  <g transform="translate(70, 240)">
-    <rect width="320" height="440" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <rect width="320" height="46" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <rect y="32" width="320" height="14" fill="#1e293b"/>
-    <text x="20" y="28" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="14" font-weight="700">1. Harness &amp; State Engine</text>
-
-    <g transform="translate(20, 65)">
-      <rect width="280" height="60" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-      <text x="14" y="24" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11" font-weight="700">AgentHarness</text>
-      <text x="14" y="44" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">Lifecycle: run(), cancel(), resume()</text>
-
-      <!-- FSM States Flow -->
-      <g transform="translate(0, 75)">
-        <rect width="280" height="150" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-        <text x="14" y="24" fill="#e2e8f0" font-family="'SF Mono', monospace" font-size="11" font-weight="700">RunStateMachine (FSM)</text>
-        <text x="14" y="48" fill="#64748b" font-family="'SF Mono', monospace" font-size="11">▸ PENDING</text>
-        <text x="14" y="70" fill="#10b981" font-family="'SF Mono', monospace" font-size="11">▸ RUNNING (LLM Call)</text>
-        <text x="14" y="92" fill="#f59e0b" font-family="'SF Mono', monospace" font-size="11">▸ PAUSED_FOR_TOOL_APPROVAL</text>
-        <text x="14" y="114" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11">▸ SUCCEEDED / FAILED</text>
-        <text x="14" y="136" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="10.5">Strict monotonic transition rules</text>
-      </g>
-
-      <g transform="translate(0, 240)">
-        <rect width="280" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-        <text x="14" y="24" fill="#a855f7" font-family="'SF Mono', monospace" font-size="11" font-weight="700">ToolRegistry</text>
-        <text x="14" y="46" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">8 Pluggable Tool Primitives:</text>
-        <text x="14" y="66" fill="#64748b" font-family="'SF Mono', monospace" font-size="10.5">read_file &bull; write_file &bull; grep</text>
-        <text x="14" y="86" fill="#64748b" font-family="'SF Mono', monospace" font-size="10.5">list_dir &bull; run_command &bull; git_commit</text>
-      </g>
-    </g>
-  </g>
-
-  <!-- Column 2: Command Policy & Security -->
-  <g transform="translate(430, 240)">
-    <rect width="320" height="440" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <rect width="320" height="46" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <rect y="32" width="320" height="14" fill="#1e293b"/>
-    <text x="20" y="28" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="14" font-weight="700">2. Security Policy Engine</text>
-
-    <g transform="translate(20, 65)">
-      <!-- Tier 1: SAFE -->
-      <rect width="280" height="90" rx="8" fill="#064e3b" fill-opacity="0.3" stroke="#059669" stroke-width="1"/>
-      <text x="14" y="26" fill="#34d399" font-family="'SF Mono', monospace" font-size="12" font-weight="700">✓ SAFE (Automated)</text>
-      <text x="14" y="48" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">Read operations &amp; test executions</text>
-      <text x="14" y="68" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="10.5">cat, ls, git status, npm test</text>
-
-      <!-- Tier 2: CONFIRM -->
-      <g transform="translate(0, 105)">
-        <rect width="280" height="90" rx="8" fill="#78350f" fill-opacity="0.3" stroke="#d97706" stroke-width="1"/>
-        <text x="14" y="26" fill="#fbbf24" font-family="'SF Mono', monospace" font-size="12" font-weight="700">⚠ CONFIRM (Human in the Loop)</text>
-        <text x="14" y="48" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">File overwrites &amp; git pushes</text>
-        <text x="14" y="68" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="10.5">Pauses state &amp; alerts developer in UI</text>
-      </g>
-
-      <!-- Tier 3: BLOCKED -->
-      <g transform="translate(0, 210)">
-        <rect width="280" height="90" rx="8" fill="#7f1d1d" fill-opacity="0.3" stroke="#dc2626" stroke-width="1"/>
-        <text x="14" y="26" fill="#f87171" font-family="'SF Mono', monospace" font-size="12" font-weight="700">✕ BLOCKED (Permanent Rejection)</text>
-        <text x="14" y="48" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">Destructive or privilege escalation</text>
-        <text x="14" y="68" fill="#94a3b8" font-family="'SF Mono', monospace" font-size="10.5">rm -rf, sudo, chmod, socket access</text>
-      </g>
-
-      <g transform="translate(0, 315)">
-        <rect width="280" height="40" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-        <text x="14" y="25" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11">AST syntax validation before commit</text>
-      </g>
-    </g>
-  </g>
-
-  <!-- Column 3: Docker Sandbox & GitOps -->
-  <g transform="translate(790, 240)">
-    <rect width="320" height="440" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <rect width="320" height="46" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-    <rect y="32" width="320" height="14" fill="#1e293b"/>
-    <text x="20" y="28" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="14" font-weight="700">3. Docker Sandbox &amp; GitOps</text>
-
-    <g transform="translate(20, 65)">
-      <!-- Docker Sandbox Details -->
-      <rect width="280" height="135" rx="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="1"/>
-      <g transform="translate(14, 16)">
-        <rect width="18" height="14" rx="2" fill="url(#docker-blue)"/>
-        <text x="26" y="12" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12" font-weight="700">Isolated Container</text>
-      </g>
-      <text x="14" y="50" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">• Non-root dedicated user: <tspan fill="#38bdf8" font-family="'SF Mono', monospace">agent</tspan></text>
-      <text x="14" y="70" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">• Hardened memory quota: <tspan fill="#10b981" font-family="'SF Mono', monospace">2GB RAM</tspan></text>
-      <text x="14" y="90" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">• CPU cap: <tspan fill="#10b981" font-family="'SF Mono', monospace">2 Virtual Cores</tspan></text>
-      <text x="14" y="110" fill="#ef4444" font-family="-apple-system, sans-serif" font-size="11.5">• Blocked: <tspan font-family="'SF Mono', monospace">/var/run/docker.sock</tspan></text>
-
-      <!-- Event Streaming -->
-      <g transform="translate(0, 150)">
-        <rect width="280" height="95" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-        <text x="14" y="24" fill="#f59e0b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">PostgreSQL EventStore</text>
-        <text x="14" y="44" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11.5">Monotonic sequence numbering</text>
-        <text x="14" y="64" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11.5">Real-time SSE event streaming</text>
-        <text x="14" y="82" fill="#64748b" font-family="'SF Mono', monospace" font-size="10.5">Automatic Last-Event-ID reconnection</text>
-      </g>
-
-      <!-- GitLab MR Generation -->
-      <g transform="translate(0, 260)">
-        <rect width="280" height="95" rx="8" fill="#0f172a" stroke="#fc6d26" stroke-width="1"/>
-        <text x="14" y="24" fill="#fc6d26" font-family="'SF Mono', monospace" font-size="11" font-weight="700">GitLab Merge Request</text>
-        <text x="14" y="46" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">Automated feature branch push</text>
-        <text x="14" y="66" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11.5">Markdown diff summary generation</text>
-        <text x="14" y="84" fill="#10b981" font-family="'SF Mono', monospace" font-size="10.5">GitLab CI pipeline status watcher</text>
-      </g>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" class="pa" role="img" aria-label="GitLab coding agent run: policy-checked tool calls, code diff, sandbox and passing tests">
+<title>GitLab coding agent run: policy-checked tool calls, code diff, sandbox and passing tests</title>
+<defs><style>.pa{font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif}
+.pa text{white-space:pre}
+.pa .m{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+.pa .bg{fill:var(--bg-main,#F8F9FA)}
+.pa .cd{fill:var(--bg-card,#FFFFFF)}
+.pa .in{fill:var(--bg-input,#F1F3F5)}
+.pa .ln{stroke:var(--border-subtle,rgba(0,0,0,.07));stroke-width:1.5}
+.pa .lnx{stroke:var(--text-dim,#475569);stroke-opacity:.35;stroke-width:1.5;fill:none}
+.pa .t1{fill:var(--text-accent,#0F172A)}
+.pa .t2{fill:var(--text-dim,#475569)}
+.pa .t3{fill:var(--text-dim,#475569);fill-opacity:.7}
+.pa .sk{fill:var(--text-dim,#475569);fill-opacity:.13}
+.pa .dt{fill:var(--text-dim,#475569);fill-opacity:.28}</style></defs>
+<rect width="960" height="600" class="bg"/>
+<rect width="960" height="44" class="cd"/>
+<line x1="0" y1="44" x2="960" y2="44" class="ln"/>
+<circle cx="22" cy="22" r="5" class="dt"/>
+<circle cx="40" cy="22" r="5" class="dt"/>
+<circle cx="58" cy="22" r="5" class="dt"/>
+<text x="84" y="27" class="t1" font-size="14"><tspan font-weight="600">Coding Agent</tspan><tspan class="m t3" font-size="12" dx="12">phoenix-api · agent/fix-token-expiry</tspan></text>
+<rect x="833" y="11" width="103" height="22" rx="11" fill="#FC6D26" fill-opacity="0.12" stroke="#FC6D26" stroke-opacity="0.28" stroke-width="1.5"/><circle cx="845" cy="22" r="3" fill="#FC6D26"/><text x="854" y="25.96" class="m" fill="#FC6D26" font-size="11" font-weight="600">AWAITING MR</text>
+<rect x="24" y="60" width="316" height="516" rx="14" class="cd ln"/><text x="44" y="88" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">RUN TIMELINE</text><text x="320" y="88" class="t3 m" font-size="11" text-anchor="end">seq #142</text><line x1="52" y1="120" x2="52" y2="452" class="lnx"/><circle cx="52" cy="121" r="7" class="cd" stroke="#10B981" stroke-width="3"/><text x="72" y="126" class="t1 m" font-size="13" font-weight="600">read_file</text><text x="72" y="144" class="t3 m" font-size="11">src/auth/login.ts</text><rect x="278" y="112" width="42" height="20" rx="10" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="287" y="125.6" class="m" fill="#10B981" font-size="10" font-weight="600">SAFE</text><circle cx="52" cy="187" r="7" class="cd" stroke="#10B981" stroke-width="3"/><text x="72" y="192" class="t1 m" font-size="13" font-weight="600">run_command</text><text x="72" y="210" class="t3 m" font-size="11">npm test → 1 failed</text><rect x="278" y="178" width="42" height="20" rx="10" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="287" y="191.6" class="m" fill="#10B981" font-size="10" font-weight="600">SAFE</text><circle cx="52" cy="253" r="7" class="cd" stroke="#10B981" stroke-width="3"/><text x="72" y="258" class="t1 m" font-size="13" font-weight="600">edit_file</text><text x="72" y="276" class="t3 m" font-size="11">src/auth/login.ts</text><rect x="278" y="244" width="42" height="20" rx="10" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="287" y="257.6" class="m" fill="#10B981" font-size="10" font-weight="600">SAFE</text><circle cx="52" cy="319" r="7" class="cd" stroke="#F43F5E" stroke-width="3"/><text x="72" y="324" class="t1 m" font-size="13" font-weight="600">run_command</text><text x="72" y="342" class="t3 m" font-size="11">rm -rf node_modules</text><rect x="260" y="310" width="60" height="20" rx="10" fill="#F43F5E" fill-opacity="0.12" stroke="#F43F5E" stroke-opacity="0.28" stroke-width="1.5"/><text x="269" y="323.6" class="m" fill="#F43F5E" font-size="10" font-weight="600">BLOCKED</text><circle cx="52" cy="385" r="7" class="cd" stroke="#10B981" stroke-width="3"/><text x="72" y="390" class="t1 m" font-size="13" font-weight="600">run_command</text><text x="72" y="408" class="t3 m" font-size="11">npm test → 26 passed</text><rect x="278" y="376" width="42" height="20" rx="10" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="287" y="389.6" class="m" fill="#10B981" font-size="10" font-weight="600">SAFE</text><circle cx="52" cy="451" r="7" class="cd" stroke="#F59E0B" stroke-width="3"/><text x="72" y="456" class="t1 m" font-size="13" font-weight="600">git_push</text><text x="72" y="474" class="t3 m" font-size="11">agent/fix-token-expiry</text><rect x="260" y="442" width="60" height="20" rx="10" fill="#F59E0B" fill-opacity="0.12" stroke="#F59E0B" stroke-opacity="0.28" stroke-width="1.5"/><text x="269" y="455.6" class="m" fill="#F59E0B" font-size="10" font-weight="600">CONFIRM</text><rect x="40" y="506" width="284" height="54" rx="10" fill="#F59E0B" fill-opacity="0.1" stroke="#F59E0B" stroke-opacity="0.35" stroke-width="1.5"/><text x="56" y="528" class="m" fill="#F59E0B" font-size="11" font-weight="700">PAUSED_FOR_TOOL_APPROVAL</text><text x="56" y="547" class="t2" font-size="12">git push approved by developer</text><rect x="356" y="60" width="580" height="268" rx="14" class="cd ln"/><text x="376" y="89" class="t1 m" font-size="13" font-weight="600">src/auth/login.ts</text><rect x="885" y="75" width="31" height="20" rx="10" fill="#F43F5E" fill-opacity="0.12" stroke="#F43F5E" stroke-opacity="0.28" stroke-width="1.5"/><text x="894" y="88.96" class="m" fill="#F43F5E" font-size="11" font-weight="600">−3</text><rect x="848" y="75" width="31" height="20" rx="10" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="857" y="88.96" class="m" fill="#10B981" font-size="11" font-weight="600">+3</text><line x1="356" y1="104" x2="936" y2="104" class="ln"/><text x="376" y="134" class="t3 m" font-size="12">41</text><text x="426" y="134" class="t3 m" font-size="13">// validate token expiry</text><rect x="357" y="142" width="578" height="26" rx="0" fill="#F43F5E" fill-opacity=".09"/><text x="376" y="160" class="t3 m" font-size="12">42</text><text x="408" y="160" class="m" fill="#F43F5E" font-size="13" font-weight="700">-</text><text x="426" y="160" class="t1 m" font-size="13">if (decoded.exp &lt; Date.now()) {</text><rect x="357" y="168" width="578" height="26" rx="0" fill="#F43F5E" fill-opacity=".09"/><text x="376" y="186" class="t3 m" font-size="12">43</text><text x="408" y="186" class="m" fill="#F43F5E" font-size="13" font-weight="700">-</text><text x="426" y="186" class="t1 m" font-size="13">  throw new UnauthorizedError('Expired')</text><rect x="357" y="194" width="578" height="26" rx="0" fill="#F43F5E" fill-opacity=".09"/><text x="376" y="212" class="t3 m" font-size="12">44</text><text x="408" y="212" class="m" fill="#F43F5E" font-size="13" font-weight="700">-</text><text x="426" y="212" class="t1 m" font-size="13">}</text><rect x="357" y="220" width="578" height="26" rx="0" fill="#10B981" fill-opacity=".09"/><text x="376" y="238" class="t3 m" font-size="12">42</text><text x="408" y="238" class="m" fill="#10B981" font-size="13" font-weight="700">+</text><text x="426" y="238" class="t1 m" font-size="13">const now = Math.floor(Date.now() / 1000)</text><rect x="357" y="246" width="578" height="26" rx="0" fill="#10B981" fill-opacity=".09"/><text x="376" y="264" class="t3 m" font-size="12">43</text><text x="408" y="264" class="m" fill="#10B981" font-size="13" font-weight="700">+</text><text x="426" y="264" class="t1 m" font-size="13">if (decoded.exp &lt; now) {</text><rect x="357" y="272" width="578" height="26" rx="0" fill="#10B981" fill-opacity=".09"/><text x="376" y="290" class="t3 m" font-size="12">44</text><text x="408" y="290" class="m" fill="#10B981" font-size="13" font-weight="700">+</text><text x="426" y="290" class="t1 m" font-size="13">  throw new UnauthorizedError('Token expired')</text><text x="376" y="316" class="t3" font-size="12">JWT exp is in seconds; Date.now() is in milliseconds</text><rect x="356" y="344" width="282" height="160" rx="14" class="cd ln"/><text x="376" y="372" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">DOCKER SANDBOX</text><text x="376" y="404" fill="#10B981" font-size="13" font-weight="700">✓</text><text x="396" y="404" class="t3 m" font-size="12">user</text><text x="492" y="404" class="t1 m" font-size="12">agent (non-root)</text><text x="376" y="434" fill="#10B981" font-size="13" font-weight="700">✓</text><text x="396" y="434" class="t3 m" font-size="12">limits</text><text x="492" y="434" class="t1 m" font-size="12">2 GB RAM · 2 CPU</text><text x="376" y="464" fill="#10B981" font-size="13" font-weight="700">✓</text><text x="396" y="464" class="t3 m" font-size="12">docker.sock</text><text x="492" y="464" class="t1 m" font-size="12">blocked</text><rect x="654" y="344" width="282" height="160" rx="14" class="cd ln"/><text x="674" y="372" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">VITEST</text><text x="674" y="424" fill="#10B981" font-size="34" font-weight="700" letter-spacing="-0.8">26/26</text><text x="674" y="450" class="t2" font-size="13">tests passed in 1.69 s</text><rect x="674" y="470" width="242" height="6" rx="3" fill="#10B981"/><rect x="356" y="520" width="580" height="56" rx="14" class="cd ln"/><text x="376" y="553" class="t3 m" font-size="12">events → PostgreSQL EventStore → SSE</text><rect x="746" y="530" width="174" height="36" rx="18" fill="#FC6D26"/><text x="833" y="553" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">Open merge request</text>
 </svg>

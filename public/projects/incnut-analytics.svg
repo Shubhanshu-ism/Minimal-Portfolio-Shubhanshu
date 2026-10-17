@@ -1,122 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%" fill="none">
-  <defs>
-    <linearGradient id="inc-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d16"/>
-      <stop offset="100%" stop-color="#020617"/>
-    </linearGradient>
-    <linearGradient id="inc-card" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#111827"/>
-      <stop offset="100%" stop-color="#0b0f17"/>
-    </linearGradient>
-  </defs>
-
-  <rect width="1200" height="750" fill="url(#inc-bg)"/>
-
-  <rect x="50" y="40" width="1100" height="670" rx="16" fill="url(#inc-card)" stroke="#1f293d" stroke-width="1.5"/>
-
-  <rect x="50" y="40" width="1100" height="56" rx="16" fill="#0b0f17" stroke="#1f293d" stroke-width="1"/>
-  <rect x="50" y="80" width="1100" height="16" fill="#0b0f17"/>
-
-  <circle cx="85" cy="68" r="6" fill="#ef4444"/>
-  <circle cx="105" cy="68" r="6" fill="#f59e0b"/>
-  <circle cx="125" cy="68" r="6" fill="#10b981"/>
-
-  <text x="600" y="73" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
-    IncNut Digital &#8226; High-Scale E-Commerce &amp; Consumer Intelligence Dashboard
-  </text>
-
-  <!-- Metric Badges Row -->
-  <g transform="translate(85, 120)">
-    <!-- Metric 1 -->
-    <rect x="0" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="20" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">AUDIENCE REACH</text>
-    <text x="20" y="65" fill="#f59e0b" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">4.5M+ <tspan fill="#64748b" font-size="14">Consumers</tspan></text>
-    <text x="145" y="32" fill="#f59e0b" font-family="'SF Mono', monospace" font-size="11" font-weight="700">SCALE</text>
-
-    <!-- Metric 2 -->
-    <rect x="260" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="280" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">CORE WEB VITALS LCP</text>
-    <text x="280" y="65" fill="#10b981" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">2.1s <tspan fill="#64748b" font-size="14">Optimized</tspan></text>
-    <text x="405" y="32" fill="#10b981" font-family="'SF Mono', monospace" font-size="11" font-weight="700">SPEED</text>
-
-    <!-- Metric 3 -->
-    <rect x="520" y="0" width="235" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="540" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">CONVERSION LIFT</text>
-    <text x="540" y="65" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">+35% <tspan fill="#64748b" font-size="14">Growth</tspan></text>
-    <text x="675" y="32" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11" font-weight="700">MARTECH</text>
-
-    <!-- Metric 4 -->
-    <rect x="780" y="0" width="250" height="90" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="800" y="32" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" font-weight="600">RECOMMENDATION ACCURACY</text>
-    <text x="800" y="65" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">94.8%</text>
-    <text x="940" y="32" fill="#a855f7" font-family="'SF Mono', monospace" font-size="11" font-weight="700">COLLAB FILTER</text>
-  </g>
-
-  <!-- Big Graph & Funnel -->
-  <g transform="translate(85, 235)">
-    <!-- Funnel Visualization Card -->
-    <rect x="0" y="0" width="500" height="440" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="15" font-weight="700">Conversion Funnel Analytics</text>
-    <text x="25" y="55" fill="#64748b" font-family="'SF Mono', monospace" font-size="11">Automated funnel tracking with zero telemetry drop</text>
-
-    <!-- Funnel Bars -->
-    <g transform="translate(25, 90)">
-      <rect width="450" height="50" rx="8" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
-      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">1. Product Catalog Visits</text>
-      <text x="430" y="30" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">4.5M (100%)</text>
-    </g>
-
-    <g transform="translate(50, 160)">
-      <rect width="400" height="50" rx="8" fill="#a855f7" fill-opacity="0.2" stroke="#a855f7" stroke-width="1"/>
-      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">2. Personalized AI Quiz Match</text>
-      <text x="380" y="30" fill="#c084fc" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">2.8M (62%)</text>
-    </g>
-
-    <g transform="translate(75, 230)">
-      <rect width="350" height="50" rx="8" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="1"/>
-      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">3. Cart Additions</text>
-      <text x="330" y="30" fill="#fbbf24" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">1.4M (31%)</text>
-    </g>
-
-    <g transform="translate(100, 300)">
-      <rect width="300" height="50" rx="8" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1"/>
-      <text x="15" y="30" fill="#f1f5f9" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">4. Orders Placed</text>
-      <text x="280" y="30" fill="#34d399" font-family="'SF Mono', monospace" font-size="12" font-weight="700" text-anchor="end">780K (+35% lift)</text>
-    </g>
-    <text x="250" y="405" fill="#64748b" font-family="'SF Mono', monospace" font-size="11" text-anchor="middle">Personalized SkinKraft &amp; Vedix Consumer Journey</text>
-  </g>
-
-  <!-- Right Performance Card -->
-  <g transform="translate(615, 235)">
-    <rect x="0" y="0" width="500" height="440" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
-    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="15" font-weight="700">Core Web Vitals Optimization</text>
-    <text x="25" y="55" fill="#64748b" font-family="'SF Mono', monospace" font-size="11">SSR &amp; dynamic asset bundle size reduction</text>
-
-    <!-- Performance Metric 1 -->
-    <g transform="translate(25, 90)">
-      <rect width="450" height="90" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1"/>
-      <text x="20" y="30" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Largest Contentful Paint (LCP)</text>
-      <text x="20" y="65" fill="#10b981" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">2.1s <tspan fill="#64748b" font-size="13">(4.8s previously)</tspan></text>
-      <rect x="340" y="30" width="90" height="28" rx="14" fill="#10b981" fill-opacity="0.15"/>
-      <text x="385" y="48" fill="#34d399" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">56% FASTER</text>
-    </g>
-
-    <!-- Performance Metric 2 -->
-    <g transform="translate(25, 200)">
-      <rect width="450" height="90" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1"/>
-      <text x="20" y="30" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Cumulative Layout Shift (CLS)</text>
-      <text x="20" y="65" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">0.01 <tspan fill="#64748b" font-size="13">(Target: &lt; 0.1)</tspan></text>
-      <rect x="340" y="30" width="90" height="28" rx="14" fill="#38bdf8" fill-opacity="0.15"/>
-      <text x="385" y="48" fill="#38bdf8" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">PERFECT</text>
-    </g>
-
-    <!-- Performance Metric 3 -->
-    <g transform="translate(25, 310)">
-      <rect width="450" height="90" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1"/>
-      <text x="20" y="30" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">First Input Delay / INP</text>
-      <text x="20" y="65" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="28" font-weight="800">42ms <tspan fill="#64748b" font-size="13">(Target: &lt; 200ms)</tspan></text>
-      <rect x="340" y="30" width="90" height="28" rx="14" fill="#a855f7" fill-opacity="0.15"/>
-      <text x="385" y="48" fill="#c084fc" font-family="'SF Mono', monospace" font-size="11" font-weight="700" text-anchor="middle">INSTANT</text>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" class="pa" role="img" aria-label="IncNut production LangGraph support agent graph with LangSmith tracing">
+<title>IncNut production LangGraph support agent graph with LangSmith tracing</title>
+<defs><style>.pa{font-family:Inter,-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif}
+.pa text{white-space:pre}
+.pa .m{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace}
+.pa .bg{fill:var(--bg-main,#F8F9FA)}
+.pa .cd{fill:var(--bg-card,#FFFFFF)}
+.pa .in{fill:var(--bg-input,#F1F3F5)}
+.pa .ln{stroke:var(--border-subtle,rgba(0,0,0,.07));stroke-width:1.5}
+.pa .lnx{stroke:var(--text-dim,#475569);stroke-opacity:.35;stroke-width:1.5;fill:none}
+.pa .t1{fill:var(--text-accent,#0F172A)}
+.pa .t2{fill:var(--text-dim,#475569)}
+.pa .t3{fill:var(--text-dim,#475569);fill-opacity:.7}
+.pa .sk{fill:var(--text-dim,#475569);fill-opacity:.13}
+.pa .dt{fill:var(--text-dim,#475569);fill-opacity:.28}</style><marker id="in-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#94A3B8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="600" class="bg"/>
+<rect width="960" height="44" class="cd"/>
+<line x1="0" y1="44" x2="960" y2="44" class="ln"/>
+<circle cx="22" cy="22" r="5" class="dt"/>
+<circle cx="40" cy="22" r="5" class="dt"/>
+<circle cx="58" cy="22" r="5" class="dt"/>
+<text x="84" y="27" class="t1" font-size="14"><tspan font-weight="600">Support Agent Graph</tspan><tspan class="m t3" font-size="12" dx="12">LangGraph · LangSmith</tspan></text>
+<rect x="840" y="11" width="96" height="22" rx="11" fill="#8B5CF6" fill-opacity="0.12" stroke="#8B5CF6" stroke-opacity="0.28" stroke-width="1.5"/><circle cx="852" cy="22" r="3" fill="#8B5CF6"/><text x="861" y="25.96" class="m" fill="#8B5CF6" font-size="11" font-weight="600">PRODUCTION</text>
+<path d="M122 146 V184" class="lnx" marker-end="url(#in-a)"/><path d="M122 234 V272" class="lnx" marker-end="url(#in-a)"/><path d="M220 297 C246 297 244 276 266 276" class="lnx" marker-end="url(#in-a)"/><path d="M418 276 C444 276 440 143 464 143" class="lnx" marker-end="url(#in-a)"/><path d="M418 276 C444 276 440 201 464 201" class="lnx" marker-end="url(#in-a)"/><path d="M418 276 C444 276 440 259 464 259" class="lnx" marker-end="url(#in-a)"/><path d="M418 276 C444 276 440 317 464 317" class="lnx" marker-end="url(#in-a)"/><path d="M418 276 C444 276 440 375 464 375" class="lnx" marker-end="url(#in-a)"/><path d="M680 143 H702" class="lnx"/><path d="M680 201 H702" class="lnx"/><path d="M680 259 H702" class="lnx"/><path d="M680 317 H702" class="lnx"/><path d="M680 375 H702" class="lnx"/><path d="M702 143 V375" class="lnx"/><path d="M702 150 H722" class="lnx" marker-end="url(#in-a)"/><path d="M722 172 H706" class="lnx" marker-end="url(#in-a)"/><path d="M702 276 H722" class="lnx" marker-end="url(#in-a)"/><path d="M830 326 V352" class="lnx" marker-end="url(#in-a)"/><rect x="24" y="96" width="196" height="50" rx="12" class="cd ln"/><text x="38" y="115" class="t3 m" font-size="10" font-weight="600" letter-spacing="0.5">WEBHOOK</text><text x="38" y="133" class="t1 m" font-size="13" font-weight="600">freshdesk_ticket</text><rect x="24" y="184" width="196" height="50" rx="12" class="cd ln"/><text x="38" y="203" class="t3 m" font-size="10" font-weight="600" letter-spacing="0.5">VERIFY CUSTOMER</text><text x="38" y="221" class="t1 m" font-size="13" font-weight="600">gatekeeper_analyst</text><rect x="24" y="272" width="196" height="50" rx="12" class="cd ln"/><text x="38" y="291" class="t3 m" font-size="10" font-weight="600" letter-spacing="0.5">ORDERS · PROFILE</text><text x="38" y="309" class="t1 m" font-size="13" font-weight="600">data_gathering</text><rect x="268" y="244" width="150" height="64" rx="14" fill="#8B5CF6" fill-opacity=".1" stroke="#8B5CF6" stroke-opacity=".5" stroke-width="1.5"/><text x="282" y="264" class="m" fill="#8B5CF6" font-size="10" font-weight="600" letter-spacing="0.5">ROUTER</text><text x="282" y="282" class="t1 m" font-size="13" font-weight="600">intent_router</text><text x="282" y="298" class="t3" font-size="11">12 structured intents</text><rect x="466" y="120" width="214" height="46" rx="12" class="cd" stroke="#8B5CF6" stroke-opacity=".55" stroke-width="1.5"/><text x="482" y="148" class="t1 m" font-size="13" font-weight="600">cancellation_agent</text><circle cx="664" cy="143" r="4" fill="#8B5CF6"/><rect x="466" y="178" width="214" height="46" rx="12" class="cd ln"/><text x="482" y="206" class="t1 m" font-size="13" font-weight="600">order_logistics_agent</text><circle cx="664" cy="201" r="4" fill="#94A3B8"/><rect x="466" y="236" width="214" height="46" rx="12" class="cd ln"/><text x="482" y="264" class="t1 m" font-size="13" font-weight="600">hair_coach_agent</text><circle cx="664" cy="259" r="4" fill="#94A3B8"/><rect x="466" y="294" width="214" height="46" rx="12" class="cd ln"/><text x="482" y="322" class="t1 m" font-size="13" font-weight="600">query_solver_agent</text><circle cx="664" cy="317" r="4" fill="#94A3B8"/><rect x="466" y="352" width="214" height="46" rx="12" class="cd ln"/><text x="482" y="380" class="t1 m" font-size="13" font-weight="600">supervisor_agent</text><circle cx="664" cy="375" r="4" fill="#94A3B8"/><text x="573" y="426" class="t3" font-size="12" text-anchor="middle">+ 7 more specialists</text><rect x="724" y="122" width="212" height="68" rx="12" class="cd" stroke="#8B5CF6" stroke-opacity=".55" stroke-width="1.5"/><text x="738" y="141" class="m" fill="#8B5CF6" font-size="10" font-weight="600" letter-spacing="0.5">TOOLNODE · LOOP</text><text x="738" y="159" class="t1 m" font-size="13" font-weight="600">tool_node</text><text x="738" y="177" class="t3" font-size="11">Shopify · orders DB · vector KB</text><text x="712" y="206" class="t3 m" font-size="10">until no tool calls</text><rect x="724" y="252" width="212" height="74" rx="12" class="cd ln"/><text x="738" y="271" class="t3 m" font-size="10" font-weight="600" letter-spacing="0.5">POST-GRAPH</text><text x="738" y="289" class="t1 m" font-size="13" font-weight="600">safety_scope_check</text><text x="738" y="307" class="t3" font-size="11">spam · escalate · answer</text><rect x="724" y="352" width="212" height="68" rx="12" class="cd ln"/><text x="738" y="371" class="t3 m" font-size="10" font-weight="600" letter-spacing="0.5">DELIVERY</text><text x="738" y="389" class="t1 m" font-size="13" font-weight="600">run_reply_agent</text><text x="738" y="407" class="t3" font-size="11">reply + ticket status</text><rect x="24" y="460" width="677" height="116" rx="14" class="cd ln"/><text x="44" y="488" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">SAMPLE TICKET · #48213</text><text x="681" y="488" class="t3 m" font-size="11" text-anchor="end">Vedix</text><text x="44" y="514" class="t1" font-size="14" font-weight="500">“I want to cancel my order, the shampoo isn’t working”</text><rect x="44" y="538" width="150" height="22" rx="11" class="in ln"/><text x="53" y="552.96" class="t2 m" font-size="11" font-weight="600">router: cancellation</text><path d="M200 549 H212" class="lnx" marker-end="url(#in-a)"/><rect x="218" y="538" width="91" height="22" rx="11" class="in ln"/><text x="227" y="552.96" class="t2 m" font-size="11" font-weight="600">get_order()</text><path d="M315 549 H327" class="lnx" marker-end="url(#in-a)"/><rect x="333" y="538" width="137" height="22" rx="11" class="in ln"/><text x="342" y="552.96" class="t2 m" font-size="11" font-weight="600">offer regimen swap</text><path d="M476 549 H488" class="lnx" marker-end="url(#in-a)"/><rect x="494" y="538" width="71" height="22" rx="11" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.28" stroke-width="1.5"/><text x="503" y="552.96" class="m" fill="#10B981" font-size="11" font-weight="600">retained</text><rect x="717" y="460" width="219" height="116" rx="14" class="cd ln"/><text x="737" y="488" class="t3 m" font-size="11" font-weight="600" letter-spacing="0.6">LANGSMITH TRACE</text><rect x="737" y="500" width="170.04999999999998" height="6" rx="3" fill="#8B5CF6" fill-opacity="0.35"/><rect x="751.32" y="511" width="53.699999999999996" height="6" rx="3" fill="#8B5CF6" fill-opacity="0.85"/><rect x="794.28" y="522" width="75.17999999999999" height="6" rx="3" fill="#8B5CF6" fill-opacity="0.85"/><rect x="815.76" y="533" width="39.38" height="6" rx="3" fill="#8B5CF6" fill-opacity="0.85"/><rect x="862.3" y="544" width="42.96" height="6" rx="3" fill="#8B5CF6" fill-opacity="0.85"/><text x="737" y="568" class="t3 m" font-size="11">1 ticket · 6 runs · 1.8 s</text>
 </svg>
